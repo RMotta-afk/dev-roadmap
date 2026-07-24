@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import { getUserByEmail } from "@/lib/auth-db";
+import { verifyPassword } from "@/lib/password";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -9,15 +11,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // Stub: accept any email/password and return a mock user.
-        // Real DB lookup will be wired in later (G4 / T4.2).
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
+
+        const user = await getUserByEmail(credentials.email as string);
+        if (!user) {
+          return null;
+        }
+
+        const valid = await verifyPassword(
+          user.passwordHash,
+          credentials.password as string
+        );
+        if (!valid) {
+          return null;
+        }
+
         return {
-          id: "mock-user-id",
-          email: credentials.email as string,
-          name: "Mock User",
+          id: user.id,
+          email: user.email,
+          name: null,
         };
       },
     }),
