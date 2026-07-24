@@ -9,12 +9,13 @@ from fastapi.responses import JSONResponse
 
 from app.config import settings
 from app.middleware import RequestLoggingMiddleware
+from rag.seeder import seed_roadmap_collection
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan context manager for startup/shutdown hooks."""
-    # Placeholder: Qdrant seeding will happen here in a future task.
+    await seed_roadmap_collection()
     yield
     # Placeholder: cleanup logic can be added here.
 
