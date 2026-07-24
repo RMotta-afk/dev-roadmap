@@ -9,6 +9,7 @@ from fastapi import APIRouter, Depends, Form, UploadFile, status
 from fastapi.responses import StreamingResponse
 
 from agent.graph import stream_analysis
+from agent.pdf_parser import extract_cv_text
 from app.auth import require_auth
 from app.schemas import AgentProgressEvent, AnalyzeResponse
 from app.storage.analyses import create_analysis, get_analysis, update_analysis
@@ -45,8 +46,9 @@ async def analyze(
     analysis_id = str(uuid.uuid4())
     user_id = user["user_id"]
 
-    # Read CV content as text (MVP)
-    cv_content = (await cv.read()).decode("utf-8", errors="replace")
+    # Ingest the CV: extract rendered text from PDF bytes (or decode text files).
+    # The raw bytes are discarded after extraction — CV files are ephemeral.
+    cv_content = extract_cv_text(await cv.read(), cv.filename)
 
     request_dict = {
         "user_name": user_name,
@@ -67,6 +69,7 @@ async def _sse_stream(
     user_id: str,
     raw_cv_text: str,
     raw_description: str,
+    user_name: str | None = None,
 ) -> AsyncIterator[str]:
     """Run the LangGraph pipeline and yield SSE formatted events."""
     index = _get_roadmap_index()
@@ -78,6 +81,7 @@ async def _sse_stream(
         user_id=user_id,
         raw_cv_text=raw_cv_text,
         raw_description=raw_description,
+        user_name=user_name,
     ):
         node = event.get("node", "unknown")
         message = event.get("message", f"Node {node} completed")
@@ -122,6 +126,7 @@ async def analyze_events(
     request_dict = analysis["request"]
     raw_cv_text = request_dict.get("cv_content", "")
     raw_description = request_dict.get("description", "")
+    user_name = request_dict.get("user_name")
 
     return StreamingResponse(
         _sse_stream(
@@ -129,6 +134,7 @@ async def analyze_events(
             user_id=user["user_id"],
             raw_cv_text=raw_cv_text,
             raw_description=raw_description,
+            user_name=user_name,
         ),
         media_type="text/event-stream",
     )

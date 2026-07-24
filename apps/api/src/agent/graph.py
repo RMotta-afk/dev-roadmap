@@ -43,6 +43,7 @@ async def stream_analysis(
     user_id: str,
     raw_cv_text: str,
     raw_description: str,
+    user_name: str | None = None,
 ) -> AsyncIterator[dict]:
     """Stream agent progress events and final result."""
 
@@ -52,6 +53,7 @@ async def stream_analysis(
         user_id=user_id,
         raw_cv_text=raw_cv_text,
         raw_description=raw_description,
+        user_name=user_name,
     )
 
     # Stream each node completion

@@ -9,6 +9,8 @@ class AgentState(BaseModel):
     user_id: str
     raw_cv_text: str
     raw_description: str
+    user_name: str | None = None
+    profile: dict | None = None
     extracted_skills: dict | None = None
     matched_nodes: list[dict] | None = None
     level_estimate: str | None = None
