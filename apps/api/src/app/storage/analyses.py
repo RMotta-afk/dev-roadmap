@@ -41,7 +41,7 @@ async def create_analysis(
         await conn.execute(
             """
             INSERT INTO analyses (id, user_id, request, status)
-            VALUES ($1, $2, $3, $4)
+            VALUES ($1, $2, $3::jsonb, $4)
             """,
             analysis_id,
             user_id,
@@ -62,7 +62,7 @@ async def update_analysis(
         await conn.execute(
             """
             UPDATE analyses
-            SET result = $1, status = $2, completed_at = $3
+            SET result = $1::jsonb, status = $2, completed_at = $3
             WHERE id = $4
             """,
             json.dumps(result_dict) if result_dict is not None else None,
@@ -86,4 +86,11 @@ async def get_analysis(analysis_id: str) -> dict[str, Any] | None:
         )
     if row is None:
         return None
-    return dict(row)
+
+    record = dict(row)
+    # asyncpg returns jsonb columns as JSON strings; parse them back into dicts.
+    if isinstance(record.get("request"), str):
+        record["request"] = json.loads(record["request"])
+    if isinstance(record.get("result"), str) and record["result"] is not None:
+        record["result"] = json.loads(record["result"])
+    return record

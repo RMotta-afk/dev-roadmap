@@ -12,6 +12,20 @@ from qdrant_client.models import (
 from app.config import settings
 
 
+def _to_uuid(value: Any) -> uuid.UUID:
+    """Coerce a value into a UUID suitable for Qdrant point IDs.
+
+    Valid UUID strings are parsed as-is; everything else is hashed to a
+    deterministic UUID so that the same string always maps to the same id.
+    """
+    if isinstance(value, uuid.UUID):
+        return value
+    try:
+        return uuid.UUID(str(value))
+    except ValueError:
+        return uuid.uuid5(uuid.NAMESPACE_URL, str(value))
+
+
 class QdrantRagClient:
     """Async wrapper around the official Qdrant client for RAG operations."""
 
@@ -53,7 +67,7 @@ class QdrantRagClient:
         """
         qdrant_points: list[PointStruct] = []
         for p in points:
-            point_id = p.get("id", str(uuid.uuid4()))
+            point_id = _to_uuid(p.get("id", uuid.uuid4()))
             qdrant_points.append(
                 PointStruct(
                     id=point_id,
