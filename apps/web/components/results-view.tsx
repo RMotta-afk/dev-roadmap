@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ArrowRight, Target, TrendingUp } from "lucide-react"
+import { Target, TrendingUp } from "lucide-react"
 
 import { AnalyzeResult, RoadmapNode } from "@cv-analyzer/shared-types"
 import { cn } from "@/lib/utils"

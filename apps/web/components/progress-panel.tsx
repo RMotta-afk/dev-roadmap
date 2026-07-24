@@ -75,7 +75,7 @@ export function ProgressPanel({ events, currentNode }: ProgressPanelProps) {
           ))}
           {events.length === 0 && (
             <li className="text-sm text-muted-foreground">
-              No steps completed yet.
+              Waiting for the analysis to start…
             </li>
           )}
         </ul>
