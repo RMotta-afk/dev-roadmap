@@ -4,6 +4,7 @@ import { getUserByEmail } from "@/lib/auth-db";
 import { verifyPassword } from "@/lib/password";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  trustHost: true,
   providers: [
     Credentials({
       credentials: {
@@ -36,6 +37,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // Prefer the standard `sub` claim Auth.js always stores; fall back to our
+      // custom `id` for backwards compatibility with older session cookies.
+      if (typeof token.sub === "string") {
+        session.user.id = token.sub;
+      } else if (typeof token.id === "string") {
+        session.user.id = token.id;
+      }
+      if (typeof token.email === "string") {
+        session.user.email = token.email;
+      }
+      return session;
+    },
+  },
   session: {
     strategy: "jwt",
   },

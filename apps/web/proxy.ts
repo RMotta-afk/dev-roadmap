@@ -2,10 +2,18 @@ import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 
 export const proxy = auth((req) => {
-  if (!req.auth && req.nextUrl.pathname !== "/sign-in") {
-    const newUrl = new URL("/sign-in", req.nextUrl.origin);
-    return NextResponse.redirect(newUrl);
+  const isAuthed = Boolean(req.auth?.user?.id && req.auth?.user?.email);
+  const isSignIn = req.nextUrl.pathname === "/sign-in";
+
+  if (!isAuthed) {
+    if (isSignIn) return NextResponse.next();
+    return NextResponse.redirect(new URL("/sign-in", req.nextUrl.origin));
   }
+
+  if (isSignIn) {
+    return NextResponse.redirect(new URL("/home", req.nextUrl.origin));
+  }
+
   return NextResponse.next();
 });
 
