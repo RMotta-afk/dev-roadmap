@@ -2,7 +2,7 @@
   "name": "cv-analyzer-monorepo",
   "private": true,
   "scripts": {
-    "dev": "concurrently --raw --names api,web --prefix-colors blue,green --timestamp-format HH:mm:ss -t \"cd apps/api && uv run uvicorn app.main:app --reload --port 8000\" \"pnpm --filter web dev\"",
+    "dev": "concurrently --raw --names api,web --prefix-colors blue,green \"cd apps/api && uv run uvicorn app.main:app --reload --port 8000\" \"pnpm --filter web dev\"",
     "dev:api": "cd apps/api && uv run uvicorn app.main:app --reload --port 8000",
     "dev:web": "pnpm --filter web dev",
     "install:all": "pnpm install && cd apps/api && uv sync",
