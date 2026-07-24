@@ -1,9 +1,7 @@
 import { AnalyzeResponse, AgentProgressEvent, AnalyzeResult } from "@cv-analyzer/shared-types";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "";
-
 export async function submitAnalysis(formData: FormData): Promise<AnalyzeResponse> {
-  const res = await fetch(`${API_BASE_URL}/analyze`, {
+  const res = await fetch("/api/analyze", {
     method: "POST",
     body: formData,
     credentials: "include",
@@ -19,12 +17,15 @@ export async function submitAnalysis(formData: FormData): Promise<AnalyzeRespons
 
 export function subscribeToAnalysis(
   id: string,
-  onEvent: (event: AgentProgressEvent) => void
+  onEvent: (event: AgentProgressEvent) => void,
+  onError?: () => void
 ): { close: () => void } {
-  const url = `${API_BASE_URL}/analyze/${id}/events`;
+  const url = `/api/analyze/${id}/events`;
   const es = new EventSource(url, { withCredentials: true });
+  let received = false;
 
   es.onmessage = (e) => {
+    received = true;
     try {
       const data = JSON.parse(e.data) as AgentProgressEvent;
       onEvent(data);
@@ -34,8 +35,12 @@ export function subscribeToAnalysis(
   };
 
   es.onerror = () => {
-    // Connection error or stream closed
+    // Connection error or stream closed. Only report an error if we haven't
+    // received any data yet; otherwise the stream likely closed normally.
     es.close();
+    if (!received && onError) {
+      onError();
+    }
   };
 
   return {
