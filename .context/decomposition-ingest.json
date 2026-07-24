@@ -1,0 +1,132 @@
+{
+  "mission": {
+    "statement": "Turn the MVP ingest stubs into a real pipeline that ingests a LinkedIn CV PDF, extracts its rendered text, and strips it into a structured LinkedInProfile Pydantic model (mirroring docs/archives/Profile-Test.pdf) that downstream agent nodes consume.",
+    "terminal_signal": "Given docs/archives/Profile-Test.pdf, the /analyze upload no longer corrupts the bytes; the strip node produces an AgentState.profile matching the LinkedInProfile schema (name, headline, contact, summary, top_skills, languages, certifications, experiences, education); the graph still streams to completion."
+  },
+  "scope_note": "This is the real implementation of master decomposition.json#T6.1 (ingest+strip). Emitted to a separate file to avoid clobbering the project-wide DAG.",
+  "goals": [
+    {
+      "goal_id": "G1",
+      "title": "Structured LinkedInProfile model",
+      "rationale": "Defines the typed shape the stripped PDF becomes, mirroring the LinkedIn export; CVProfile becomes a downstream reduction of it.",
+      "sdd_reference": "docs/sdd/architecture.md#6-backend-fastapi-c-api",
+      "completion_signal": "`python -c 'from app.schemas import LinkedInProfile'` resolves and validates a hand-built sample."
+    },
+    {
+      "goal_id": "G2",
+      "title": "Real PDF text extraction",
+      "rationale": "Replaces the utf-8 decode that corrupts PDF bytes with a real extractor so ingest actually reads the file.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "completion_signal": "extract_text_from_pdf(open('docs/archives/Profile-Test.pdf','rb').read()) returns non-empty text containing 'Raphael Motta'."
+    },
+    {
+      "goal_id": "G3",
+      "title": "Deterministic strip into LinkedInProfile",
+      "rationale": "The strip node turns extracted text into the structured profile carried on AgentState.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "completion_signal": "strip_node populates state.profile from the sample text; contact.email and >=1 experience are present."
+    },
+    {
+      "goal_id": "G4",
+      "title": "End-to-end wiring",
+      "rationale": "Router reads PDF bytes robustly and analyze consumes the structured profile when present.",
+      "sdd_reference": "docs/sdd/architecture.md#6-backend-fastapi-c-api",
+      "completion_signal": "POST /analyze stores decoded CV text (not mojibake); graph run over the sample yields extracted_skills seeded from profile.top_skills."
+    },
+    {
+      "goal_id": "G5",
+      "title": "Validation",
+      "rationale": "Confirm the full path against the canonical sample PDF.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "completion_signal": "Ad-hoc run over Profile-Test.pdf prints a fully-populated LinkedInProfile without errors."
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "T1.1",
+      "goal_id": "G1",
+      "title": "Add LinkedInProfile + submodels to schemas/profile.py and export them",
+      "rationale": "Single source of truth for the stripped-PDF shape; keeps existing CVProfile as the reduction.",
+      "sdd_reference": "docs/sdd/architecture.md#6-backend-fastapi-c-api",
+      "files": ["apps/api/src/app/schemas/profile.py", "apps/api/src/app/schemas/__init__.py"],
+      "blocked_by": [],
+      "parallel_group": "P1",
+      "acceptance_test": "`from app.schemas import LinkedInProfile` resolves; model_validate on a hand-built dict succeeds.",
+      "sdd_snippet": "Pydantic v2 DTOs live under apps/api/src/app/schemas and are re-exported via schemas/__init__.py."
+    },
+    {
+      "task_id": "T2.1",
+      "goal_id": "G2",
+      "title": "Add pypdf dependency and agent/pdf_parser.py",
+      "rationale": "extract_text_from_pdf(bytes)->str using pypdf, tolerant of parse errors.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/pyproject.toml", "apps/api/src/agent/pdf_parser.py"],
+      "blocked_by": [],
+      "parallel_group": "P1",
+      "acceptance_test": "extract_text_from_pdf(sample_bytes) contains 'Raphael Motta'; invalid bytes return ''.",
+      "sdd_snippet": "strip — extract clean text from CV (PDF/DOCX/TXT). Allowed backend deps managed via uv."
+    },
+    {
+      "task_id": "T3.1",
+      "goal_id": "G3",
+      "title": "Add agent/linkedin_parser.py deterministic section parser",
+      "rationale": "parse_linkedin_profile(text)->LinkedInProfile keyed on LinkedIn section headers.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/linkedin_parser.py"],
+      "blocked_by": ["T1.1", "T2.1"],
+      "parallel_group": null,
+      "acceptance_test": "parse_linkedin_profile(sample_text).contact.email == 'raphamotta2015@gmail.com' and len(experiences) >= 1.",
+      "sdd_snippet": "strip node structures extracted text; deterministic, offline, testable."
+    },
+    {
+      "task_id": "T3.2",
+      "goal_id": "G3",
+      "title": "Add profile field to AgentState and populate it in strip_node",
+      "rationale": "Carries the structured profile through the graph for downstream nodes.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/state.py", "apps/api/src/agent/nodes/strip.py"],
+      "blocked_by": ["T3.1"],
+      "parallel_group": null,
+      "acceptance_test": "After strip_node, state.profile is a dict with name/contact/experiences keys.",
+      "sdd_snippet": "AgentState { user_id, raw_cv_text, raw_description, extracted_skills, ... }; strip extracts clean text from CV."
+    },
+    {
+      "task_id": "T4.1",
+      "goal_id": "G4",
+      "title": "Read PDF bytes in /analyze via pdf_parser (fix utf-8 corruption)",
+      "rationale": "Ingest must decode PDFs by extracting text, not utf-8 decoding raw bytes.",
+      "sdd_reference": "docs/sdd/architecture.md#6-backend-fastapi-c-api",
+      "files": ["apps/api/src/app/api/analyze.py"],
+      "blocked_by": ["T2.1"],
+      "parallel_group": null,
+      "acceptance_test": "Uploading the sample PDF stores readable text in the analysis request (contains 'Experience'), not mojibake.",
+      "sdd_snippet": "POST /analyze accepts multipart form (name/phone/email/description/CV file); CV files are ephemeral."
+    },
+    {
+      "task_id": "T4.2",
+      "goal_id": "G4",
+      "title": "Consume structured profile in analyze_node when present",
+      "rationale": "Seed extracted_skills from profile.top_skills/technologies before falling back to heuristics.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/nodes/analyze.py"],
+      "blocked_by": ["T3.2"],
+      "parallel_group": null,
+      "acceptance_test": "With state.profile set, extracted_skills.technologies includes items from top_skills.",
+      "sdd_snippet": "analyze — extract skills, technologies, years of experience, domain areas."
+    },
+    {
+      "task_id": "T5.1",
+      "goal_id": "G5",
+      "title": "Validate full extract+parse against Profile-Test.pdf",
+      "rationale": "Confirms the canonical sample flows through extraction and parsing with no errors.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": [],
+      "blocked_by": ["T3.2", "T4.1", "T4.2"],
+      "parallel_group": null,
+      "acceptance_test": "Ad-hoc run prints a populated LinkedInProfile (name, contact.email, >=3 experiences, education) with no exception.",
+      "sdd_snippet": "Given a sample CV, the graph streams progress and returns structured output."
+    }
+  ],
+  "topological_order": ["T1.1", "T2.1", "T3.1", "T3.2", "T4.1", "T4.2", "T5.1"],
+  "validation_passed": true
+}
