@@ -1,0 +1,11 @@
+.git
+**/node_modules
+**/.next
+**/.venv
+**/.ruff_cache
+**/__pycache__
+apps/web
+packages
+.env
+.env.local
+.env.example
