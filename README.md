@@ -103,13 +103,21 @@ Copy `.env.local` to `.env` and fill in all values:
 | `CORS_ALLOW` | Yes | Allowed CORS origin |
 | `BASE_ROADMAP_PATH` | Yes | Path to base roadmap archive files |
 
-### Seed Admin User
+### Seed Users
 
+**Quick test user (pre-configured):**
+```bash
+pnpm db:seed-test
+```
+Creates the test user for development:
+- Email: `mundo.dev@cv-analyzer.local`
+- Password: `f3l!pe_p@llm@`
+
+**Custom admin user:**
 ```bash
 pnpm db:seed-admin
 ```
-
-Follow the prompts to create the first admin user. No public sign-up page exists.
+Follow the prompts to create your own admin user. No public sign-up page exists.
 
 ## License
 

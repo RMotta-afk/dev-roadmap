@@ -15,7 +15,8 @@
     "db:push": "pnpm --filter db push",
     "db:migrate": "pnpm --filter db migrate",
     "db:studio": "pnpm --filter db studio",
-    "db:seed-admin": "pnpm --filter db create-user"
+    "db:seed-admin": "pnpm --filter db create-user",
+    "db:seed-test": "pnpm --filter db seed-test"
   },
   "devDependencies": {
     "concurrently": "^10.0.3"

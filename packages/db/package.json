@@ -12,7 +12,8 @@
     "generate": "drizzle-kit generate",
     "push": "drizzle-kit push",
     "studio": "drizzle-kit studio",
-    "create-user": "tsx scripts/create-user.ts"
+    "create-user": "tsx scripts/create-user.ts",
+    "seed-test": "tsx scripts/seed-test-user.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",

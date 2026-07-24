@@ -97,15 +97,26 @@ Creates `users` and `analyses` tables in the local Postgres.
 
 ---
 
-## 5. Seed an admin user
+## 5. Seed a user
 
+### Option A — Quick test user (recommended for demos)
+```bash
+pnpm db:seed-test
+```
+
+This creates the pre-configured test user:
+- **Email:** `mundo.dev@cv-analyzer.local`
+- **Password:** `f3l!pe_p@llm@`
+- **Name:** Mundo Dev
+- **Role:** Admin
+
+### Option B — Create a custom admin user
 ```bash
 pnpm db:seed-admin
 ```
 
-Follow the prompts: enter an email and password.
+Follow the prompts: enter any email and password you choose.
 
-This creates the first (admin) user in the database.  
 **No public sign-up page exists** — this is an invite-only app.
 
 ---
@@ -220,7 +231,8 @@ Ensure `AUTH_SECRET` and `AUTHJS_JWT_SECRET` in `.env` are **identical**.
 | Install deps | `pnpm install:all` |
 | Start infra | `pnpm infra:up` |
 | DB migrate | `pnpm db:push` |
-| Seed user | `pnpm db:seed-admin` |
+| Seed test user | `pnpm db:seed-test` |
+| Seed custom admin | `pnpm db:seed-admin` |
 | Start dev | `pnpm dev` |
 | Stop infra | `pnpm infra:down` |
 | Lint | `pnpm lint` |
