@@ -1,12 +1,12 @@
 """FastAPI application factory and lifespan."""
 
 from contextlib import asynccontextmanager
-from uuid import uuid4
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from app.api.analyze import router as analyze_router
 from app.config import settings
 from app.middleware import RequestLoggingMiddleware
 from rag.seeder import seed_roadmap_collection
@@ -42,8 +42,6 @@ def create_app() -> FastAPI:
     async def healthz():
         return {"status": "ok"}
 
-    # Placeholder: include routers here when available
-    # from app.routers import some_router
-    # app.include_router(some_router)
+    app.include_router(analyze_router)
 
     return app

@@ -1,0 +1,10 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd apps/web && next build",
+  "outputDirectory": ".next",
+  "installCommand": "pnpm install",
+  "env": {
+    "NEXTAUTH_URL": "@nextauth_url",
+    "NEXT_PUBLIC_API_BASE_URL": "@next_public_api_base_url"
+  }
+}

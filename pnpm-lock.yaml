@@ -16,6 +16,9 @@ importers:
       '@cv-analyzer/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@cv-analyzer/shared-types':
+        specifier: workspace:*
+        version: link:../../packages/shared-types
       argon2:
         specifier: ^0.45.1
         version: 0.45.1

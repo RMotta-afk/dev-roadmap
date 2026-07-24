@@ -1,3 +1,5 @@
+import { AnalyzeForm } from "@/components/analyze-form"
+
 export default function HomePage() {
   return (
     <div className="space-y-6">
@@ -10,11 +12,7 @@ export default function HomePage() {
           development roadmap.
         </p>
       </div>
-      <div className="rounded-lg border bg-card p-6 text-card-foreground">
-        <p className="text-sm text-muted-foreground">
-          The analysis form will appear here.
-        </p>
-      </div>
+      <AnalyzeForm />
     </div>
-  );
+  )
 }
