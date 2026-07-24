@@ -8,6 +8,15 @@ from .analyze import (
     LevelResume,
     RoadmapNode,
 )
+from .profile import (
+    ContactInfo,
+    CVProfile,
+    Education,
+    Experience,
+    LanguageProficiency,
+    LinkedInProfile,
+    Project,
+)
 
 __all__ = [
     "AgentProgressEvent",
@@ -16,4 +25,11 @@ __all__ = [
     "AnalyzeResult",
     "LevelResume",
     "RoadmapNode",
+    "ContactInfo",
+    "CVProfile",
+    "Education",
+    "Experience",
+    "LanguageProficiency",
+    "LinkedInProfile",
+    "Project",
 ]
