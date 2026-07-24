@@ -1,0 +1,1120 @@
+{
+  "id": "ai-engineer-senior",
+  "title": "AI Engineer — Sênior",
+  "role": "ai_engineer",
+  "version": "1.0.0",
+  "description": "Roadmap base para AI Engineer — bloco SÊNIOR (Arquitetura de AI). Herda o bloco AI Pleno por referência, referencia 4 módulos base de AI e 4 módulos do Software Engineer (Sênior). Módulos de AI repetidos entram só por referência.",
+  "market": [
+    "brazil",
+    "international"
+  ],
+  "metadata": {
+    "author": "",
+    "created_at": "2026-07-13",
+    "updated_at": "2026-07-13",
+    "inherited_from": "ai-engineer-pleno",
+    "references_role": "software_engineer",
+    "tags": [
+      "ai",
+      "architecture",
+      "ai-ops",
+      "security",
+      "senior"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "ai-senior-arquitetura-de-ai",
+      "name": "SÊNIOR Arquitetura de AI",
+      "type": "domain",
+      "category": "career",
+      "description": "Competências de arquitetura de sistemas de IA e decisão técnica de um AI Engineer Sênior.",
+      "level": "senior",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Herdado de Pleno",
+          "AI Architecture & Orchestration",
+          "AI Ops, Evaluation & Security"
+        ],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-herdado-de-pleno",
+      "name": "Herdado de Pleno",
+      "type": "group",
+      "category": "career",
+      "description": "Referência ao bloco AI Engineer Pleno (e, por transitividade, ao Júnior), herdado como pré-requisito. Os nós vivem no documento 'ai-engineer-pleno'; aqui há apenas a relação 'inherits'.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-evolucao-senior",
+      "name": "Evolução",
+      "type": "group",
+      "category": "career",
+      "description": "Competências novas que caracterizam a evolução de AI Pleno para Sênior.",
+      "level": "senior",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-architecture-orchestration",
+      "name": "AI Architecture & Orchestration Básico + Intermediário + Avançado",
+      "type": "module",
+      "category": "ai-architecture",
+      "description": "Módulo AI Engineer (Sênior): AI Architecture & Orchestration Básico + Intermediário + Avançado.",
+      "level": "senior",
+      "importance": 9,
+      "estimated_hours": 54,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "arquitetura em camadas",
+          "fluxos multi-etapa",
+          "orquestração",
+          "integração",
+          "resiliência",
+          "reference architectures"
+        ],
+        "practice_examples": [
+          "Desenhar arquitetura em camadas de uma app de IA",
+          "Orquestrar pipeline de IA com filas e workers"
+        ],
+        "interview_topics": [
+          "Camadas de uma aplicação de IA",
+          "Padrões de integração de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-arquitetar-aplicacoes-ia",
+      "name": "Arquitetar aplicações de IA com camadas de interface, orquestração, modelos, ferramentas, memória, avaliação e observabilidade",
+      "type": "skill",
+      "category": "ai-architecture",
+      "description": "Arquitetura em camadas de aplicações de IA.",
+      "level": "senior",
+      "importance": 9,
+      "estimated_hours": 12,
+      "aliases": [
+        "arquitetura de IA",
+        "camadas",
+        "orquestração"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "interface",
+          "orquestração",
+          "modelos",
+          "ferramentas",
+          "memória",
+          "avaliação",
+          "observabilidade"
+        ],
+        "practice_examples": [
+          "Desenhar arquitetura em camadas de uma app de IA",
+          "Separar orquestração de modelos"
+        ],
+        "interview_topics": [
+          "Camadas de uma aplicação de IA",
+          "Onde fica orquestração vs modelo"
+        ]
+      }
+    },
+    {
+      "id": "ai-fluxos-multi-etapa",
+      "name": "Projetar fluxos multi-etapa com roteamento de tarefas, decomposição, validação, fallback e controle de estado",
+      "type": "skill",
+      "category": "ai-architecture",
+      "description": "Fluxos multi-etapa com roteamento e controle de estado.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "fluxos multi-etapa",
+        "roteamento",
+        "decomposição"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "roteamento de tarefas",
+          "decomposição",
+          "validação",
+          "fallback",
+          "estado"
+        ],
+        "practice_examples": [
+          "Projetar fluxo multi-etapa com roteamento",
+          "Adicionar fallback e controle de estado"
+        ],
+        "interview_topics": [
+          "Decomposição de tarefas",
+          "Roteamento e fallback em fluxos de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-orquestracao-pipelines-ia",
+      "name": "Implementar orquestração de pipelines de IA com filas, workers, eventos, retries, timeouts e execução assíncrona",
+      "type": "skill",
+      "category": "ai-architecture",
+      "description": "Orquestração assíncrona de pipelines de IA.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "orquestração",
+        "filas",
+        "workers",
+        "assíncrono"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "filas",
+          "workers",
+          "eventos",
+          "retries",
+          "timeouts",
+          "assíncrono"
+        ],
+        "practice_examples": [
+          "Orquestrar pipeline de IA com filas e workers",
+          "Execução assíncrona com retries"
+        ],
+        "interview_topics": [
+          "Orquestração assíncrona de IA",
+          "Filas e workers para inferência"
+        ]
+      }
+    },
+    {
+      "id": "ai-padroes-integracao-ia",
+      "name": "Definir padrões de integração entre LLMs, APIs internas, bancos vetoriais, sistemas transacionais e ferramentas externas",
+      "type": "skill",
+      "category": "ai-architecture",
+      "description": "Padrões de integração de sistemas de IA.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "padrões de integração",
+        "llm integration"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "LLMs",
+          "APIs internas",
+          "bancos vetoriais",
+          "transacionais",
+          "ferramentas externas"
+        ],
+        "practice_examples": [
+          "Definir padrão de integração LLM↔sistemas",
+          "Integrar banco vetorial e transacional"
+        ],
+        "interview_topics": [
+          "Padrões de integração de IA",
+          "LLM com sistemas transacionais"
+        ]
+      }
+    },
+    {
+      "id": "ai-arquiteturas-resilientes",
+      "name": "Criar arquiteturas resilientes com circuit breakers, rate limiting, cache, degradação controlada e isolamento de falhas",
+      "type": "skill",
+      "category": "ai-architecture",
+      "description": "Arquiteturas resilientes de IA.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "resiliência",
+        "circuit breaker",
+        "degradação controlada"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "circuit breakers",
+          "rate limiting",
+          "cache",
+          "degradação controlada",
+          "isolamento"
+        ],
+        "practice_examples": [
+          "Adicionar circuit breaker e rate limiting",
+          "Degradação controlada sob falha"
+        ],
+        "interview_topics": [
+          "Resiliência em arquiteturas de IA",
+          "Degradação controlada e isolamento"
+        ]
+      }
+    },
+    {
+      "id": "ai-reference-architectures",
+      "name": "Estabelecer reference architectures, ADRs, guardrails técnicos e critérios de adoção para soluções corporativas de IA",
+      "type": "skill",
+      "category": "ai-architecture",
+      "description": "Reference architectures e governança técnica de IA.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "reference architecture",
+        "adr",
+        "governança de IA"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "reference architectures",
+          "ADRs",
+          "guardrails técnicos",
+          "critérios de adoção"
+        ],
+        "practice_examples": [
+          "Escrever uma reference architecture de IA",
+          "Definir critérios de adoção corporativa"
+        ],
+        "interview_topics": [
+          "Reference architectures de IA",
+          "ADRs e governança técnica de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-ops-evaluation-security",
+      "name": "AI Ops, Evaluation & Security Básico + Intermediário + Avançado",
+      "type": "module",
+      "category": "ai-ops",
+      "description": "Módulo AI Engineer (Sênior): AI Ops, Evaluation & Security Básico + Intermediário + Avançado.",
+      "level": "senior",
+      "importance": 9,
+      "estimated_hours": 54,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "observabilidade",
+          "pipelines de avaliação",
+          "qualidade de resposta",
+          "quality gates",
+          "segurança",
+          "monitoramento de produção"
+        ],
+        "practice_examples": [
+          "Montar pipeline de avaliação com golden datasets",
+          "Implementar defesa contra prompt injection"
+        ],
+        "interview_topics": [
+          "Observabilidade de IA em produção",
+          "Prompt injection defense"
+        ]
+      }
+    },
+    {
+      "id": "ai-observabilidade-producao",
+      "name": "Implementar observabilidade de IA com logs de prompts, respostas, traces, latência, custo, erros e feedback de usuários",
+      "type": "skill",
+      "category": "ai-ops",
+      "description": "Observabilidade de IA em produção.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "observabilidade",
+        "tracing",
+        "logging de IA"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "logs de prompts/respostas",
+          "traces",
+          "latência",
+          "custo",
+          "erros",
+          "feedback"
+        ],
+        "practice_examples": [
+          "Instrumentar observabilidade de app de IA em produção",
+          "Coletar feedback de usuários"
+        ],
+        "interview_topics": [
+          "Observabilidade de IA em produção",
+          "Traces e feedback"
+        ]
+      }
+    },
+    {
+      "id": "ai-pipelines-avaliacao",
+      "name": "Criar pipelines de avaliação com golden datasets, testes de regressão, métricas automáticas e revisão humana assistida",
+      "type": "skill",
+      "category": "evaluation",
+      "description": "Pipelines de avaliação com humano no loop.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "pipeline de avaliação",
+        "golden dataset",
+        "human-in-the-loop"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "golden datasets",
+          "regressão",
+          "métricas automáticas",
+          "revisão humana"
+        ],
+        "practice_examples": [
+          "Montar pipeline de avaliação com golden datasets",
+          "Adicionar revisão humana assistida"
+        ],
+        "interview_topics": [
+          "Pipelines de avaliação de IA",
+          "Métricas automáticas + revisão humana"
+        ]
+      }
+    },
+    {
+      "id": "ai-avaliar-qualidade-respostas",
+      "name": "Avaliar qualidade de respostas com groundedness, relevância, completude, consistência, segurança e aderência ao formato",
+      "type": "skill",
+      "category": "evaluation",
+      "description": "Avaliação multidimensional de qualidade de respostas.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "qualidade de resposta",
+        "groundedness",
+        "avaliação"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "groundedness",
+          "relevância",
+          "completude",
+          "consistência",
+          "segurança",
+          "formato"
+        ],
+        "practice_examples": [
+          "Avaliar respostas por groundedness e relevância",
+          "Checar aderência ao formato"
+        ],
+        "interview_topics": [
+          "Dimensões de qualidade de resposta",
+          "Groundedness e consistência"
+        ]
+      }
+    },
+    {
+      "id": "ai-quality-gates",
+      "name": "Automatizar quality gates para prompts, modelos, retrieval, agentes, ferramentas e releases de aplicações de IA",
+      "type": "skill",
+      "category": "ai-ops",
+      "description": "Quality gates automatizados para releases de IA.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "quality gate",
+        "release gate",
+        "bloqueio de release"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "gates para prompts/modelos/retrieval/agentes",
+          "releases"
+        ],
+        "practice_examples": [
+          "Automatizar quality gate no release",
+          "Bloquear deploy por queda de qualidade"
+        ],
+        "interview_topics": [
+          "Quality gates de IA",
+          "O que bloqueia um release de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-seguranca-ia",
+      "name": "Aplicar segurança com validação de entrada, controle de saída, prompt injection defense, data leakage prevention e escopo de ferramentas",
+      "type": "skill",
+      "category": "security",
+      "description": "Segurança aplicada a sistemas de IA.",
+      "level": "senior",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "segurança de IA",
+        "prompt injection",
+        "data leakage",
+        "ai security"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "validação de entrada",
+          "controle de saída",
+          "prompt injection defense",
+          "data leakage prevention",
+          "escopo de ferramentas"
+        ],
+        "practice_examples": [
+          "Implementar defesa contra prompt injection",
+          "Prevenir vazamento de dados (DLP)"
+        ],
+        "interview_topics": [
+          "Prompt injection defense",
+          "Data leakage prevention em IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-monitorar-producao-drift",
+      "name": "Monitorar produção com drift de comportamento, degradação de qualidade, abuso, custos, incidentes e resposta operacional",
+      "type": "skill",
+      "category": "ai-ops",
+      "description": "Monitoramento de produção e resposta a incidentes de IA.",
+      "level": "senior",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "drift",
+        "monitoramento de produção",
+        "incidentes"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "drift de comportamento",
+          "degradação",
+          "abuso",
+          "custos",
+          "incidentes",
+          "resposta operacional"
+        ],
+        "practice_examples": [
+          "Detectar drift de comportamento em produção",
+          "Definir resposta a incidentes de IA"
+        ],
+        "interview_topics": [
+          "Drift em produção de IA",
+          "Resposta a incidentes de IA"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-001",
+      "source": "ai-senior-arquitetura-de-ai",
+      "target": "ai-herdado-de-pleno",
+      "type": "contains"
+    },
+    {
+      "id": "edge-002",
+      "source": "ai-herdado-de-pleno",
+      "target": "ai-pleno-sistemas-com-ai",
+      "type": "inherits"
+    },
+    {
+      "id": "edge-003",
+      "source": "ai-senior-arquitetura-de-ai",
+      "target": "ai-evolucao-senior",
+      "type": "contains"
+    },
+    {
+      "id": "edge-004",
+      "source": "ai-evolucao-senior",
+      "target": "ai-architecture-orchestration",
+      "type": "contains"
+    },
+    {
+      "id": "edge-005",
+      "source": "ai-architecture-orchestration",
+      "target": "ai-arquitetar-aplicacoes-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-006",
+      "source": "ai-architecture-orchestration",
+      "target": "ai-fluxos-multi-etapa",
+      "type": "contains"
+    },
+    {
+      "id": "edge-007",
+      "source": "ai-architecture-orchestration",
+      "target": "ai-orquestracao-pipelines-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-008",
+      "source": "ai-architecture-orchestration",
+      "target": "ai-padroes-integracao-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-009",
+      "source": "ai-architecture-orchestration",
+      "target": "ai-arquiteturas-resilientes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-010",
+      "source": "ai-architecture-orchestration",
+      "target": "ai-reference-architectures",
+      "type": "contains"
+    },
+    {
+      "id": "edge-011",
+      "source": "ai-evolucao-senior",
+      "target": "ai-ops-evaluation-security",
+      "type": "contains"
+    },
+    {
+      "id": "edge-012",
+      "source": "ai-ops-evaluation-security",
+      "target": "ai-observabilidade-producao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-013",
+      "source": "ai-ops-evaluation-security",
+      "target": "ai-pipelines-avaliacao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-014",
+      "source": "ai-ops-evaluation-security",
+      "target": "ai-avaliar-qualidade-respostas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-015",
+      "source": "ai-ops-evaluation-security",
+      "target": "ai-quality-gates",
+      "type": "contains"
+    },
+    {
+      "id": "edge-016",
+      "source": "ai-ops-evaluation-security",
+      "target": "ai-seguranca-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-017",
+      "source": "ai-ops-evaluation-security",
+      "target": "ai-monitorar-producao-drift",
+      "type": "contains"
+    },
+    {
+      "id": "edge-018",
+      "source": "ai-evolucao-senior",
+      "target": "ai-modelos-inference",
+      "type": "references"
+    },
+    {
+      "id": "edge-019",
+      "source": "ai-evolucao-senior",
+      "target": "ai-prompt-engineering",
+      "type": "references"
+    },
+    {
+      "id": "edge-020",
+      "source": "ai-evolucao-senior",
+      "target": "ai-memory-retrieval-rag",
+      "type": "references"
+    },
+    {
+      "id": "edge-021",
+      "source": "ai-evolucao-senior",
+      "target": "ai-agentic-systems",
+      "type": "references"
+    },
+    {
+      "id": "edge-022",
+      "source": "ai-evolucao-senior",
+      "target": "desenvolvimento-software-avancado",
+      "type": "references"
+    },
+    {
+      "id": "edge-023",
+      "source": "ai-evolucao-senior",
+      "target": "design-software-avancado",
+      "type": "references"
+    },
+    {
+      "id": "edge-024",
+      "source": "ai-evolucao-senior",
+      "target": "design-solucoes-basico",
+      "type": "references"
+    },
+    {
+      "id": "edge-025",
+      "source": "ai-evolucao-senior",
+      "target": "design-solucoes-intermediario",
+      "type": "references"
+    },
+    {
+      "id": "edge-026",
+      "source": "ai-fluxos-multi-step",
+      "target": "ai-fluxos-multi-etapa",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-027",
+      "source": "ai-observabilidade-ia",
+      "target": "ai-observabilidade-producao",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-028",
+      "source": "ai-avaliacao-offline-regressao",
+      "target": "ai-pipelines-avaliacao",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-029",
+      "source": "ai-guardrails-operacionais",
+      "target": "ai-seguranca-ia",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-030",
+      "source": "clean-architecture",
+      "target": "ai-arquitetar-aplicacoes-ia",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-031",
+      "source": "ai-arquitetar-aplicacoes-ia",
+      "target": "ai-arquiteturas-resilientes",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-032",
+      "source": "ai-arquitetar-aplicacoes-ia",
+      "target": "ai-reference-architectures",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-033",
+      "source": "ai-pipelines-avaliacao",
+      "target": "ai-quality-gates",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-034",
+      "source": "ai-observabilidade-producao",
+      "target": "ai-monitorar-producao-drift",
+      "type": "prerequisite"
+    }
+  ]
+}

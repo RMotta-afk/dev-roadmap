@@ -1,0 +1,709 @@
+{
+  "id": "frontend-engineer",
+  "title": "Frontend Engineer",
+  "role": "frontend_engineer",
+  "version": "1.0.0",
+  "description": "Roadmap-base para Frontend Engineer",
+  "metadata": {
+    "author": "Mundo Dev",
+    "tags": [
+      "frontend_engineer"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "html-css",
+      "name": "HTML e CSS",
+      "type": "skill",
+      "category": "fundamentals",
+      "description": "Semântica, layout, flexbox, grid e responsividade.",
+      "level": "junior",
+      "importance": 10,
+      "estimated_hours": 16,
+      "aliases": [
+        "html5",
+        "css3",
+        "flexbox",
+        "grid"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "evidence_expected": [
+        "Constrói layouts fiéis e responsivos sem frameworks"
+      ],
+      "interview": {
+        "priority": 10,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Semântica",
+          "Flexbox",
+          "Grid",
+          "Media queries"
+        ],
+        "practice_examples": [
+          "Reproduzir um layout complexo responsivo"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "javascript-core",
+      "name": "JavaScript Moderno",
+      "type": "skill",
+      "category": "languages",
+      "description": "ES6+, closures, promises, event loop e módulos.",
+      "level": "junior",
+      "importance": 10,
+      "estimated_hours": 20,
+      "aliases": [
+        "es6",
+        "ecmascript",
+        "js"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "evidence_expected": [
+        "Domina o runtime e resolve bugs de assincronia"
+      ],
+      "interview": {
+        "priority": 10,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Closures",
+          "Promises e async/await",
+          "Event loop"
+        ],
+        "practice_examples": [
+          "Implementar utilitários sem bibliotecas"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "type": "skill",
+      "category": "languages",
+      "description": "Tipagem estática, generics e modelagem de domínio.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 14,
+      "aliases": [
+        "ts",
+        "typescript avancado"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "evidence_expected": [
+        "Modela tipos que previnem erros em tempo de compilação"
+      ],
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Generics",
+          "Narrowing",
+          "Utility types"
+        ],
+        "practice_examples": [
+          "Tipar uma API complexa de ponta a ponta"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "react-framework",
+      "name": "React e Ecossistema",
+      "type": "skill",
+      "category": "frameworks",
+      "description": "Componentes, hooks, estado e renderização.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 24,
+      "aliases": [
+        "react",
+        "next.js",
+        "hooks"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "evidence_expected": [
+        "Arquiteta aplicações React de médio e grande porte"
+      ],
+      "interview": {
+        "priority": 9,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Hooks",
+          "Composição",
+          "Server Components"
+        ],
+        "practice_examples": [
+          "Construir um app completo com rotas e dados"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "state-management",
+      "name": "Gerenciamento de Estado",
+      "type": "skill",
+      "category": "frameworks",
+      "description": "Estado local, global, cache de servidor e sincronização.",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 12,
+      "aliases": [
+        "redux",
+        "zustand",
+        "swr",
+        "react query"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "evidence_expected": [
+        "Escolhe a estratégia de estado adequada por caso"
+      ],
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Estado servidor vs cliente",
+          "Caching",
+          "Invalidação"
+        ],
+        "practice_examples": [
+          "Migrar estado global para cache de servidor"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "web-performance",
+      "name": "Performance Web",
+      "type": "skill",
+      "category": "quality",
+      "description": "Core Web Vitals, code splitting e otimização de renderização.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 14,
+      "aliases": [
+        "core web vitals",
+        "lighthouse",
+        "lcp",
+        "performance"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 0
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "evidence_expected": [
+        "Diagnostica e melhora métricas de performance"
+      ],
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "LCP/INP/CLS",
+          "Code splitting",
+          "Memoização"
+        ],
+        "practice_examples": [
+          "Otimizar um app com métricas antes/depois"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "accessibility",
+      "name": "Acessibilidade",
+      "type": "skill",
+      "category": "quality",
+      "description": "WCAG, ARIA, navegação por teclado e leitores de tela.",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 10,
+      "aliases": [
+        "a11y",
+        "wcag",
+        "aria"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "evidence_expected": [
+        "Entrega interfaces acessíveis por padrão"
+      ],
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "WCAG",
+          "ARIA roles",
+          "Foco e teclado"
+        ],
+        "practice_examples": [
+          "Auditar e corrigir um fluxo com leitor de tela"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "testing-frontend",
+      "name": "Testes no Frontend",
+      "type": "skill",
+      "category": "quality",
+      "description": "Testes de componentes, integração e E2E.",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 14,
+      "aliases": [
+        "testing library",
+        "playwright",
+        "cypress",
+        "vitest"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "evidence_expected": [
+        "Mantém suítes de teste confiáveis"
+      ],
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Testing Library",
+          "E2E",
+          "Mock de rede"
+        ],
+        "practice_examples": [
+          "Cobrir um fluxo crítico com E2E"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "build-tooling",
+      "name": "Build e Tooling",
+      "type": "skill",
+      "category": "tooling",
+      "description": "Bundlers, transpilers, linting e monorepos.",
+      "level": "junior",
+      "importance": 6,
+      "estimated_hours": 10,
+      "aliases": [
+        "vite",
+        "webpack",
+        "eslint",
+        "turbo"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "evidence_expected": [
+        "Configura e depura pipelines de build"
+      ],
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Bundling",
+          "Tree shaking",
+          "Monorepos"
+        ],
+        "practice_examples": [
+          "Configurar build otimizado do zero"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "design-systems",
+      "name": "Design Systems",
+      "type": "skill",
+      "category": "architecture",
+      "description": "Componentização, tokens e documentação de UI.",
+      "level": "mid",
+      "importance": 6,
+      "estimated_hours": 12,
+      "aliases": [
+        "storybook",
+        "tokens",
+        "component library"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 0
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "evidence_expected": [
+        "Cria bibliotecas de componentes reutilizáveis"
+      ],
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Tokens",
+          "Variantes",
+          "Documentação viva"
+        ],
+        "practice_examples": [
+          "Extrair um design system de um app existente"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "frontend-architecture",
+      "name": "Arquitetura Frontend",
+      "type": "skill",
+      "category": "architecture",
+      "description": "Micro-frontends, camadas, contratos e escala de times.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 18,
+      "aliases": [
+        "micro frontends",
+        "clean architecture front"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 0
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "evidence_expected": [
+        "Define arquitetura para múltiplos times"
+      ],
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Boundaries",
+          "Data fetching em escala",
+          "Migrações"
+        ],
+        "practice_examples": [
+          "Planejar migração incremental de arquitetura"
+        ],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "leadership-frontend",
+      "name": "Liderança Técnica",
+      "type": "skill",
+      "category": "leadership",
+      "description": "Code review, mentoria e padrões de time.",
+      "level": "senior",
+      "importance": 6,
+      "estimated_hours": 10,
+      "aliases": [
+        "tech lead",
+        "mentoria"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 0
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 0
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "evidence_expected": [
+        "Multiplica conhecimento e eleva a barra técnica"
+      ],
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Review efetivo",
+          "RFCs",
+          "Padrões de código"
+        ],
+        "practice_examples": [
+          "Conduzir adoção de um padrão no time"
+        ],
+        "interview_topics": []
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "html-css",
+      "target": "javascript-core",
+      "type": "prerequisite"
+    },
+    {
+      "source": "javascript-core",
+      "target": "typescript",
+      "type": "prerequisite"
+    },
+    {
+      "source": "javascript-core",
+      "target": "react-framework",
+      "type": "prerequisite"
+    },
+    {
+      "source": "typescript",
+      "target": "react-framework",
+      "type": "recommended"
+    },
+    {
+      "source": "react-framework",
+      "target": "state-management",
+      "type": "prerequisite"
+    },
+    {
+      "source": "react-framework",
+      "target": "testing-frontend",
+      "type": "prerequisite"
+    },
+    {
+      "source": "react-framework",
+      "target": "web-performance",
+      "type": "prerequisite"
+    },
+    {
+      "source": "html-css",
+      "target": "accessibility",
+      "type": "prerequisite"
+    },
+    {
+      "source": "javascript-core",
+      "target": "build-tooling",
+      "type": "prerequisite"
+    },
+    {
+      "source": "react-framework",
+      "target": "design-systems",
+      "type": "recommended"
+    },
+    {
+      "source": "state-management",
+      "target": "frontend-architecture",
+      "type": "prerequisite"
+    },
+    {
+      "source": "web-performance",
+      "target": "frontend-architecture",
+      "type": "recommended"
+    },
+    {
+      "source": "frontend-architecture",
+      "target": "leadership-frontend",
+      "type": "recommended"
+    }
+  ]
+}

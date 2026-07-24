@@ -1,0 +1,5401 @@
+{
+  "id": "software-engineer-pleno",
+  "title": "Software Engineer — Pleno",
+  "role": "software_engineer",
+  "version": "1.0.0",
+  "description": "Roadmap base para Software Engineer — bloco PLENO (Autonomia). Inclui os 44 nós herdados do bloco Júnior.",
+  "market": [
+    "brazil",
+    "international"
+  ],
+  "metadata": {
+    "author": "",
+    "created_at": "2026-07-13",
+    "updated_at": "2026-07-13",
+    "inherited_from": "software-engineer",
+    "tags": [
+      "backend",
+      "cloud",
+      "devops",
+      "database",
+      "architecture",
+      "pleno"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "pleno-autonomia",
+      "name": "PLENO Autonomia",
+      "type": "domain",
+      "category": "career",
+      "description": "Competências para um Software Engineer Pleno, com autonomia de execução.",
+      "level": "mid",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Herdado de Júnior",
+          "Design intermediário",
+          "Banco intermediário",
+          "Cloud",
+          "DevOps"
+        ],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "herdado-de-junior",
+      "name": "Herdado de Júnior",
+      "type": "group",
+      "category": "career",
+      "description": "Todo o bloco JÚNIOR Fundamentos é pré-requisito e permanece exigido no nível Pleno (44 nós).",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "evolucao",
+      "name": "Evolução",
+      "type": "group",
+      "category": "career",
+      "description": "Competências novas que caracterizam a evolução de Júnior para Pleno.",
+      "level": "mid",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "software-basico",
+      "name": "Desenvolvimento de Software Básico",
+      "type": "module",
+      "category": "software",
+      "description": "Módulo de fundamentos: Desenvolvimento de Software Básico.",
+      "level": "junior",
+      "importance": 10,
+      "estimated_hours": 94,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Sintaxe",
+          "Tipos",
+          "Funções",
+          "Estruturas de dados"
+        ],
+        "practice_examples": [
+          "Criar um CRUD simples",
+          "Resolver exercícios de lógica"
+        ],
+        "interview_topics": [
+          "Explique funções e escopo",
+          "Estruturas de dados básicas"
+        ]
+      }
+    },
+    {
+      "id": "sintaxe-linguagem",
+      "name": "Sintaxe da linguagem principal",
+      "type": "skill",
+      "category": "programming",
+      "description": "Domínio da sintaxe da linguagem principal (JavaScript, Java, Python etc).",
+      "level": "junior",
+      "importance": 10,
+      "estimated_hours": 30,
+      "aliases": [
+        "sintaxe",
+        "javascript",
+        "java",
+        "python"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 9,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "JavaScript",
+          "Java",
+          "Python"
+        ],
+        "practice_examples": [
+          "Escrever primeiros scripts",
+          "Resolver exercícios de sintaxe"
+        ],
+        "interview_topics": [
+          "Tipagem estática vs dinâmica",
+          "Particularidades da linguagem"
+        ]
+      }
+    },
+    {
+      "id": "tipos-dados-estruturas",
+      "name": "Tipos de dados e estruturas básicas",
+      "type": "skill",
+      "category": "programming",
+      "description": "Tipos primitivos e estruturas de dados básicas da linguagem.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 12,
+      "aliases": [
+        "tipos",
+        "string",
+        "number",
+        "boolean"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "primitivos",
+          "string",
+          "number",
+          "boolean"
+        ],
+        "practice_examples": [
+          "Manipular tipos primitivos",
+          "Conversão entre tipos"
+        ],
+        "interview_topics": [
+          "Tipos primitivos vs referência",
+          "Coerção de tipos"
+        ]
+      }
+    },
+    {
+      "id": "controle-fluxo",
+      "name": "Controle de fluxo if e loops",
+      "type": "skill",
+      "category": "programming",
+      "description": "Estruturas condicionais e de repetição.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 10,
+      "aliases": [
+        "if",
+        "else",
+        "for",
+        "while",
+        "loops"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "if",
+          "else",
+          "for",
+          "while",
+          "switch"
+        ],
+        "practice_examples": [
+          "FizzBuzz",
+          "Iterar sobre coleções"
+        ],
+        "interview_topics": [
+          "for vs while",
+          "Complexidade de loops aninhados"
+        ]
+      }
+    },
+    {
+      "id": "funcoes-escopo",
+      "name": "Funções e escopo",
+      "type": "skill",
+      "category": "programming",
+      "description": "Definição de funções, parâmetros, retorno e escopo.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 12,
+      "aliases": [
+        "funções",
+        "escopo",
+        "closure"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "parâmetros",
+          "retorno",
+          "escopo",
+          "closures"
+        ],
+        "practice_examples": [
+          "Criar funções puras",
+          "Usar closures"
+        ],
+        "interview_topics": [
+          "Escopo léxico",
+          "Closures"
+        ]
+      }
+    },
+    {
+      "id": "estruturas-dados-simples",
+      "name": "Estruturas de dados simples array e map",
+      "type": "skill",
+      "category": "data-structures",
+      "description": "Uso de arrays e maps para armazenar e acessar dados.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 14,
+      "aliases": [
+        "array",
+        "map",
+        "lista",
+        "dicionário"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "array",
+          "map",
+          "set",
+          "lista"
+        ],
+        "practice_examples": [
+          "CRUD em um array",
+          "Contar frequência com map"
+        ],
+        "interview_topics": [
+          "Array vs Map (complexidade)",
+          "Quando usar Set"
+        ]
+      }
+    },
+    {
+      "id": "manipulacao-dados",
+      "name": "Manipulação de dados map filter reduce",
+      "type": "skill",
+      "category": "programming",
+      "description": "Transformação de coleções com map, filter e reduce.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "map",
+        "filter",
+        "reduce"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "map",
+          "filter",
+          "reduce"
+        ],
+        "practice_examples": [
+          "Transformar listas com map",
+          "Agregar valores com reduce"
+        ],
+        "interview_topics": [
+          "map vs forEach",
+          "reduce para agregação"
+        ]
+      }
+    },
+    {
+      "id": "leitura-escrita-io",
+      "name": "Leitura e escrita básica input output",
+      "type": "skill",
+      "category": "programming",
+      "description": "Entrada e saída básica de dados (console, arquivos).",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "input",
+        "output",
+        "io",
+        "stdin",
+        "stdout"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "input",
+          "output",
+          "console",
+          "arquivos"
+        ],
+        "practice_examples": [
+          "Ler entrada do usuário",
+          "Escrever em arquivo"
+        ],
+        "interview_topics": [
+          "Streams de I/O",
+          "Bloqueante vs não-bloqueante"
+        ]
+      }
+    },
+    {
+      "id": "debug-basico",
+      "name": "Debug básico logs e breakpoints",
+      "type": "skill",
+      "category": "tooling",
+      "description": "Depuração básica com logs, breakpoints e leitura de stack trace.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "debug",
+        "log",
+        "breakpoint",
+        "debugger"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "logs",
+          "breakpoints",
+          "debugger",
+          "stack trace"
+        ],
+        "practice_examples": [
+          "Depurar com breakpoints",
+          "Ler um stack trace"
+        ],
+        "interview_topics": [
+          "Como depurar um bug",
+          "Logs estruturados"
+        ]
+      }
+    },
+    {
+      "id": "git-basico",
+      "name": "Uso básico de Git clone commit push",
+      "type": "skill",
+      "category": "git",
+      "description": "Uso básico de Git no dia a dia.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 2,
+      "aliases": [
+        "git",
+        "git commit",
+        "git push",
+        "github"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "clone",
+          "commit",
+          "push",
+          "branch"
+        ],
+        "practice_examples": [
+          "Criar um repositório",
+          "Abrir um Pull Request"
+        ],
+        "interview_topics": [
+          "Git Flow",
+          "Cherry Pick"
+        ]
+      }
+    },
+    {
+      "id": "execucao-codigo-local",
+      "name": "Execução de código local",
+      "type": "skill",
+      "category": "tooling",
+      "description": "Execução de código no ambiente local (terminal, runtime).",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 4,
+      "aliases": [
+        "run",
+        "execução",
+        "runtime",
+        "terminal"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 4,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "runtime",
+          "terminal",
+          "ambiente local"
+        ],
+        "practice_examples": [
+          "Rodar um script no terminal",
+          "Configurar ambiente local"
+        ],
+        "interview_topics": [
+          "Ambiente de execução",
+          "Variáveis de ambiente"
+        ]
+      }
+    },
+    {
+      "id": "software-intermediario",
+      "name": "Desenvolvimento de Software Intermediário",
+      "type": "module",
+      "category": "software",
+      "description": "Módulo de fundamentos: Desenvolvimento de Software Intermediário.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 96,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Async",
+          "APIs REST",
+          "Testes",
+          "Modularização"
+        ],
+        "practice_examples": [
+          "Consumir uma API com tratamento de erros",
+          "Escrever testes unitários"
+        ],
+        "interview_topics": [
+          "Event loop e async/await",
+          "Pirâmide de testes"
+        ]
+      }
+    },
+    {
+      "id": "programacao-assincrona",
+      "name": "Programação assíncrona async await promises",
+      "type": "skill",
+      "category": "async",
+      "description": "Programação assíncrona com callbacks, promises e async/await.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 14,
+      "aliases": [
+        "async",
+        "await",
+        "promise",
+        "callback"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "async",
+          "await",
+          "promises",
+          "callbacks"
+        ],
+        "practice_examples": [
+          "Consumir API com async/await",
+          "Encadear promises"
+        ],
+        "interview_topics": [
+          "Event loop",
+          "Promise vs callback",
+          "async/await vs .then"
+        ]
+      }
+    },
+    {
+      "id": "tratamento-erros",
+      "name": "Tratamento de erros estruturado",
+      "type": "skill",
+      "category": "programming",
+      "description": "Tratamento estruturado de erros e exceções.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "try catch",
+        "exception",
+        "error handling"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "try/catch",
+          "exceptions",
+          "error boundaries"
+        ],
+        "practice_examples": [
+          "Tratar erros de uma API",
+          "Criar erros customizados"
+        ],
+        "interview_topics": [
+          "Erros esperados vs inesperados",
+          "Boas práticas de exceções"
+        ]
+      }
+    },
+    {
+      "id": "modularizacao-codigo",
+      "name": "Modularização de código",
+      "type": "skill",
+      "category": "architecture",
+      "description": "Divisão do código em módulos coesos e reutilizáveis.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "módulos",
+        "import",
+        "export"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "módulos",
+          "import/export",
+          "coesão"
+        ],
+        "practice_examples": [
+          "Dividir app em módulos",
+          "Extrair utilitários"
+        ],
+        "interview_topics": [
+          "Modularização",
+          "Acoplamento entre módulos"
+        ]
+      }
+    },
+    {
+      "id": "organizacao-camadas",
+      "name": "Organização de projetos em camadas",
+      "type": "skill",
+      "category": "architecture",
+      "description": "Organização de projetos em camadas (apresentação, negócio, dados).",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "camadas",
+        "layers",
+        "arquitetura"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "apresentação",
+          "negócio",
+          "dados"
+        ],
+        "practice_examples": [
+          "Estruturar projeto em camadas",
+          "Separar regras de negócio"
+        ],
+        "interview_topics": [
+          "Arquitetura em camadas",
+          "Onde fica a regra de negócio"
+        ]
+      }
+    },
+    {
+      "id": "integracao-apis-rest",
+      "name": "Integração com APIs REST",
+      "type": "skill",
+      "category": "integration",
+      "description": "Consumo e integração com APIs REST via HTTP.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 12,
+      "aliases": [
+        "rest",
+        "api",
+        "http",
+        "fetch",
+        "axios"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "HTTP",
+          "verbos",
+          "status codes",
+          "fetch"
+        ],
+        "practice_examples": [
+          "Consumir uma API REST",
+          "Tratar respostas HTTP"
+        ],
+        "interview_topics": [
+          "Verbos HTTP",
+          "Idempotência",
+          "Status codes"
+        ]
+      }
+    },
+    {
+      "id": "serializacao-json",
+      "name": "Serialização JSON",
+      "type": "skill",
+      "category": "integration",
+      "description": "Serialização e desserialização de dados em JSON.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "json",
+        "parse",
+        "stringify",
+        "serialização"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "parse",
+          "stringify",
+          "schema"
+        ],
+        "practice_examples": [
+          "Serializar objetos",
+          "Validar um JSON"
+        ],
+        "interview_topics": [
+          "JSON vs outros formatos",
+          "Serialização/desserialização"
+        ]
+      }
+    },
+    {
+      "id": "testes-unitarios",
+      "name": "Testes unitários básicos",
+      "type": "skill",
+      "category": "testing",
+      "description": "Escrita de testes unitários com mocks e assertions.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 12,
+      "aliases": [
+        "testes",
+        "unit test",
+        "jest",
+        "tdd"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "unit tests",
+          "mocks",
+          "assertions"
+        ],
+        "practice_examples": [
+          "Escrever testes unitários",
+          "Mockar dependências"
+        ],
+        "interview_topics": [
+          "Pirâmide de testes",
+          "O que é um bom teste unitário"
+        ]
+      }
+    },
+    {
+      "id": "refatoracao-codigo",
+      "name": "Refatoração de código",
+      "type": "skill",
+      "category": "engineering",
+      "description": "Melhoria contínua do código sem alterar comportamento.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 8,
+      "aliases": [
+        "refactor",
+        "refatoração",
+        "clean code"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "code smells",
+          "extração",
+          "renomeação"
+        ],
+        "practice_examples": [
+          "Refatorar uma função grande",
+          "Eliminar duplicação"
+        ],
+        "interview_topics": [
+          "Quando refatorar",
+          "Refatoração segura com testes"
+        ]
+      }
+    },
+    {
+      "id": "gerenciamento-estado",
+      "name": "Gerenciamento de estado",
+      "type": "skill",
+      "category": "engineering",
+      "description": "Gerenciamento de estado local e global de uma aplicação.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 10,
+      "aliases": [
+        "estado",
+        "state",
+        "store"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "estado local",
+          "estado global",
+          "imutabilidade"
+        ],
+        "practice_examples": [
+          "Gerenciar estado de uma tela",
+          "Evitar estado global desnecessário"
+        ],
+        "interview_topics": [
+          "Estado local vs global",
+          "Imutabilidade"
+        ]
+      }
+    },
+    {
+      "id": "git-avancado",
+      "name": "Git avançado branch PR merge",
+      "type": "skill",
+      "category": "git",
+      "description": "Fluxo de trabalho com branches, pull requests e resolução de conflitos.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "branch",
+        "merge",
+        "pull request",
+        "rebase"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "branch",
+          "merge",
+          "pull request",
+          "rebase",
+          "conflitos"
+        ],
+        "practice_examples": [
+          "Resolver conflito de merge",
+          "Trabalhar com fluxo de PRs"
+        ],
+        "interview_topics": [
+          "Merge vs rebase",
+          "Estratégias de branch"
+        ]
+      }
+    },
+    {
+      "id": "design-software-basico",
+      "name": "Design de Software Básico",
+      "type": "module",
+      "category": "software",
+      "description": "Módulo de fundamentos: Design de Software Básico.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 35,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Separação de responsabilidades",
+          "SOLID",
+          "Acoplamento e coesão"
+        ],
+        "practice_examples": [
+          "Refatorar uma classe aplicando SRP"
+        ],
+        "interview_topics": [
+          "Princípios SOLID",
+          "Baixo acoplamento e alta coesão"
+        ]
+      }
+    },
+    {
+      "id": "separacao-responsabilidades",
+      "name": "Separação de responsabilidades",
+      "type": "skill",
+      "category": "design",
+      "description": "Cada componente com uma responsabilidade bem definida.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "srp",
+        "responsabilidades",
+        "separation of concerns"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "SoC",
+          "responsabilidade única"
+        ],
+        "practice_examples": [
+          "Separar responsabilidades de uma classe"
+        ],
+        "interview_topics": [
+          "Separação de responsabilidades",
+          "SRP"
+        ]
+      }
+    },
+    {
+      "id": "organizacao-controller-service-repository",
+      "name": "Organização em camadas controller service repository",
+      "type": "skill",
+      "category": "architecture",
+      "description": "Estrutura em controller, service e repository.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "controller",
+        "service",
+        "repository",
+        "mvc"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "controller",
+          "service",
+          "repository"
+        ],
+        "practice_examples": [
+          "Estruturar um CRUD em camadas"
+        ],
+        "interview_topics": [
+          "Padrão controller/service/repository",
+          "Onde colocar a regra de negócio"
+        ]
+      }
+    },
+    {
+      "id": "conceito-modularizacao",
+      "name": "Conceito de modularização",
+      "type": "skill",
+      "category": "design",
+      "description": "Entendimento conceitual de modularização.",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 4,
+      "aliases": [
+        "modularização",
+        "módulos"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 4,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "coesão",
+          "reuso",
+          "fronteiras"
+        ],
+        "practice_examples": [
+          "Identificar módulos em um projeto"
+        ],
+        "interview_topics": [
+          "Benefícios de modularizar"
+        ]
+      }
+    },
+    {
+      "id": "introducao-solid",
+      "name": "Introdução a SOLID",
+      "type": "skill",
+      "category": "design",
+      "description": "Introdução aos princípios SOLID.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "solid",
+        "srp",
+        "ocp",
+        "lsp",
+        "isp",
+        "dip"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "SRP",
+          "OCP",
+          "LSP",
+          "ISP",
+          "DIP"
+        ],
+        "practice_examples": [
+          "Aplicar SRP em uma classe",
+          "Refatorar atendendo SOLID"
+        ],
+        "interview_topics": [
+          "Explique os princípios SOLID",
+          "Exemplo de SRP"
+        ]
+      }
+    },
+    {
+      "id": "leitura-codigo-estruturado",
+      "name": "Leitura de código estruturado",
+      "type": "skill",
+      "category": "engineering",
+      "description": "Capacidade de ler e navegar código estruturado.",
+      "level": "junior",
+      "importance": 6,
+      "estimated_hours": 4,
+      "aliases": [
+        "leitura de código",
+        "code review"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 3,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "navegação",
+          "convenções",
+          "code review"
+        ],
+        "practice_examples": [
+          "Ler e mapear um projeto desconhecido"
+        ],
+        "interview_topics": [
+          "Como abordar um código legado"
+        ]
+      }
+    },
+    {
+      "id": "acoplamento-coesao",
+      "name": "Baixo acoplamento e alta coesão conceito",
+      "type": "skill",
+      "category": "design",
+      "description": "Conceitos de baixo acoplamento e alta coesão.",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "acoplamento",
+        "coesão",
+        "coupling",
+        "cohesion"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "acoplamento",
+          "coesão",
+          "dependências"
+        ],
+        "practice_examples": [
+          "Reduzir acoplamento entre módulos"
+        ],
+        "interview_topics": [
+          "Baixo acoplamento e alta coesão",
+          "Exemplos práticos"
+        ]
+      }
+    },
+    {
+      "id": "banco-dados-basico",
+      "name": "Banco de Dados Básico",
+      "type": "module",
+      "category": "database",
+      "description": "Módulo de fundamentos: Banco de Dados Básico.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 36,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Modelo relacional",
+          "CRUD",
+          "Queries",
+          "ORM"
+        ],
+        "practice_examples": [
+          "Modelar tabelas e escrever queries CRUD"
+        ],
+        "interview_topics": [
+          "Modelo relacional",
+          "Operações CRUD em SQL"
+        ]
+      }
+    },
+    {
+      "id": "conceito-banco-relacional",
+      "name": "Conceito de banco relacional",
+      "type": "skill",
+      "category": "database",
+      "description": "Fundamentos do modelo relacional.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 6,
+      "aliases": [
+        "relacional",
+        "sql",
+        "rdbms"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "tabelas",
+          "relações",
+          "chaves"
+        ],
+        "practice_examples": [
+          "Modelar entidades e relações"
+        ],
+        "interview_topics": [
+          "Modelo relacional",
+          "Chave primária vs estrangeira"
+        ]
+      }
+    },
+    {
+      "id": "crud-sql",
+      "name": "CRUD insert select update delete",
+      "type": "skill",
+      "category": "database",
+      "description": "Operações básicas de manipulação de dados em SQL.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "crud",
+        "insert",
+        "select",
+        "update",
+        "delete",
+        "sql"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "insert",
+          "select",
+          "update",
+          "delete"
+        ],
+        "practice_examples": [
+          "Escrever queries CRUD",
+          "Popular e consultar uma tabela"
+        ],
+        "interview_topics": [
+          "Operações CRUD",
+          "SQL básico"
+        ]
+      }
+    },
+    {
+      "id": "estrutura-tabelas",
+      "name": "Estrutura de tabelas",
+      "type": "skill",
+      "category": "database",
+      "description": "Definição de colunas, chaves e constraints.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 5,
+      "aliases": [
+        "tabelas",
+        "schema",
+        "colunas"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "colunas",
+          "chaves",
+          "constraints"
+        ],
+        "practice_examples": [
+          "Criar tabela com constraints"
+        ],
+        "interview_topics": [
+          "Chaves e constraints",
+          "Normalização básica"
+        ]
+      }
+    },
+    {
+      "id": "tipos-dados-sql",
+      "name": "Tipos de dados (SQL)",
+      "type": "skill",
+      "category": "database",
+      "description": "Tipos de dados de colunas em bancos relacionais.",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 4,
+      "aliases": [
+        "tipos",
+        "varchar",
+        "int",
+        "date"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "numéricos",
+          "texto",
+          "data",
+          "boolean"
+        ],
+        "practice_examples": [
+          "Escolher tipos adequados por coluna"
+        ],
+        "interview_topics": [
+          "Tipos numéricos vs texto",
+          "Quando usar cada tipo"
+        ]
+      }
+    },
+    {
+      "id": "queries-where",
+      "name": "Queries simples WHERE",
+      "type": "skill",
+      "category": "database",
+      "description": "Filtragem de registros com a cláusula WHERE.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 5,
+      "aliases": [
+        "where",
+        "filtro",
+        "query",
+        "sql"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "WHERE",
+          "operadores",
+          "AND/OR"
+        ],
+        "practice_examples": [
+          "Filtrar registros com WHERE",
+          "Combinar condições"
+        ],
+        "interview_topics": [
+          "Filtros com WHERE",
+          "Índices e performance"
+        ]
+      }
+    },
+    {
+      "id": "uso-basico-orm",
+      "name": "Uso básico de ORM",
+      "type": "skill",
+      "category": "database",
+      "description": "Mapeamento objeto-relacional básico.",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 8,
+      "aliases": [
+        "orm",
+        "prisma",
+        "sequelize",
+        "hibernate",
+        "typeorm"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "mapeamento",
+          "models",
+          "migrations"
+        ],
+        "practice_examples": [
+          "Mapear entidade com ORM",
+          "Rodar uma migration"
+        ],
+        "interview_topics": [
+          "ORM vs SQL puro",
+          "Problema N+1"
+        ]
+      }
+    },
+    {
+      "id": "cloud-fundamentals-basico",
+      "name": "Cloud Fundamentals Básico",
+      "type": "module",
+      "category": "cloud",
+      "description": "Módulo de fundamentos: Cloud Fundamentals Básico.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 26,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Cloud computing",
+          "IaaS/PaaS/SaaS",
+          "Deploy",
+          "Escalabilidade"
+        ],
+        "practice_examples": [
+          "Classificar serviços em IaaS/PaaS/SaaS"
+        ],
+        "interview_topics": [
+          "Diferença entre IaaS, PaaS e SaaS",
+          "Escala horizontal vs vertical"
+        ]
+      }
+    },
+    {
+      "id": "conceito-cloud-computing",
+      "name": "Conceito de cloud computing",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Fundamentos de computação em nuvem.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 4,
+      "aliases": [
+        "cloud",
+        "nuvem",
+        "cloud computing"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "on-premises vs cloud",
+          "modelos de serviço"
+        ],
+        "practice_examples": [
+          "Comparar on-prem e cloud"
+        ],
+        "interview_topics": [
+          "O que é cloud computing",
+          "Vantagens da nuvem"
+        ]
+      }
+    },
+    {
+      "id": "iaas-paas-saas",
+      "name": "IaaS PaaS SaaS",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Modelos de serviço em nuvem e responsabilidade compartilhada.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 4,
+      "aliases": [
+        "iaas",
+        "paas",
+        "saas"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "responsabilidade compartilhada"
+        ],
+        "practice_examples": [
+          "Classificar serviços em IaaS/PaaS/SaaS"
+        ],
+        "interview_topics": [
+          "Diferença entre IaaS, PaaS e SaaS",
+          "Modelo de responsabilidade compartilhada"
+        ]
+      }
+    },
+    {
+      "id": "deploy-aplicacoes",
+      "name": "Deploy de aplicações",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Publicação de aplicações em ambientes de nuvem.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "deploy",
+        "deployment",
+        "publicação"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "build",
+          "deploy",
+          "ambientes"
+        ],
+        "practice_examples": [
+          "Fazer deploy de uma app simples"
+        ],
+        "interview_topics": [
+          "Processo de deploy",
+          "Ambientes dev/staging/prod"
+        ]
+      }
+    },
+    {
+      "id": "storage-object-storage",
+      "name": "Storage object storage",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Armazenamento de objetos (object storage).",
+      "level": "junior",
+      "importance": 7,
+      "estimated_hours": 4,
+      "aliases": [
+        "storage",
+        "s3",
+        "object storage",
+        "bucket"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "object storage",
+          "buckets",
+          "blob"
+        ],
+        "practice_examples": [
+          "Subir arquivo em object storage"
+        ],
+        "interview_topics": [
+          "Object storage vs block storage",
+          "Casos de uso de S3"
+        ]
+      }
+    },
+    {
+      "id": "regiao-zona",
+      "name": "Conceito de região e zona",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Regiões e zonas de disponibilidade.",
+      "level": "junior",
+      "importance": 6,
+      "estimated_hours": 3,
+      "aliases": [
+        "região",
+        "zona",
+        "availability zone",
+        "region"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 4,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "region",
+          "availability zone",
+          "latência"
+        ],
+        "practice_examples": [
+          "Escolher região por latência"
+        ],
+        "interview_topics": [
+          "Região vs zona de disponibilidade",
+          "Alta disponibilidade"
+        ]
+      }
+    },
+    {
+      "id": "custos-basicos",
+      "name": "Custos básicos",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Modelos de cobrança e noção de custos em nuvem.",
+      "level": "junior",
+      "importance": 6,
+      "estimated_hours": 3,
+      "aliases": [
+        "custos",
+        "billing",
+        "pricing",
+        "finops"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 4,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "modelos de cobrança",
+          "pay-as-you-go"
+        ],
+        "practice_examples": [
+          "Estimar o custo de um recurso"
+        ],
+        "interview_topics": [
+          "Modelo pay-as-you-go",
+          "Como otimizar custos"
+        ]
+      }
+    },
+    {
+      "id": "conceito-escalabilidade",
+      "name": "Conceito de escalabilidade",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Escala horizontal e vertical, elasticidade.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 5,
+      "aliases": [
+        "escalabilidade",
+        "scaling",
+        "horizontal",
+        "vertical"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "escala horizontal",
+          "escala vertical",
+          "elasticidade"
+        ],
+        "practice_examples": [
+          "Diferenciar escala horizontal e vertical"
+        ],
+        "interview_topics": [
+          "Escala horizontal vs vertical",
+          "Elasticidade na nuvem"
+        ]
+      }
+    },
+    {
+      "id": "design-software-intermediario",
+      "name": "Design de Software Intermediário",
+      "type": "module",
+      "category": "software",
+      "description": "Módulo Pleno: Design de Software Intermediário.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 64,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "SOLID aplicado",
+          "Design patterns",
+          "DI",
+          "Testabilidade"
+        ],
+        "practice_examples": [
+          "Refatorar módulo aplicando padrões",
+          "Injetar dependências para testar"
+        ],
+        "interview_topics": [
+          "Design patterns na prática",
+          "SOLID aplicado"
+        ]
+      }
+    },
+    {
+      "id": "solid-aplicado",
+      "name": "SOLID aplicado",
+      "type": "skill",
+      "category": "design",
+      "description": "Aplicação prática dos princípios SOLID em código real.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 12,
+      "aliases": [
+        "solid",
+        "srp",
+        "ocp",
+        "lsp",
+        "isp",
+        "dip"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "SRP",
+          "OCP",
+          "LSP",
+          "ISP",
+          "DIP"
+        ],
+        "practice_examples": [
+          "Refatorar módulo aplicando SOLID",
+          "Identificar violações de SOLID"
+        ],
+        "interview_topics": [
+          "Aplicação prática de SOLID",
+          "Exemplo de OCP"
+        ]
+      }
+    },
+    {
+      "id": "design-patterns",
+      "name": "Design patterns factory strategy observer",
+      "type": "skill",
+      "category": "design",
+      "description": "Padrões de projeto clássicos: factory, strategy e observer.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 14,
+      "aliases": [
+        "design patterns",
+        "factory",
+        "strategy",
+        "observer",
+        "gof"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "factory",
+          "strategy",
+          "observer"
+        ],
+        "practice_examples": [
+          "Implementar Strategy",
+          "Aplicar Factory na criação de objetos"
+        ],
+        "interview_topics": [
+          "Quando usar Strategy vs Factory",
+          "Padrão Observer"
+        ]
+      }
+    },
+    {
+      "id": "dependency-injection",
+      "name": "Dependency Injection",
+      "type": "skill",
+      "category": "design",
+      "description": "Injeção de dependências e inversão de controle.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "di",
+        "injeção de dependência",
+        "ioc"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "IoC",
+          "injeção por construtor",
+          "containers"
+        ],
+        "practice_examples": [
+          "Injetar dependências por construtor",
+          "Configurar container de DI"
+        ],
+        "interview_topics": [
+          "Inversão de controle",
+          "Benefícios de DI para testes"
+        ]
+      }
+    },
+    {
+      "id": "interfaces-contratos",
+      "name": "Interfaces e contratos",
+      "type": "skill",
+      "category": "design",
+      "description": "Programação orientada a interfaces e contratos entre componentes.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "interface",
+        "contrato",
+        "abstração"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "interfaces",
+          "contratos",
+          "abstrações"
+        ],
+        "practice_examples": [
+          "Definir contrato entre camadas",
+          "Programar para interface"
+        ],
+        "interview_topics": [
+          "Programar para interface, não implementação",
+          "Contratos e acoplamento"
+        ]
+      }
+    },
+    {
+      "id": "testabilidade-codigo",
+      "name": "Testabilidade de código",
+      "type": "skill",
+      "category": "testing",
+      "description": "Escrever código projetado para ser testável.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "testabilidade",
+        "testável",
+        "mock",
+        "tdd"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "código testável",
+          "injeção para testes",
+          "mocks"
+        ],
+        "practice_examples": [
+          "Tornar uma classe testável",
+          "Isolar dependências para teste"
+        ],
+        "interview_topics": [
+          "O que torna um código testável",
+          "Testabilidade e acoplamento"
+        ]
+      }
+    },
+    {
+      "id": "organizacao-dominio",
+      "name": "Organização por domínio feature based",
+      "type": "skill",
+      "category": "architecture",
+      "description": "Organização do projeto por domínio/feature em vez de por camada técnica.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 8,
+      "aliases": [
+        "feature based",
+        "domain",
+        "ddd",
+        "vertical slice"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "feature folders",
+          "bounded context",
+          "organização por domínio"
+        ],
+        "practice_examples": [
+          "Reorganizar projeto por feature",
+          "Separar por domínio"
+        ],
+        "interview_topics": [
+          "Organização por camada vs por domínio",
+          "Feature based"
+        ]
+      }
+    },
+    {
+      "id": "refatoracao-design",
+      "name": "Refatoração para melhorar design",
+      "type": "skill",
+      "category": "engineering",
+      "description": "Refatoração orientada a melhorar o design do código.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 8,
+      "aliases": [
+        "refatoração",
+        "design",
+        "code smells"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "code smells",
+          "extração",
+          "melhoria de design"
+        ],
+        "practice_examples": [
+          "Refatorar para reduzir acoplamento",
+          "Extrair abstrações"
+        ],
+        "interview_topics": [
+          "Refatorar para melhorar design",
+          "Refatoração incremental"
+        ]
+      }
+    },
+    {
+      "id": "banco-dados-intermediario",
+      "name": "Banco de Dados Intermediário",
+      "type": "module",
+      "category": "database",
+      "description": "Módulo Pleno: Banco de Dados Intermediário.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 58,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Joins",
+          "Índices",
+          "Transações",
+          "Queries complexas"
+        ],
+        "practice_examples": [
+          "Otimizar query com índice",
+          "Escrever query com múltiplos joins"
+        ],
+        "interview_topics": [
+          "Tipos de join",
+          "Índices e performance"
+        ]
+      }
+    },
+    {
+      "id": "joins",
+      "name": "Joins inner left right",
+      "type": "skill",
+      "category": "database",
+      "description": "Combinação de tabelas com inner, left e right join.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "join",
+        "inner join",
+        "left join",
+        "right join"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "inner join",
+          "left join",
+          "right join"
+        ],
+        "practice_examples": [
+          "Escrever queries com múltiplos joins",
+          "Diferenciar inner e left"
+        ],
+        "interview_topics": [
+          "Tipos de join",
+          "Inner vs left join"
+        ]
+      }
+    },
+    {
+      "id": "indices",
+      "name": "Índices",
+      "type": "skill",
+      "category": "database",
+      "description": "Uso de índices para otimizar consultas.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "index",
+        "índice",
+        "b-tree"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "índices",
+          "b-tree",
+          "seletividade"
+        ],
+        "practice_examples": [
+          "Criar índice para otimizar query",
+          "Analisar plano de execução"
+        ],
+        "interview_topics": [
+          "Como índices aceleram queries",
+          "Custo de manter índices"
+        ]
+      }
+    },
+    {
+      "id": "normalizacao",
+      "name": "Normalização",
+      "type": "skill",
+      "category": "database",
+      "description": "Normalização de esquemas relacionais.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "normalização",
+        "1fn",
+        "2fn",
+        "3fn"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "1FN",
+          "2FN",
+          "3FN",
+          "desnormalização"
+        ],
+        "practice_examples": [
+          "Normalizar um schema",
+          "Avaliar desnormalização"
+        ],
+        "interview_topics": [
+          "Formas normais",
+          "Quando desnormalizar"
+        ]
+      }
+    },
+    {
+      "id": "transacoes",
+      "name": "Transações",
+      "type": "skill",
+      "category": "database",
+      "description": "Transações e propriedades ACID.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "transação",
+        "transaction",
+        "acid",
+        "commit",
+        "rollback"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "ACID",
+          "commit",
+          "rollback",
+          "isolamento"
+        ],
+        "practice_examples": [
+          "Envolver operações em transação",
+          "Tratar rollback"
+        ],
+        "interview_topics": [
+          "Propriedades ACID",
+          "Níveis de isolamento"
+        ]
+      }
+    },
+    {
+      "id": "queries-complexas",
+      "name": "Queries complexas",
+      "type": "skill",
+      "category": "database",
+      "description": "Subqueries, CTEs, agregações e window functions.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "subquery",
+        "cte",
+        "group by",
+        "having",
+        "window"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "subqueries",
+          "CTEs",
+          "group by",
+          "window functions"
+        ],
+        "practice_examples": [
+          "Escrever uma CTE",
+          "Agregar com group by e having"
+        ],
+        "interview_topics": [
+          "Subquery vs join",
+          "Window functions"
+        ]
+      }
+    },
+    {
+      "id": "paginacao",
+      "name": "Paginação",
+      "type": "skill",
+      "category": "database",
+      "description": "Paginação de resultados em consultas.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 4,
+      "aliases": [
+        "paginação",
+        "limit",
+        "offset",
+        "cursor"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "limit/offset",
+          "keyset/cursor"
+        ],
+        "practice_examples": [
+          "Paginar com limit/offset",
+          "Paginação por cursor"
+        ],
+        "interview_topics": [
+          "Offset vs keyset pagination",
+          "Problemas de offset em tabelas grandes"
+        ]
+      }
+    },
+    {
+      "id": "introducao-nosql",
+      "name": "Introdução a NoSQL",
+      "type": "skill",
+      "category": "database",
+      "description": "Fundamentos de bancos NoSQL.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 8,
+      "aliases": [
+        "nosql",
+        "mongodb",
+        "documento",
+        "chave-valor"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "documento",
+          "chave-valor",
+          "colunar",
+          "quando usar"
+        ],
+        "practice_examples": [
+          "Modelar dados em documento",
+          "Comparar SQL e NoSQL"
+        ],
+        "interview_topics": [
+          "SQL vs NoSQL",
+          "Quando escolher NoSQL"
+        ]
+      }
+    },
+    {
+      "id": "cache-redis",
+      "name": "Cache básico Redis",
+      "type": "skill",
+      "category": "database",
+      "description": "Cache de dados em memória com Redis.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "cache",
+        "redis",
+        "ttl",
+        "memória"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "cache",
+          "Redis",
+          "TTL",
+          "invalidação"
+        ],
+        "practice_examples": [
+          "Cachear resultado de query em Redis",
+          "Definir TTL"
+        ],
+        "interview_topics": [
+          "Estratégias de cache",
+          "Invalidação de cache"
+        ]
+      }
+    },
+    {
+      "id": "cloud-fundamentals",
+      "name": "Cloud Fundamentals",
+      "type": "module",
+      "category": "cloud",
+      "description": "Consolidação dos fundamentos de cloud do Júnior no nível Pleno. Não define skills próprias: referencia os nós de 'Cloud Fundamentals Básico'.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 4
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Cloud computing",
+          "IaaS/PaaS/SaaS",
+          "Escalabilidade"
+        ],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "devops-fundamentals",
+      "name": "DevOps Fundamentals",
+      "type": "module",
+      "category": "devops",
+      "description": "Módulo Pleno: DevOps Fundamentals.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 33,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "CI/CD",
+          "Pipeline",
+          "Automação"
+        ],
+        "practice_examples": [
+          "Desenhar um fluxo CI/CD",
+          "Criar pipeline com build e test"
+        ],
+        "interview_topics": [
+          "CI vs CD",
+          "Estágios de um pipeline"
+        ]
+      }
+    },
+    {
+      "id": "conceito-ci-cd",
+      "name": "Conceito de CI CD",
+      "type": "skill",
+      "category": "devops",
+      "description": "Fundamentos de integração e entrega contínua.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "ci",
+        "cd",
+        "ci/cd",
+        "integração contínua",
+        "entrega contínua"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "CI",
+          "CD",
+          "entrega contínua"
+        ],
+        "practice_examples": [
+          "Desenhar um fluxo CI/CD",
+          "Explicar os estágios"
+        ],
+        "interview_topics": [
+          "Diferença entre CI e CD",
+          "Benefícios de CI/CD"
+        ]
+      }
+    },
+    {
+      "id": "pipeline-basico",
+      "name": "Pipeline básico",
+      "type": "skill",
+      "category": "devops",
+      "description": "Construção de pipelines básicos de build e teste.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "pipeline",
+        "github actions",
+        "gitlab ci",
+        "jenkins"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "stages",
+          "jobs",
+          "runners"
+        ],
+        "practice_examples": [
+          "Criar pipeline com build e test",
+          "Configurar GitHub Actions"
+        ],
+        "interview_topics": [
+          "Estágios de um pipeline",
+          "Pipeline as code"
+        ]
+      }
+    },
+    {
+      "id": "versionamento-devops",
+      "name": "Versionamento",
+      "type": "skill",
+      "category": "devops",
+      "description": "Versionamento de releases e artefatos.",
+      "level": "mid",
+      "importance": 6,
+      "estimated_hours": 4,
+      "aliases": [
+        "versionamento",
+        "semver",
+        "tags"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 4,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "semver",
+          "tags",
+          "releases"
+        ],
+        "practice_examples": [
+          "Versionar com semver",
+          "Criar release com tag"
+        ],
+        "interview_topics": [
+          "Versionamento semântico",
+          "Estratégias de release"
+        ]
+      }
+    },
+    {
+      "id": "deploy-automatizado",
+      "name": "Deploy automatizado simples",
+      "type": "skill",
+      "category": "devops",
+      "description": "Automação básica de deploy.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "deploy automatizado",
+        "cd",
+        "automação de deploy"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "deploy automatizado",
+          "ambientes",
+          "gatilhos"
+        ],
+        "practice_examples": [
+          "Automatizar deploy no merge",
+          "Configurar deploy por ambiente"
+        ],
+        "interview_topics": [
+          "Deploy manual vs automatizado",
+          "Gatilhos de deploy"
+        ]
+      }
+    },
+    {
+      "id": "integracao-continua",
+      "name": "Integração contínua",
+      "type": "skill",
+      "category": "devops",
+      "description": "Práticas de integração contínua.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "ci",
+        "integração contínua",
+        "build automático"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "build automático",
+          "testes no CI",
+          "feedback rápido"
+        ],
+        "practice_examples": [
+          "Rodar testes no CI a cada push",
+          "Falhar build em teste quebrado"
+        ],
+        "interview_topics": [
+          "O que é integração contínua",
+          "Boas práticas de CI"
+        ]
+      }
+    },
+    {
+      "id": "conceito-automacao",
+      "name": "Conceito de automação",
+      "type": "skill",
+      "category": "devops",
+      "description": "Fundamentos de automação de tarefas.",
+      "level": "mid",
+      "importance": 6,
+      "estimated_hours": 4,
+      "aliases": [
+        "automação",
+        "scripts",
+        "iac"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 4,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "automação de tarefas",
+          "scripts",
+          "IaC (introdução)"
+        ],
+        "practice_examples": [
+          "Automatizar tarefa repetitiva",
+          "Escrever script de automação"
+        ],
+        "interview_topics": [
+          "O que automatizar primeiro",
+          "Automação e confiabilidade"
+        ]
+      }
+    },
+    {
+      "id": "cloud-for-backend",
+      "name": "Cloud for Backend",
+      "type": "module",
+      "category": "cloud",
+      "description": "Módulo Pleno: Cloud for Backend.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 47,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Deploy de APIs",
+          "Load balancer",
+          "Auto scaling",
+          "IAM"
+        ],
+        "practice_examples": [
+          "Fazer deploy de API com load balancer",
+          "Configurar auto scaling"
+        ],
+        "interview_topics": [
+          "Load balancer e auto scaling",
+          "IAM e menor privilégio"
+        ]
+      }
+    },
+    {
+      "id": "deploy-apis",
+      "name": "Deploy de APIs",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Deploy de APIs em ambiente de nuvem.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "deploy api",
+        "api gateway",
+        "container deploy"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "deploy de API",
+          "containers",
+          "API gateway"
+        ],
+        "practice_examples": [
+          "Fazer deploy de uma API em nuvem",
+          "Expor via gateway"
+        ],
+        "interview_topics": [
+          "Deploy de APIs em produção",
+          "Zero downtime deploy"
+        ]
+      }
+    },
+    {
+      "id": "load-balancer",
+      "name": "Load balancer",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Balanceamento de carga entre instâncias.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "load balancer",
+        "balanceador",
+        "lb"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "balanceamento",
+          "health checks",
+          "algoritmos"
+        ],
+        "practice_examples": [
+          "Configurar load balancer para 2 instâncias",
+          "Definir health check"
+        ],
+        "interview_topics": [
+          "Como funciona um load balancer",
+          "Algoritmos de balanceamento"
+        ]
+      }
+    },
+    {
+      "id": "auto-scaling",
+      "name": "Auto scaling",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Escalabilidade automática de instâncias.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "auto scaling",
+        "escalabilidade automática",
+        "hpa"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "escala automática",
+          "métricas",
+          "políticas"
+        ],
+        "practice_examples": [
+          "Configurar auto scaling por CPU",
+          "Definir min/max de instâncias"
+        ],
+        "interview_topics": [
+          "Auto scaling horizontal",
+          "Métricas para escalar"
+        ]
+      }
+    },
+    {
+      "id": "configuracao-ambiente",
+      "name": "Configuração de ambiente",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Gestão de configuração por ambiente.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "configuração",
+        "env vars",
+        "secrets",
+        "config"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "variáveis de ambiente",
+          "secrets",
+          "configuração por ambiente"
+        ],
+        "practice_examples": [
+          "Gerenciar env vars por ambiente",
+          "Armazenar secrets com segurança"
+        ],
+        "interview_topics": [
+          "Gestão de configuração",
+          "Onde guardar secrets"
+        ]
+      }
+    },
+    {
+      "id": "storage-backend",
+      "name": "Storage para backend",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Armazenamento para aplicações backend.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "storage",
+        "volumes",
+        "object storage backend"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "object storage",
+          "volumes",
+          "uploads"
+        ],
+        "practice_examples": [
+          "Armazenar uploads em object storage",
+          "Servir arquivos do backend"
+        ],
+        "interview_topics": [
+          "Onde guardar arquivos de uma API",
+          "Storage efêmero vs persistente"
+        ]
+      }
+    },
+    {
+      "id": "conexao-banco-gerenciado",
+      "name": "Conexão com banco gerenciado",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Conexão de backends a bancos gerenciados.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "banco gerenciado",
+        "rds",
+        "managed database",
+        "pool"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "banco gerenciado",
+          "connection pool",
+          "credenciais"
+        ],
+        "practice_examples": [
+          "Conectar API a banco gerenciado",
+          "Configurar pool de conexões"
+        ],
+        "interview_topics": [
+          "Banco gerenciado vs self-hosted",
+          "Connection pooling"
+        ]
+      }
+    },
+    {
+      "id": "seguranca-iam-aplicado",
+      "name": "Segurança básica IAM aplicado",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Aplicação prática de IAM e menor privilégio.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "iam",
+        "permissões",
+        "roles",
+        "least privilege"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "IAM",
+          "roles",
+          "políticas",
+          "least privilege"
+        ],
+        "practice_examples": [
+          "Criar role com least privilege",
+          "Restringir acesso a um recurso"
+        ],
+        "interview_topics": [
+          "Princípio do menor privilégio",
+          "IAM roles vs users"
+        ]
+      }
+    },
+    {
+      "id": "logs-producao",
+      "name": "Logs em produção",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Coleta e gestão de logs em produção.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "logs",
+        "logging",
+        "cloudwatch",
+        "observabilidade"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "logs centralizados",
+          "níveis de log",
+          "retenção"
+        ],
+        "practice_examples": [
+          "Centralizar logs da API",
+          "Definir níveis de log"
+        ],
+        "interview_topics": [
+          "Logs estruturados em produção",
+          "Retenção e custo de logs"
+        ]
+      }
+    },
+    {
+      "id": "devops-for-backend",
+      "name": "DevOps for Backend",
+      "type": "module",
+      "category": "devops",
+      "description": "Módulo Pleno: DevOps for Backend.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 40,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Pipeline de backend",
+          "Blue green",
+          "Monitoramento",
+          "Rollback"
+        ],
+        "practice_examples": [
+          "Montar pipeline build/test/deploy",
+          "Simular deploy blue green"
+        ],
+        "interview_topics": [
+          "Estratégias de deploy",
+          "Rollback seguro"
+        ]
+      }
+    },
+    {
+      "id": "pipeline-backend",
+      "name": "Pipeline de backend build test deploy",
+      "type": "skill",
+      "category": "devops",
+      "description": "Pipeline completo de build, test e deploy do backend.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "pipeline backend",
+        "build",
+        "test",
+        "deploy"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "build",
+          "test",
+          "deploy",
+          "estágios"
+        ],
+        "practice_examples": [
+          "Montar pipeline build/test/deploy",
+          "Bloquear deploy se teste falhar"
+        ],
+        "interview_topics": [
+          "Estágios de um pipeline de backend",
+          "Gates de qualidade"
+        ]
+      }
+    },
+    {
+      "id": "integracao-banco-pipeline",
+      "name": "Integração com banco",
+      "type": "skill",
+      "category": "devops",
+      "description": "Integração de migrations e schema no pipeline.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "migrations no pipeline",
+        "database ci",
+        "migração"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "migrations no CI/CD",
+          "seed",
+          "versionamento de schema"
+        ],
+        "practice_examples": [
+          "Rodar migrations no deploy",
+          "Versionar schema no pipeline"
+        ],
+        "interview_topics": [
+          "Migrations em CI/CD",
+          "Deploy com mudança de schema"
+        ]
+      }
+    },
+    {
+      "id": "deploy-blue-green",
+      "name": "Estratégias de deploy blue green",
+      "type": "skill",
+      "category": "devops",
+      "description": "Estratégias de deploy blue green e canary.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "blue green",
+        "canary",
+        "deploy strategy"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "blue green",
+          "canary",
+          "rollout"
+        ],
+        "practice_examples": [
+          "Simular deploy blue green",
+          "Comparar blue green e canary"
+        ],
+        "interview_topics": [
+          "Blue green vs canary",
+          "Zero downtime deploy"
+        ]
+      }
+    },
+    {
+      "id": "versionamento-api",
+      "name": "Versionamento de API",
+      "type": "skill",
+      "category": "devops",
+      "description": "Estratégias de versionamento de APIs.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "versionamento de api",
+        "v1",
+        "v2",
+        "semver api"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "versionamento por URL/header",
+          "breaking changes",
+          "deprecação"
+        ],
+        "practice_examples": [
+          "Versionar uma API (v1/v2)",
+          "Planejar deprecação"
+        ],
+        "interview_topics": [
+          "Estratégias de versionamento de API",
+          "Como lidar com breaking changes"
+        ]
+      }
+    },
+    {
+      "id": "monitoramento-basico",
+      "name": "Monitoramento básico",
+      "type": "skill",
+      "category": "devops",
+      "description": "Monitoramento e alertas de aplicações em produção.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "monitoramento",
+        "métricas",
+        "prometheus",
+        "grafana"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "métricas",
+          "alertas",
+          "dashboards"
+        ],
+        "practice_examples": [
+          "Configurar métricas de uma API",
+          "Criar alerta básico"
+        ],
+        "interview_topics": [
+          "O que monitorar em produção",
+          "Métricas RED/USE"
+        ]
+      }
+    },
+    {
+      "id": "rollback",
+      "name": "Rollback",
+      "type": "skill",
+      "category": "devops",
+      "description": "Reversão segura de deploys.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 4,
+      "aliases": [
+        "rollback",
+        "reversão",
+        "revert deploy"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "rollback de deploy",
+          "reversão de migration",
+          "versões anteriores"
+        ],
+        "practice_examples": [
+          "Reverter um deploy com problema",
+          "Planejar rollback de schema"
+        ],
+        "interview_topics": [
+          "Como fazer rollback seguro",
+          "Rollback com mudança de banco"
+        ]
+      }
+    },
+    {
+      "id": "integracao-logs",
+      "name": "Integração com logs",
+      "type": "skill",
+      "category": "devops",
+      "description": "Integração e correlação de logs no fluxo de observabilidade.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "logs",
+        "agregação",
+        "elk",
+        "observabilidade"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "agregação de logs",
+          "correlação",
+          "tracing"
+        ],
+        "practice_examples": [
+          "Integrar logs à observabilidade",
+          "Correlacionar logs por request id"
+        ],
+        "interview_topics": [
+          "Agregação e correlação de logs",
+          "Logs vs métricas vs traces"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-001",
+      "source": "pleno-autonomia",
+      "target": "herdado-de-junior",
+      "type": "contains"
+    },
+    {
+      "id": "edge-002",
+      "source": "pleno-autonomia",
+      "target": "evolucao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-003",
+      "source": "herdado-de-junior",
+      "target": "software-basico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-004",
+      "source": "herdado-de-junior",
+      "target": "software-intermediario",
+      "type": "contains"
+    },
+    {
+      "id": "edge-005",
+      "source": "herdado-de-junior",
+      "target": "design-software-basico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-006",
+      "source": "herdado-de-junior",
+      "target": "banco-dados-basico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-007",
+      "source": "herdado-de-junior",
+      "target": "cloud-fundamentals-basico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-008",
+      "source": "software-basico",
+      "target": "sintaxe-linguagem",
+      "type": "contains"
+    },
+    {
+      "id": "edge-009",
+      "source": "software-basico",
+      "target": "tipos-dados-estruturas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-010",
+      "source": "software-basico",
+      "target": "controle-fluxo",
+      "type": "contains"
+    },
+    {
+      "id": "edge-011",
+      "source": "software-basico",
+      "target": "funcoes-escopo",
+      "type": "contains"
+    },
+    {
+      "id": "edge-012",
+      "source": "software-basico",
+      "target": "estruturas-dados-simples",
+      "type": "contains"
+    },
+    {
+      "id": "edge-013",
+      "source": "software-basico",
+      "target": "manipulacao-dados",
+      "type": "contains"
+    },
+    {
+      "id": "edge-014",
+      "source": "software-basico",
+      "target": "leitura-escrita-io",
+      "type": "contains"
+    },
+    {
+      "id": "edge-015",
+      "source": "software-basico",
+      "target": "debug-basico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-016",
+      "source": "software-basico",
+      "target": "git-basico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-017",
+      "source": "software-basico",
+      "target": "execucao-codigo-local",
+      "type": "contains"
+    },
+    {
+      "id": "edge-018",
+      "source": "software-intermediario",
+      "target": "programacao-assincrona",
+      "type": "contains"
+    },
+    {
+      "id": "edge-019",
+      "source": "software-intermediario",
+      "target": "tratamento-erros",
+      "type": "contains"
+    },
+    {
+      "id": "edge-020",
+      "source": "software-intermediario",
+      "target": "modularizacao-codigo",
+      "type": "contains"
+    },
+    {
+      "id": "edge-021",
+      "source": "software-intermediario",
+      "target": "organizacao-camadas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-022",
+      "source": "software-intermediario",
+      "target": "integracao-apis-rest",
+      "type": "contains"
+    },
+    {
+      "id": "edge-023",
+      "source": "software-intermediario",
+      "target": "serializacao-json",
+      "type": "contains"
+    },
+    {
+      "id": "edge-024",
+      "source": "software-intermediario",
+      "target": "testes-unitarios",
+      "type": "contains"
+    },
+    {
+      "id": "edge-025",
+      "source": "software-intermediario",
+      "target": "refatoracao-codigo",
+      "type": "contains"
+    },
+    {
+      "id": "edge-026",
+      "source": "software-intermediario",
+      "target": "gerenciamento-estado",
+      "type": "contains"
+    },
+    {
+      "id": "edge-027",
+      "source": "software-intermediario",
+      "target": "git-avancado",
+      "type": "contains"
+    },
+    {
+      "id": "edge-028",
+      "source": "design-software-basico",
+      "target": "separacao-responsabilidades",
+      "type": "contains"
+    },
+    {
+      "id": "edge-029",
+      "source": "design-software-basico",
+      "target": "organizacao-controller-service-repository",
+      "type": "contains"
+    },
+    {
+      "id": "edge-030",
+      "source": "design-software-basico",
+      "target": "conceito-modularizacao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-031",
+      "source": "design-software-basico",
+      "target": "introducao-solid",
+      "type": "contains"
+    },
+    {
+      "id": "edge-032",
+      "source": "design-software-basico",
+      "target": "leitura-codigo-estruturado",
+      "type": "contains"
+    },
+    {
+      "id": "edge-033",
+      "source": "design-software-basico",
+      "target": "acoplamento-coesao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-034",
+      "source": "banco-dados-basico",
+      "target": "conceito-banco-relacional",
+      "type": "contains"
+    },
+    {
+      "id": "edge-035",
+      "source": "banco-dados-basico",
+      "target": "crud-sql",
+      "type": "contains"
+    },
+    {
+      "id": "edge-036",
+      "source": "banco-dados-basico",
+      "target": "estrutura-tabelas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-037",
+      "source": "banco-dados-basico",
+      "target": "tipos-dados-sql",
+      "type": "contains"
+    },
+    {
+      "id": "edge-038",
+      "source": "banco-dados-basico",
+      "target": "queries-where",
+      "type": "contains"
+    },
+    {
+      "id": "edge-039",
+      "source": "banco-dados-basico",
+      "target": "uso-basico-orm",
+      "type": "contains"
+    },
+    {
+      "id": "edge-040",
+      "source": "cloud-fundamentals-basico",
+      "target": "conceito-cloud-computing",
+      "type": "contains"
+    },
+    {
+      "id": "edge-041",
+      "source": "cloud-fundamentals-basico",
+      "target": "iaas-paas-saas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-042",
+      "source": "cloud-fundamentals-basico",
+      "target": "deploy-aplicacoes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-043",
+      "source": "cloud-fundamentals-basico",
+      "target": "storage-object-storage",
+      "type": "contains"
+    },
+    {
+      "id": "edge-044",
+      "source": "cloud-fundamentals-basico",
+      "target": "regiao-zona",
+      "type": "contains"
+    },
+    {
+      "id": "edge-045",
+      "source": "cloud-fundamentals-basico",
+      "target": "custos-basicos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-046",
+      "source": "cloud-fundamentals-basico",
+      "target": "conceito-escalabilidade",
+      "type": "contains"
+    },
+    {
+      "id": "edge-047",
+      "source": "software-basico",
+      "target": "software-intermediario",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-048",
+      "source": "git-basico",
+      "target": "git-avancado",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-049",
+      "source": "conceito-banco-relacional",
+      "target": "crud-sql",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-050",
+      "source": "conceito-banco-relacional",
+      "target": "uso-basico-orm",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-051",
+      "source": "conceito-cloud-computing",
+      "target": "iaas-paas-saas",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-052",
+      "source": "separacao-responsabilidades",
+      "target": "introducao-solid",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-053",
+      "source": "evolucao",
+      "target": "design-software-intermediario",
+      "type": "contains"
+    },
+    {
+      "id": "edge-054",
+      "source": "design-software-intermediario",
+      "target": "solid-aplicado",
+      "type": "contains"
+    },
+    {
+      "id": "edge-055",
+      "source": "design-software-intermediario",
+      "target": "design-patterns",
+      "type": "contains"
+    },
+    {
+      "id": "edge-056",
+      "source": "design-software-intermediario",
+      "target": "dependency-injection",
+      "type": "contains"
+    },
+    {
+      "id": "edge-057",
+      "source": "design-software-intermediario",
+      "target": "interfaces-contratos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-058",
+      "source": "design-software-intermediario",
+      "target": "testabilidade-codigo",
+      "type": "contains"
+    },
+    {
+      "id": "edge-059",
+      "source": "design-software-intermediario",
+      "target": "organizacao-dominio",
+      "type": "contains"
+    },
+    {
+      "id": "edge-060",
+      "source": "design-software-intermediario",
+      "target": "refatoracao-design",
+      "type": "contains"
+    },
+    {
+      "id": "edge-061",
+      "source": "evolucao",
+      "target": "banco-dados-intermediario",
+      "type": "contains"
+    },
+    {
+      "id": "edge-062",
+      "source": "banco-dados-intermediario",
+      "target": "joins",
+      "type": "contains"
+    },
+    {
+      "id": "edge-063",
+      "source": "banco-dados-intermediario",
+      "target": "indices",
+      "type": "contains"
+    },
+    {
+      "id": "edge-064",
+      "source": "banco-dados-intermediario",
+      "target": "normalizacao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-065",
+      "source": "banco-dados-intermediario",
+      "target": "transacoes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-066",
+      "source": "banco-dados-intermediario",
+      "target": "queries-complexas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-067",
+      "source": "banco-dados-intermediario",
+      "target": "paginacao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-068",
+      "source": "banco-dados-intermediario",
+      "target": "introducao-nosql",
+      "type": "contains"
+    },
+    {
+      "id": "edge-069",
+      "source": "banco-dados-intermediario",
+      "target": "cache-redis",
+      "type": "contains"
+    },
+    {
+      "id": "edge-070",
+      "source": "evolucao",
+      "target": "cloud-fundamentals",
+      "type": "contains"
+    },
+    {
+      "id": "edge-071",
+      "source": "cloud-fundamentals",
+      "target": "conceito-cloud-computing",
+      "type": "references"
+    },
+    {
+      "id": "edge-072",
+      "source": "cloud-fundamentals",
+      "target": "iaas-paas-saas",
+      "type": "references"
+    },
+    {
+      "id": "edge-073",
+      "source": "cloud-fundamentals",
+      "target": "deploy-aplicacoes",
+      "type": "references"
+    },
+    {
+      "id": "edge-074",
+      "source": "cloud-fundamentals",
+      "target": "storage-object-storage",
+      "type": "references"
+    },
+    {
+      "id": "edge-075",
+      "source": "cloud-fundamentals",
+      "target": "regiao-zona",
+      "type": "references"
+    },
+    {
+      "id": "edge-076",
+      "source": "cloud-fundamentals",
+      "target": "custos-basicos",
+      "type": "references"
+    },
+    {
+      "id": "edge-077",
+      "source": "cloud-fundamentals",
+      "target": "conceito-escalabilidade",
+      "type": "references"
+    },
+    {
+      "id": "edge-078",
+      "source": "evolucao",
+      "target": "devops-fundamentals",
+      "type": "contains"
+    },
+    {
+      "id": "edge-079",
+      "source": "devops-fundamentals",
+      "target": "conceito-ci-cd",
+      "type": "contains"
+    },
+    {
+      "id": "edge-080",
+      "source": "devops-fundamentals",
+      "target": "pipeline-basico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-081",
+      "source": "devops-fundamentals",
+      "target": "versionamento-devops",
+      "type": "contains"
+    },
+    {
+      "id": "edge-082",
+      "source": "devops-fundamentals",
+      "target": "deploy-automatizado",
+      "type": "contains"
+    },
+    {
+      "id": "edge-083",
+      "source": "devops-fundamentals",
+      "target": "integracao-continua",
+      "type": "contains"
+    },
+    {
+      "id": "edge-084",
+      "source": "devops-fundamentals",
+      "target": "conceito-automacao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-085",
+      "source": "evolucao",
+      "target": "cloud-for-backend",
+      "type": "contains"
+    },
+    {
+      "id": "edge-086",
+      "source": "cloud-for-backend",
+      "target": "deploy-apis",
+      "type": "contains"
+    },
+    {
+      "id": "edge-087",
+      "source": "cloud-for-backend",
+      "target": "load-balancer",
+      "type": "contains"
+    },
+    {
+      "id": "edge-088",
+      "source": "cloud-for-backend",
+      "target": "auto-scaling",
+      "type": "contains"
+    },
+    {
+      "id": "edge-089",
+      "source": "cloud-for-backend",
+      "target": "configuracao-ambiente",
+      "type": "contains"
+    },
+    {
+      "id": "edge-090",
+      "source": "cloud-for-backend",
+      "target": "storage-backend",
+      "type": "contains"
+    },
+    {
+      "id": "edge-091",
+      "source": "cloud-for-backend",
+      "target": "conexao-banco-gerenciado",
+      "type": "contains"
+    },
+    {
+      "id": "edge-092",
+      "source": "cloud-for-backend",
+      "target": "seguranca-iam-aplicado",
+      "type": "contains"
+    },
+    {
+      "id": "edge-093",
+      "source": "cloud-for-backend",
+      "target": "logs-producao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-094",
+      "source": "evolucao",
+      "target": "devops-for-backend",
+      "type": "contains"
+    },
+    {
+      "id": "edge-095",
+      "source": "devops-for-backend",
+      "target": "pipeline-backend",
+      "type": "contains"
+    },
+    {
+      "id": "edge-096",
+      "source": "devops-for-backend",
+      "target": "integracao-banco-pipeline",
+      "type": "contains"
+    },
+    {
+      "id": "edge-097",
+      "source": "devops-for-backend",
+      "target": "deploy-blue-green",
+      "type": "contains"
+    },
+    {
+      "id": "edge-098",
+      "source": "devops-for-backend",
+      "target": "versionamento-api",
+      "type": "contains"
+    },
+    {
+      "id": "edge-099",
+      "source": "devops-for-backend",
+      "target": "monitoramento-basico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-100",
+      "source": "devops-for-backend",
+      "target": "rollback",
+      "type": "contains"
+    },
+    {
+      "id": "edge-101",
+      "source": "devops-for-backend",
+      "target": "integracao-logs",
+      "type": "contains"
+    },
+    {
+      "id": "edge-102",
+      "source": "design-software-basico",
+      "target": "design-software-intermediario",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-103",
+      "source": "introducao-solid",
+      "target": "solid-aplicado",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-104",
+      "source": "banco-dados-basico",
+      "target": "banco-dados-intermediario",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-105",
+      "source": "joins",
+      "target": "queries-complexas",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-106",
+      "source": "conceito-ci-cd",
+      "target": "pipeline-basico",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-107",
+      "source": "pipeline-basico",
+      "target": "deploy-automatizado",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-108",
+      "source": "devops-fundamentals",
+      "target": "devops-for-backend",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-109",
+      "source": "pipeline-basico",
+      "target": "pipeline-backend",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-110",
+      "source": "cloud-fundamentals",
+      "target": "cloud-for-backend",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-111",
+      "source": "load-balancer",
+      "target": "auto-scaling",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-112",
+      "source": "logs-producao",
+      "target": "integracao-logs",
+      "type": "prerequisite"
+    }
+  ]
+}

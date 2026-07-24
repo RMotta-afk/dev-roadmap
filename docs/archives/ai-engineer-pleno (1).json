@@ -1,0 +1,2381 @@
+{
+  "id": "ai-engineer-pleno",
+  "title": "AI Engineer — Pleno",
+  "role": "ai_engineer",
+  "version": "1.0.0",
+  "description": "Roadmap base para AI Engineer — bloco PLENO (Sistemas com AI). Herda o bloco AI Júnior por referência e referencia 2 módulos do Software Engineer (Pleno).",
+  "market": [
+    "brazil",
+    "international"
+  ],
+  "metadata": {
+    "author": "",
+    "created_at": "2026-07-13",
+    "updated_at": "2026-07-13",
+    "inherited_from": "ai-engineer-junior",
+    "references_role": "software_engineer",
+    "tags": [
+      "ai",
+      "rag",
+      "agents",
+      "mlops",
+      "data-engineering",
+      "pleno"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "ai-pleno-sistemas-com-ai",
+      "name": "PLENO Sistemas com AI",
+      "type": "domain",
+      "category": "career",
+      "description": "Competências para um AI Engineer Pleno: construir sistemas de IA (RAG, agentes, pipelines) com autonomia.",
+      "level": "mid",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Herdado de Júnior",
+          "Data/Cloud/DevOps for AI",
+          "RAG",
+          "Agentes"
+        ],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-herdado-de-junior",
+      "name": "Herdado de Júnior",
+      "type": "group",
+      "category": "career",
+      "description": "Referência ao bloco AI Engineer Júnior, herdado como pré-requisito. Os nós vivem no documento 'ai-engineer-junior'; aqui há apenas a relação 'inherits'.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-evolucao",
+      "name": "Evolução",
+      "type": "group",
+      "category": "career",
+      "description": "Competências novas que caracterizam a evolução de AI Júnior para Pleno.",
+      "level": "mid",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-data-engineering-pipelines",
+      "name": "Data Engineering & Pipelines Básico + Intermediário",
+      "type": "module",
+      "category": "data-engineering",
+      "description": "Módulo AI Engineer (Pleno): Data Engineering & Pipelines Básico + Intermediário.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 48,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "ingestão",
+          "processamento",
+          "qualidade",
+          "orquestração",
+          "datasets p/ IA"
+        ],
+        "practice_examples": [
+          "Construir pipeline batch de ingestão",
+          "Preparar dataset para embeddings"
+        ],
+        "interview_topics": [
+          "Batch vs incremental",
+          "Data quality em pipelines"
+        ]
+      }
+    },
+    {
+      "id": "ai-pipelines-ingestao",
+      "name": "Construir pipelines batch e incrementais para ingestão, transformação, validação e carga de dados para IA",
+      "type": "skill",
+      "category": "data-engineering",
+      "description": "Pipelines de dados batch e incrementais para IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 12,
+      "aliases": [
+        "pipeline",
+        "etl",
+        "elt",
+        "ingestão",
+        "batch"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "batch",
+          "incremental",
+          "ingestão",
+          "transformação",
+          "validação",
+          "carga"
+        ],
+        "practice_examples": [
+          "Construir pipeline batch de ingestão",
+          "Adicionar carga incremental"
+        ],
+        "interview_topics": [
+          "Batch vs incremental",
+          "Design de pipeline de dados para IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-processamento-dados",
+      "name": "Processar dados estruturados e não estruturados com normalização, deduplicação, chunking e enriquecimento",
+      "type": "skill",
+      "category": "data-engineering",
+      "description": "Processamento de dados estruturados e não estruturados.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "normalização",
+        "deduplicação",
+        "chunking",
+        "enriquecimento"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "estruturados",
+          "não estruturados",
+          "normalização",
+          "deduplicação",
+          "chunking",
+          "enriquecimento"
+        ],
+        "practice_examples": [
+          "Deduplicar e normalizar um dataset",
+          "Chunking de documentos"
+        ],
+        "interview_topics": [
+          "Processar dados não estruturados",
+          "Estratégias de chunking"
+        ]
+      }
+    },
+    {
+      "id": "ai-validacao-datasets",
+      "name": "Implementar validações de schema, qualidade, completude, consistência e rastreabilidade em datasets",
+      "type": "skill",
+      "category": "data-engineering",
+      "description": "Validação e qualidade de datasets.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "data quality",
+        "validação de schema",
+        "data lineage"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "schema",
+          "qualidade",
+          "completude",
+          "consistência",
+          "rastreabilidade"
+        ],
+        "practice_examples": [
+          "Validar schema e qualidade de um dataset",
+          "Implementar rastreabilidade (lineage)"
+        ],
+        "interview_topics": [
+          "Data quality em pipelines",
+          "Rastreabilidade de dados"
+        ]
+      }
+    },
+    {
+      "id": "ai-orquestracao-workflows",
+      "name": "Orquestrar workflows com dependências, retries, backfills, checkpoints e execução idempotente",
+      "type": "skill",
+      "category": "data-engineering",
+      "description": "Orquestração de workflows de dados.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "orquestração",
+        "airflow",
+        "dag",
+        "idempotência",
+        "backfill"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "dependências",
+          "retries",
+          "backfills",
+          "checkpoints",
+          "idempotência"
+        ],
+        "practice_examples": [
+          "Orquestrar um DAG com retries",
+          "Rodar um backfill idempotente"
+        ],
+        "interview_topics": [
+          "Idempotência em pipelines",
+          "Backfills e checkpoints"
+        ]
+      }
+    },
+    {
+      "id": "ai-preparar-datasets-ia",
+      "name": "Preparar datasets para embeddings, fine-tuning, avaliação, busca semântica e consumo por aplicações de IA",
+      "type": "skill",
+      "category": "data-engineering",
+      "description": "Preparação de datasets para aplicações de IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "dataset prep",
+        "embeddings",
+        "fine-tuning",
+        "busca semântica"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "embeddings",
+          "fine-tuning",
+          "avaliação",
+          "busca semântica"
+        ],
+        "practice_examples": [
+          "Preparar dataset para fine-tuning",
+          "Gerar dataset para busca semântica"
+        ],
+        "interview_topics": [
+          "Preparar dados para embeddings",
+          "Dataset para avaliação"
+        ]
+      }
+    },
+    {
+      "id": "ai-monitorar-pipelines",
+      "name": "Monitorar pipelines com logs, métricas de volume, latência, falhas, registros rejeitados e freshness",
+      "type": "skill",
+      "category": "data-engineering",
+      "description": "Observabilidade de pipelines de dados.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "monitoramento de pipeline",
+        "freshness",
+        "data observability"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "logs",
+          "volume",
+          "latência",
+          "falhas",
+          "rejeitados",
+          "freshness"
+        ],
+        "practice_examples": [
+          "Instrumentar métricas de um pipeline",
+          "Alertar por freshness/rejeições"
+        ],
+        "interview_topics": [
+          "Observabilidade de dados",
+          "Freshness e SLAs de dados"
+        ]
+      }
+    },
+    {
+      "id": "ai-cloud-for-ai",
+      "name": "Cloud for AI Básico + Intermediário",
+      "type": "module",
+      "category": "cloud",
+      "description": "Módulo AI Engineer (Pleno): Cloud for AI Básico + Intermediário.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 48,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "provisionamento",
+          "serviços de IA",
+          "secrets/quotas",
+          "storage",
+          "deploy",
+          "custos"
+        ],
+        "practice_examples": [
+          "Provisionar ambiente para workload de IA",
+          "Deploy de app de IA com autoscaling"
+        ],
+        "interview_topics": [
+          "Recursos cloud para IA",
+          "FinOps para IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-provisionar-cloud",
+      "name": "Provisionar recursos cloud para execução de workloads de IA com compute, storage, rede e permissões",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Provisionamento de recursos cloud para IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "provisionamento",
+        "iac",
+        "compute",
+        "gpu"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "compute",
+          "storage",
+          "rede",
+          "permissões",
+          "GPU"
+        ],
+        "practice_examples": [
+          "Provisionar ambiente para workload de IA",
+          "Configurar permissões e rede"
+        ],
+        "interview_topics": [
+          "Recursos cloud para IA",
+          "Compute (GPU) para inferência/treino"
+        ]
+      }
+    },
+    {
+      "id": "ai-ambientes-servicos-ia",
+      "name": "Configurar ambientes para APIs de modelos, bancos vetoriais, filas, funções serverless e serviços gerenciados",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Configuração de serviços gerenciados para IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "banco vetorial",
+        "serverless",
+        "filas",
+        "serviços gerenciados"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "APIs de modelos",
+          "bancos vetoriais",
+          "filas",
+          "serverless",
+          "gerenciados"
+        ],
+        "practice_examples": [
+          "Configurar banco vetorial gerenciado",
+          "Integrar fila e serverless"
+        ],
+        "interview_topics": [
+          "Serviços gerenciados para IA",
+          "Banco vetorial em produção"
+        ]
+      }
+    },
+    {
+      "id": "ai-secrets-quotas",
+      "name": "Gerenciar secrets, variáveis, credenciais, quotas, rate limits e segregação por ambiente",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Gestão de secrets, quotas e ambientes.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "secrets",
+        "quotas",
+        "rate limit",
+        "segregação de ambiente"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "secrets",
+          "credenciais",
+          "quotas",
+          "rate limits",
+          "ambientes"
+        ],
+        "practice_examples": [
+          "Gerenciar secrets por ambiente",
+          "Configurar quotas e rate limits"
+        ],
+        "interview_topics": [
+          "Gestão de secrets e quotas",
+          "Segregação por ambiente"
+        ]
+      }
+    },
+    {
+      "id": "ai-armazenamento-artefatos-ia",
+      "name": "Implementar armazenamento de datasets, embeddings, prompts, artefatos, logs e resultados de inferência",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Armazenamento de artefatos de IA.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "storage",
+        "artefatos",
+        "embeddings storage",
+        "logs de inferência"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "datasets",
+          "embeddings",
+          "prompts",
+          "artefatos",
+          "logs",
+          "resultados"
+        ],
+        "practice_examples": [
+          "Armazenar embeddings e artefatos",
+          "Guardar logs de inferência"
+        ],
+        "interview_topics": [
+          "Armazenamento de artefatos de IA",
+          "Onde guardar embeddings/prompts"
+        ]
+      }
+    },
+    {
+      "id": "ai-deploy-aplicacoes-ia",
+      "name": "Configurar deploy de aplicações de IA com autoscaling, balanceamento, cache e observabilidade básica",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Deploy de aplicações de IA em produção.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "deploy de IA",
+        "autoscaling",
+        "balanceamento",
+        "cache"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "autoscaling",
+          "balanceamento",
+          "cache",
+          "observabilidade"
+        ],
+        "practice_examples": [
+          "Deploy de app de IA com autoscaling",
+          "Adicionar cache e observabilidade"
+        ],
+        "interview_topics": [
+          "Deploy de aplicações de IA",
+          "Autoscaling para workloads de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-monitorar-custos-tokens",
+      "name": "Monitorar custos, uso de tokens, consumo de compute, storage, chamadas de API e limites operacionais",
+      "type": "skill",
+      "category": "cloud",
+      "description": "Monitoramento de custos e consumo de IA.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "custos",
+        "tokens",
+        "finops",
+        "consumo"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "custos",
+          "tokens",
+          "compute",
+          "storage",
+          "chamadas de API",
+          "limites"
+        ],
+        "practice_examples": [
+          "Monitorar consumo de tokens e custo",
+          "Alertar por limites operacionais"
+        ],
+        "interview_topics": [
+          "FinOps para IA",
+          "Controle de custo de tokens"
+        ]
+      }
+    },
+    {
+      "id": "ai-devops-for-ai",
+      "name": "DevOps for AI Básico + Intermediário",
+      "type": "module",
+      "category": "mlops",
+      "description": "Módulo AI Engineer (Pleno): DevOps for AI Básico + Intermediário.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 48,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "CI/CD de IA",
+          "versionamento",
+          "avaliação offline",
+          "observabilidade",
+          "guardrails"
+        ],
+        "practice_examples": [
+          "Montar CI/CD para app de IA",
+          "Bloquear release por regressão de qualidade"
+        ],
+        "interview_topics": [
+          "CI/CD para IA",
+          "Quality gates de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-cicd-ia",
+      "name": "Criar pipelines CI/CD para aplicações de IA com testes, lint, validação de prompts, build e deploy",
+      "type": "skill",
+      "category": "mlops",
+      "description": "CI/CD para aplicações de IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "ci/cd de IA",
+        "pipeline de IA",
+        "validação de prompts"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "testes",
+          "lint",
+          "validação de prompts",
+          "build",
+          "deploy"
+        ],
+        "practice_examples": [
+          "Montar CI/CD para app de IA",
+          "Validar prompts no pipeline"
+        ],
+        "interview_topics": [
+          "CI/CD para aplicações de IA",
+          "Validação de prompts em CI"
+        ]
+      }
+    },
+    {
+      "id": "ai-versionamento-artefatos",
+      "name": "Versionar prompts, datasets, embeddings, configurações de modelos e artefatos de avaliação",
+      "type": "skill",
+      "category": "mlops",
+      "description": "Versionamento de artefatos de IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "versionamento",
+        "prompt versioning",
+        "dataset versioning",
+        "dvc"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "prompts",
+          "datasets",
+          "embeddings",
+          "configs de modelo",
+          "avaliação"
+        ],
+        "practice_examples": [
+          "Versionar prompts e datasets",
+          "Rastrear versões de configuração de modelo"
+        ],
+        "interview_topics": [
+          "Versionamento em MLOps",
+          "Como versionar prompts e datasets"
+        ]
+      }
+    },
+    {
+      "id": "ai-avaliacao-offline-regressao",
+      "name": "Automatizar avaliações offline com golden datasets, regressão de qualidade, critérios de aceitação e bloqueios de release",
+      "type": "skill",
+      "category": "mlops",
+      "description": "Avaliação offline automatizada e quality gates.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "eval offline",
+        "regressão de qualidade",
+        "quality gate"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "golden datasets",
+          "regressão",
+          "aceitação",
+          "bloqueio de release"
+        ],
+        "practice_examples": [
+          "Automatizar avaliação offline no pipeline",
+          "Bloquear release por regressão"
+        ],
+        "interview_topics": [
+          "Quality gates de IA",
+          "Regressão de qualidade em LLMs"
+        ]
+      }
+    },
+    {
+      "id": "ai-observabilidade-ia",
+      "name": "Configurar observabilidade com logs de prompts, respostas, latência, custo, erros, feedback e traces de execução",
+      "type": "skill",
+      "category": "mlops",
+      "description": "Observabilidade de aplicações de IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "observabilidade de IA",
+        "tracing de LLM",
+        "logging de prompts"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "logs de prompts/respostas",
+          "latência",
+          "custo",
+          "erros",
+          "feedback",
+          "traces"
+        ],
+        "practice_examples": [
+          "Instrumentar traces de execução de LLM",
+          "Logar prompts, respostas e custo"
+        ],
+        "interview_topics": [
+          "Observabilidade de IA",
+          "Tracing de execução de agentes/LLMs"
+        ]
+      }
+    },
+    {
+      "id": "ai-ambientes-fallback-rollback",
+      "name": "Gerenciar ambientes, secrets, quotas, rate limits, fallback de modelos e rollback de versões",
+      "type": "skill",
+      "category": "mlops",
+      "description": "Gestão de ambientes, fallback e rollback.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "fallback de modelos",
+        "rollback",
+        "ambientes",
+        "quotas"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "ambientes",
+          "secrets",
+          "quotas",
+          "rate limits",
+          "fallback",
+          "rollback"
+        ],
+        "practice_examples": [
+          "Configurar fallback de modelos",
+          "Fazer rollback de versão de prompt/modelo"
+        ],
+        "interview_topics": [
+          "Fallback e rollback em IA",
+          "Gestão de ambientes de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-guardrails-operacionais",
+      "name": "Implementar guardrails operacionais com validação de entrada, schema de saída, retries e tratamento de falhas",
+      "type": "skill",
+      "category": "mlops",
+      "description": "Guardrails operacionais em produção.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "guardrails",
+        "validação de entrada/saída",
+        "safety"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "validação de entrada",
+          "schema de saída",
+          "retries",
+          "tratamento de falhas"
+        ],
+        "practice_examples": [
+          "Adicionar guardrails de entrada e saída",
+          "Retry e tratamento de falhas em produção"
+        ],
+        "interview_topics": [
+          "Guardrails operacionais",
+          "Validação de entrada/saída de LLM"
+        ]
+      }
+    },
+    {
+      "id": "ai-memory-retrieval-rag",
+      "name": "Memory & Retrieval RAG Básico + Intermediário",
+      "type": "module",
+      "category": "rag",
+      "description": "Módulo AI Engineer (Pleno): Memory & Retrieval RAG Básico + Intermediário.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 48,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "ingestão",
+          "embeddings/indexação",
+          "fluxos RAG",
+          "avaliação",
+          "otimização",
+          "memória"
+        ],
+        "practice_examples": [
+          "Construir um fluxo RAG completo",
+          "Ajustar chunk size e top-k"
+        ],
+        "interview_topics": [
+          "Arquitetura de RAG",
+          "Métricas de RAG"
+        ]
+      }
+    },
+    {
+      "id": "ai-ingestao-documentos-rag",
+      "name": "Implementar pipelines de ingestão para documentos com parsing, limpeza, chunking, metadados e versionamento",
+      "type": "skill",
+      "category": "rag",
+      "description": "Ingestão de documentos para RAG.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "ingestão RAG",
+        "parsing",
+        "chunking",
+        "metadados"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "parsing",
+          "limpeza",
+          "chunking",
+          "metadados",
+          "versionamento"
+        ],
+        "practice_examples": [
+          "Ingerir documentos com chunking e metadados",
+          "Versionar base de conhecimento"
+        ],
+        "interview_topics": [
+          "Pipeline de ingestão para RAG",
+          "Chunking e metadados"
+        ]
+      }
+    },
+    {
+      "id": "ai-embeddings-indexacao",
+      "name": "Gerar embeddings e indexar conteúdos em bancos vetoriais com filtros, namespaces e estratégias de atualização",
+      "type": "skill",
+      "category": "rag",
+      "description": "Embeddings e indexação em bancos vetoriais.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "embeddings",
+        "banco vetorial",
+        "vector db",
+        "indexação"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "embeddings",
+          "indexação",
+          "filtros",
+          "namespaces",
+          "atualização"
+        ],
+        "practice_examples": [
+          "Indexar conteúdo em banco vetorial",
+          "Configurar namespaces e filtros"
+        ],
+        "interview_topics": [
+          "Indexação em banco vetorial",
+          "Estratégias de atualização de índice"
+        ]
+      }
+    },
+    {
+      "id": "ai-fluxos-rag",
+      "name": "Construir fluxos RAG com retrieval, reranking, contexto controlado, citações e composição de resposta",
+      "type": "skill",
+      "category": "rag",
+      "description": "Construção de fluxos RAG completos.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 10,
+      "aliases": [
+        "rag",
+        "retrieval",
+        "reranking",
+        "citações"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "retrieval",
+          "reranking",
+          "contexto controlado",
+          "citações",
+          "composição"
+        ],
+        "practice_examples": [
+          "Construir um fluxo RAG completo",
+          "Adicionar reranking e citações"
+        ],
+        "interview_topics": [
+          "Arquitetura de RAG",
+          "Reranking e controle de contexto"
+        ]
+      }
+    },
+    {
+      "id": "ai-avaliacao-retrieval",
+      "name": "Avaliar qualidade de recuperação com precision, recall, relevância, cobertura, groundedness e análise de falhas",
+      "type": "skill",
+      "category": "evaluation",
+      "description": "Avaliação de qualidade de recuperação (RAG).",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "avaliação de RAG",
+        "precision",
+        "recall",
+        "groundedness"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "precision",
+          "recall",
+          "relevância",
+          "cobertura",
+          "groundedness"
+        ],
+        "practice_examples": [
+          "Avaliar retrieval com precision/recall",
+          "Medir groundedness das respostas"
+        ],
+        "interview_topics": [
+          "Métricas de RAG",
+          "Groundedness e relevância"
+        ]
+      }
+    },
+    {
+      "id": "ai-otimizacao-rag",
+      "name": "Otimizar chunk size, overlap, top-k, filtros, hybrid search e estratégias de ranking por domínio",
+      "type": "skill",
+      "category": "rag",
+      "description": "Tuning de parâmetros de RAG.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "chunk size",
+        "top-k",
+        "hybrid search",
+        "tuning de RAG"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "chunk size",
+          "overlap",
+          "top-k",
+          "filtros",
+          "hybrid search",
+          "ranking"
+        ],
+        "practice_examples": [
+          "Ajustar chunk size e top-k",
+          "Aplicar hybrid search"
+        ],
+        "interview_topics": [
+          "Tuning de RAG",
+          "Hybrid search (denso + esparso)"
+        ]
+      }
+    },
+    {
+      "id": "ai-memoria-conversacional",
+      "name": "Implementar memória conversacional com histórico resumido, contexto persistido, expiração e isolamento por usuário",
+      "type": "skill",
+      "category": "memory",
+      "description": "Memória conversacional persistente.",
+      "level": "mid",
+      "importance": 7,
+      "estimated_hours": 8,
+      "aliases": [
+        "memória conversacional",
+        "histórico",
+        "contexto persistido"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "histórico resumido",
+          "contexto persistido",
+          "expiração",
+          "isolamento"
+        ],
+        "practice_examples": [
+          "Implementar memória com resumo de histórico",
+          "Isolar contexto por usuário"
+        ],
+        "interview_topics": [
+          "Memória conversacional",
+          "Resumo de histórico e isolamento"
+        ]
+      }
+    },
+    {
+      "id": "ai-agentic-systems",
+      "name": "Agentic Systems Básico + Intermediário",
+      "type": "module",
+      "category": "agents",
+      "description": "Módulo AI Engineer (Pleno): Agentic Systems Básico + Intermediário.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 48,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "design de agentes",
+          "tool calling",
+          "multi-step",
+          "integração",
+          "guardrails",
+          "avaliação"
+        ],
+        "practice_examples": [
+          "Projetar um agente para uma tarefa",
+          "Construir loop planejar-executar-observar"
+        ],
+        "interview_topics": [
+          "Design de agentes",
+          "Fluxos multi-step (ReAct)"
+        ]
+      }
+    },
+    {
+      "id": "ai-projetar-agentes",
+      "name": "Projetar agentes com objetivos, instruções, ferramentas disponíveis, limites de execução e critérios de parada",
+      "type": "skill",
+      "category": "agents",
+      "description": "Design de agentes de IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "agentes",
+        "agent design",
+        "critérios de parada"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "objetivos",
+          "instruções",
+          "ferramentas",
+          "limites",
+          "critérios de parada"
+        ],
+        "practice_examples": [
+          "Projetar um agente para uma tarefa",
+          "Definir limites e critérios de parada"
+        ],
+        "interview_topics": [
+          "Design de agentes",
+          "Critérios de parada de um agente"
+        ]
+      }
+    },
+    {
+      "id": "ai-tool-calling",
+      "name": "Implementar tool calling com schemas, validação de argumentos, tratamento de erros e retorno estruturado",
+      "type": "skill",
+      "category": "agents",
+      "description": "Tool calling robusto em agentes.",
+      "level": "mid",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "tool calling",
+        "function calling",
+        "ferramentas"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "schemas",
+          "validação de argumentos",
+          "tratamento de erros",
+          "retorno estruturado"
+        ],
+        "practice_examples": [
+          "Implementar tool calling com validação",
+          "Tratar erro de ferramenta"
+        ],
+        "interview_topics": [
+          "Tool calling robusto",
+          "Validação de argumentos de ferramentas"
+        ]
+      }
+    },
+    {
+      "id": "ai-fluxos-multi-step",
+      "name": "Criar fluxos multi-step com planejamento, execução, observação, revisão e controle de estado",
+      "type": "skill",
+      "category": "agents",
+      "description": "Fluxos de agente multi-step.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "multi-step",
+        "planejamento",
+        "react",
+        "controle de estado"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "planejamento",
+          "execução",
+          "observação",
+          "revisão",
+          "estado"
+        ],
+        "practice_examples": [
+          "Construir loop planejar-executar-observar",
+          "Gerenciar estado do agente"
+        ],
+        "interview_topics": [
+          "Fluxos multi-step (ReAct)",
+          "Controle de estado em agentes"
+        ]
+      }
+    },
+    {
+      "id": "ai-integrar-agentes",
+      "name": "Integrar agentes com APIs, bancos de dados, sistemas internos, filas e mecanismos de busca",
+      "type": "skill",
+      "category": "agents",
+      "description": "Integração de agentes com sistemas.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "integração de agentes",
+        "apis",
+        "busca"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "APIs",
+          "bancos de dados",
+          "sistemas internos",
+          "filas",
+          "busca"
+        ],
+        "practice_examples": [
+          "Integrar agente a uma API interna",
+          "Dar ao agente acesso a busca/DB"
+        ],
+        "interview_topics": [
+          "Integração de agentes com sistemas",
+          "Acesso a ferramentas externas"
+        ]
+      }
+    },
+    {
+      "id": "ai-guardrails-agentes",
+      "name": "Aplicar guardrails para permissões, escopo de ferramentas, validação de ações e prevenção de loops",
+      "type": "skill",
+      "category": "agents",
+      "description": "Guardrails de segurança para agentes.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "guardrails de agente",
+        "permissões",
+        "prevenção de loops"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "permissões",
+          "escopo de ferramentas",
+          "validação de ações",
+          "prevenção de loops"
+        ],
+        "practice_examples": [
+          "Limitar escopo de ferramentas de um agente",
+          "Prevenir loops infinitos"
+        ],
+        "interview_topics": [
+          "Guardrails de agentes",
+          "Prevenção de loops e escopo de permissões"
+        ]
+      }
+    },
+    {
+      "id": "ai-avaliacao-agentes",
+      "name": "Avaliar agentes com cenários de teste, traces, taxa de sucesso, custo, latência e análise de falhas",
+      "type": "skill",
+      "category": "evaluation",
+      "description": "Avaliação de agentes de IA.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "avaliação de agentes",
+        "traces",
+        "taxa de sucesso"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "cenários de teste",
+          "traces",
+          "taxa de sucesso",
+          "custo",
+          "latência"
+        ],
+        "practice_examples": [
+          "Montar cenários de teste para um agente",
+          "Medir taxa de sucesso e custo"
+        ],
+        "interview_topics": [
+          "Como avaliar agentes",
+          "Métricas de sucesso de agentes"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-001",
+      "source": "ai-pleno-sistemas-com-ai",
+      "target": "ai-herdado-de-junior",
+      "type": "contains"
+    },
+    {
+      "id": "edge-002",
+      "source": "ai-herdado-de-junior",
+      "target": "ai-junior-uso-de-ai",
+      "type": "inherits"
+    },
+    {
+      "id": "edge-003",
+      "source": "ai-pleno-sistemas-com-ai",
+      "target": "ai-evolucao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-004",
+      "source": "ai-evolucao",
+      "target": "ai-data-engineering-pipelines",
+      "type": "contains"
+    },
+    {
+      "id": "edge-005",
+      "source": "ai-data-engineering-pipelines",
+      "target": "ai-pipelines-ingestao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-006",
+      "source": "ai-data-engineering-pipelines",
+      "target": "ai-processamento-dados",
+      "type": "contains"
+    },
+    {
+      "id": "edge-007",
+      "source": "ai-data-engineering-pipelines",
+      "target": "ai-validacao-datasets",
+      "type": "contains"
+    },
+    {
+      "id": "edge-008",
+      "source": "ai-data-engineering-pipelines",
+      "target": "ai-orquestracao-workflows",
+      "type": "contains"
+    },
+    {
+      "id": "edge-009",
+      "source": "ai-data-engineering-pipelines",
+      "target": "ai-preparar-datasets-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-010",
+      "source": "ai-data-engineering-pipelines",
+      "target": "ai-monitorar-pipelines",
+      "type": "contains"
+    },
+    {
+      "id": "edge-011",
+      "source": "ai-evolucao",
+      "target": "ai-cloud-for-ai",
+      "type": "contains"
+    },
+    {
+      "id": "edge-012",
+      "source": "ai-cloud-for-ai",
+      "target": "ai-provisionar-cloud",
+      "type": "contains"
+    },
+    {
+      "id": "edge-013",
+      "source": "ai-cloud-for-ai",
+      "target": "ai-ambientes-servicos-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-014",
+      "source": "ai-cloud-for-ai",
+      "target": "ai-secrets-quotas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-015",
+      "source": "ai-cloud-for-ai",
+      "target": "ai-armazenamento-artefatos-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-016",
+      "source": "ai-cloud-for-ai",
+      "target": "ai-deploy-aplicacoes-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-017",
+      "source": "ai-cloud-for-ai",
+      "target": "ai-monitorar-custos-tokens",
+      "type": "contains"
+    },
+    {
+      "id": "edge-018",
+      "source": "ai-evolucao",
+      "target": "ai-devops-for-ai",
+      "type": "contains"
+    },
+    {
+      "id": "edge-019",
+      "source": "ai-devops-for-ai",
+      "target": "ai-cicd-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-020",
+      "source": "ai-devops-for-ai",
+      "target": "ai-versionamento-artefatos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-021",
+      "source": "ai-devops-for-ai",
+      "target": "ai-avaliacao-offline-regressao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-022",
+      "source": "ai-devops-for-ai",
+      "target": "ai-observabilidade-ia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-023",
+      "source": "ai-devops-for-ai",
+      "target": "ai-ambientes-fallback-rollback",
+      "type": "contains"
+    },
+    {
+      "id": "edge-024",
+      "source": "ai-devops-for-ai",
+      "target": "ai-guardrails-operacionais",
+      "type": "contains"
+    },
+    {
+      "id": "edge-025",
+      "source": "ai-evolucao",
+      "target": "ai-memory-retrieval-rag",
+      "type": "contains"
+    },
+    {
+      "id": "edge-026",
+      "source": "ai-memory-retrieval-rag",
+      "target": "ai-ingestao-documentos-rag",
+      "type": "contains"
+    },
+    {
+      "id": "edge-027",
+      "source": "ai-memory-retrieval-rag",
+      "target": "ai-embeddings-indexacao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-028",
+      "source": "ai-memory-retrieval-rag",
+      "target": "ai-fluxos-rag",
+      "type": "contains"
+    },
+    {
+      "id": "edge-029",
+      "source": "ai-memory-retrieval-rag",
+      "target": "ai-avaliacao-retrieval",
+      "type": "contains"
+    },
+    {
+      "id": "edge-030",
+      "source": "ai-memory-retrieval-rag",
+      "target": "ai-otimizacao-rag",
+      "type": "contains"
+    },
+    {
+      "id": "edge-031",
+      "source": "ai-memory-retrieval-rag",
+      "target": "ai-memoria-conversacional",
+      "type": "contains"
+    },
+    {
+      "id": "edge-032",
+      "source": "ai-evolucao",
+      "target": "ai-agentic-systems",
+      "type": "contains"
+    },
+    {
+      "id": "edge-033",
+      "source": "ai-agentic-systems",
+      "target": "ai-projetar-agentes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-034",
+      "source": "ai-agentic-systems",
+      "target": "ai-tool-calling",
+      "type": "contains"
+    },
+    {
+      "id": "edge-035",
+      "source": "ai-agentic-systems",
+      "target": "ai-fluxos-multi-step",
+      "type": "contains"
+    },
+    {
+      "id": "edge-036",
+      "source": "ai-agentic-systems",
+      "target": "ai-integrar-agentes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-037",
+      "source": "ai-agentic-systems",
+      "target": "ai-guardrails-agentes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-038",
+      "source": "ai-agentic-systems",
+      "target": "ai-avaliacao-agentes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-039",
+      "source": "ai-evolucao",
+      "target": "banco-dados-intermediario",
+      "type": "references"
+    },
+    {
+      "id": "edge-040",
+      "source": "ai-evolucao",
+      "target": "design-software-intermediario",
+      "type": "references"
+    },
+    {
+      "id": "edge-041",
+      "source": "ai-io-estruturado",
+      "target": "ai-tool-calling",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-042",
+      "source": "ai-chamadas-api-modelos",
+      "target": "ai-deploy-aplicacoes-ia",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-043",
+      "source": "banco-dados-intermediario",
+      "target": "ai-embeddings-indexacao",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-044",
+      "source": "ai-ingestao-documentos-rag",
+      "target": "ai-embeddings-indexacao",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-045",
+      "source": "ai-embeddings-indexacao",
+      "target": "ai-fluxos-rag",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-046",
+      "source": "ai-fluxos-rag",
+      "target": "ai-avaliacao-retrieval",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-047",
+      "source": "ai-projetar-agentes",
+      "target": "ai-tool-calling",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-048",
+      "source": "ai-tool-calling",
+      "target": "ai-fluxos-multi-step",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-049",
+      "source": "ai-pipelines-ingestao",
+      "target": "ai-preparar-datasets-ia",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-050",
+      "source": "ai-cicd-ia",
+      "target": "ai-avaliacao-offline-regressao",
+      "type": "prerequisite"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "cv-analyzer-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "make dev",
+    "build": "make build",
+    "test": "make test",
+    "lint": "make lint",
+    "seed": "make seed"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

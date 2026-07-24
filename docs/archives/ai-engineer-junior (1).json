@@ -1,0 +1,997 @@
+{
+  "id": "ai-engineer-junior",
+  "title": "AI Engineer — Júnior",
+  "role": "ai_engineer",
+  "version": "1.0.0",
+  "description": "Roadmap base para AI Engineer — bloco JÚNIOR (Uso de AI). Reaproveita 6 módulos de fundamentos do Software Engineer por referência (sem copiar os nós).",
+  "market": [
+    "brazil",
+    "international"
+  ],
+  "metadata": {
+    "author": "",
+    "created_at": "2026-07-13",
+    "updated_at": "2026-07-13",
+    "references_role": "software_engineer",
+    "tags": [
+      "ai",
+      "llm",
+      "prompt-engineering",
+      "inference",
+      "junior"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "ai-junior-uso-de-ai",
+      "name": "JÚNIOR Uso de AI",
+      "type": "domain",
+      "category": "career",
+      "description": "Competências para um AI Engineer Júnior: uso prático de modelos e prompt engineering, mais os fundamentos de engenharia herdados do Software Engineer (por referência).",
+      "level": "junior",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Modelos & Inference",
+          "Prompt Engineering",
+          "Fundamentos de engenharia (SE)"
+        ],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-modelos-inference",
+      "name": "Modelos & Inference Básico + Intermediário",
+      "type": "module",
+      "category": "ai",
+      "description": "Módulo AI Engineer: Modelos & Inference Básico + Intermediário.",
+      "level": "junior",
+      "importance": 10,
+      "estimated_hours": 40,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "seleção de modelos",
+          "parâmetros de inferência",
+          "APIs de modelos",
+          "structured output",
+          "avaliação",
+          "otimização de custo"
+        ],
+        "practice_examples": [
+          "Comparar modelos para uma tarefa",
+          "Implementar cliente com retry e cache"
+        ],
+        "interview_topics": [
+          "Como escolher um modelo",
+          "Structured output e function calling"
+        ]
+      }
+    },
+    {
+      "id": "ai-comparar-modelos",
+      "name": "Comparar modelos por janela de contexto, latência, custo, qualidade, multimodalidade e requisitos de implantação",
+      "type": "skill",
+      "category": "models",
+      "description": "Seleção de modelos avaliando trade-offs.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "comparação de modelos",
+        "model selection",
+        "benchmark de modelos"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "janela de contexto",
+          "latência",
+          "custo",
+          "qualidade",
+          "multimodalidade",
+          "implantação"
+        ],
+        "practice_examples": [
+          "Comparar 3 modelos para uma tarefa",
+          "Montar matriz de trade-offs de modelos"
+        ],
+        "interview_topics": [
+          "Como escolher um modelo",
+          "Trade-offs entre modelos"
+        ]
+      }
+    },
+    {
+      "id": "ai-parametros-inferencia",
+      "name": "Configurar parâmetros de inferência como temperature, top-p, max tokens, stop sequences e seed quando disponível",
+      "type": "skill",
+      "category": "inference",
+      "description": "Controle dos parâmetros de geração.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 5,
+      "aliases": [
+        "temperature",
+        "top-p",
+        "max tokens",
+        "sampling"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "temperature",
+          "top-p",
+          "max tokens",
+          "stop sequences",
+          "seed"
+        ],
+        "practice_examples": [
+          "Ajustar temperature/top-p para uma tarefa",
+          "Controlar saída com stop sequences"
+        ],
+        "interview_topics": [
+          "O que faz temperature e top-p",
+          "Determinismo com seed"
+        ]
+      }
+    },
+    {
+      "id": "ai-chamadas-api-modelos",
+      "name": "Implementar chamadas a APIs de modelos com autenticação, rate limits, retries, timeouts e tratamento de erros",
+      "type": "skill",
+      "category": "inference",
+      "description": "Integração robusta com APIs de modelos.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "api de modelos",
+        "rate limit",
+        "retries",
+        "timeout"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "autenticação",
+          "rate limits",
+          "retries",
+          "timeouts",
+          "tratamento de erros"
+        ],
+        "practice_examples": [
+          "Implementar cliente com retry e backoff",
+          "Tratar rate limit (429)"
+        ],
+        "interview_topics": [
+          "Como lidar com rate limits",
+          "Retry e idempotência em chamadas de LLM"
+        ]
+      }
+    },
+    {
+      "id": "ai-io-estruturado",
+      "name": "Estruturar entradas e saídas com JSON schema, function calling, tool use e validação programática",
+      "type": "skill",
+      "category": "inference",
+      "description": "Entrada/saída estruturada e tool use.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "json schema",
+        "function calling",
+        "tool use",
+        "structured output"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "JSON schema",
+          "function calling",
+          "tool use",
+          "validação"
+        ],
+        "practice_examples": [
+          "Definir JSON schema para a saída",
+          "Implementar tool use / function calling"
+        ],
+        "interview_topics": [
+          "Structured output com JSON schema",
+          "Function calling / tool use"
+        ]
+      }
+    },
+    {
+      "id": "ai-avaliacao-respostas",
+      "name": "Avaliar respostas de modelos com testes offline, golden datasets, métricas de qualidade e análise de falhas",
+      "type": "skill",
+      "category": "evaluation",
+      "description": "Avaliação sistemática de saídas de modelos.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "avaliação",
+        "eval",
+        "golden dataset",
+        "métricas"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "testes offline",
+          "golden datasets",
+          "métricas de qualidade",
+          "análise de falhas"
+        ],
+        "practice_examples": [
+          "Montar um golden dataset",
+          "Avaliar saídas com métricas de qualidade"
+        ],
+        "interview_topics": [
+          "Como avaliar um LLM",
+          "Golden datasets e métricas"
+        ]
+      }
+    },
+    {
+      "id": "ai-otimizacao-custo-inferencia",
+      "name": "Otimizar custo e desempenho com batching, caching, streaming, fallback de modelos e roteamento por tarefa",
+      "type": "skill",
+      "category": "inference",
+      "description": "Otimização de custo e desempenho de inferência.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "batching",
+        "caching",
+        "streaming",
+        "fallback",
+        "roteamento"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "batching",
+          "caching",
+          "streaming",
+          "fallback",
+          "roteamento por tarefa"
+        ],
+        "practice_examples": [
+          "Adicionar cache de respostas",
+          "Implementar fallback entre modelos"
+        ],
+        "interview_topics": [
+          "Otimizar custo de inferência",
+          "Roteamento e fallback de modelos"
+        ]
+      }
+    },
+    {
+      "id": "ai-prompt-engineering",
+      "name": "Prompt Engineering & Interaction Básico + Intermediário",
+      "type": "module",
+      "category": "ai",
+      "description": "Módulo AI Engineer: Prompt Engineering & Interaction Básico + Intermediário.",
+      "level": "junior",
+      "importance": 10,
+      "estimated_hours": 40,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "prompts estruturados",
+          "instruções reutilizáveis",
+          "few-shot",
+          "fluxos conversacionais",
+          "validação de saídas",
+          "grounding"
+        ],
+        "practice_examples": [
+          "Escrever prompt estruturado",
+          "Reduzir alucinações com grounding"
+        ],
+        "interview_topics": [
+          "Anatomia de um bom prompt",
+          "Como reduzir alucinações"
+        ]
+      }
+    },
+    {
+      "id": "ai-prompts-estruturados",
+      "name": "Escrever prompts estruturados com objetivo, contexto, restrições, formato de saída e critérios de qualidade",
+      "type": "skill",
+      "category": "prompting",
+      "description": "Escrita de prompts estruturados.",
+      "level": "junior",
+      "importance": 9,
+      "estimated_hours": 6,
+      "aliases": [
+        "prompt",
+        "prompt estruturado",
+        "prompt design"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "objetivo",
+          "contexto",
+          "restrições",
+          "formato de saída",
+          "critérios de qualidade"
+        ],
+        "practice_examples": [
+          "Escrever prompt estruturado para uma tarefa",
+          "Definir critérios de qualidade da saída"
+        ],
+        "interview_topics": [
+          "Anatomia de um bom prompt",
+          "Como estruturar um prompt"
+        ]
+      }
+    },
+    {
+      "id": "ai-instrucoes-reutilizaveis",
+      "name": "Criar instruções reutilizáveis para tarefas de classificação, extração, sumarização, geração e transformação de texto",
+      "type": "skill",
+      "category": "prompting",
+      "description": "Templates de prompt reutilizáveis por tarefa.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "templates de prompt",
+        "instruções reutilizáveis"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "classificação",
+          "extração",
+          "sumarização",
+          "geração",
+          "transformação"
+        ],
+        "practice_examples": [
+          "Criar template de prompt para extração",
+          "Reutilizar instrução em várias tarefas"
+        ],
+        "interview_topics": [
+          "Templates de prompt",
+          "Prompt para classificação vs extração"
+        ]
+      }
+    },
+    {
+      "id": "ai-few-shot",
+      "name": "Aplicar few-shot prompting com exemplos positivos, negativos, contraexemplos e padrões de resposta esperados",
+      "type": "skill",
+      "category": "prompting",
+      "description": "Few-shot prompting com exemplos.",
+      "level": "junior",
+      "importance": 8,
+      "estimated_hours": 5,
+      "aliases": [
+        "few-shot",
+        "exemplos",
+        "in-context learning"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": true,
+          "expected_depth": 2
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "few-shot",
+          "exemplos positivos/negativos",
+          "contraexemplos",
+          "padrões de resposta"
+        ],
+        "practice_examples": [
+          "Adicionar few-shot examples a um prompt",
+          "Usar contraexemplos"
+        ],
+        "interview_topics": [
+          "Zero-shot vs few-shot",
+          "Como escolher exemplos"
+        ]
+      }
+    },
+    {
+      "id": "ai-fluxos-conversacionais",
+      "name": "Projetar fluxos conversacionais com memória de contexto, coleta incremental de informações e tratamento de ambiguidades",
+      "type": "skill",
+      "category": "interaction",
+      "description": "Design de fluxos conversacionais multi-turno.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "fluxo conversacional",
+        "memória de contexto",
+        "multi-turn"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "memória de contexto",
+          "coleta incremental",
+          "tratamento de ambiguidades"
+        ],
+        "practice_examples": [
+          "Projetar fluxo multi-turno",
+          "Coletar informações incrementalmente"
+        ],
+        "interview_topics": [
+          "Gestão de contexto em conversas",
+          "Tratar ambiguidade do usuário"
+        ]
+      }
+    },
+    {
+      "id": "ai-validacao-saidas",
+      "name": "Implementar validação de saídas com rubricas, formatos estruturados, checagem de consistência e retry orientado",
+      "type": "skill",
+      "category": "prompting",
+      "description": "Validação programática de saídas do modelo.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "validação de saída",
+        "rubrica",
+        "retry"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "rubricas",
+          "formatos estruturados",
+          "checagem de consistência",
+          "retry orientado"
+        ],
+        "practice_examples": [
+          "Validar saída contra schema e rubrica",
+          "Retry orientado a erro"
+        ],
+        "interview_topics": [
+          "Como validar saída de LLM",
+          "Retry orientado a validação"
+        ]
+      }
+    },
+    {
+      "id": "ai-reducao-alucinacoes",
+      "name": "Reduzir alucinações com grounding, delimitação de fontes, perguntas de clarificação e verificação de evidências",
+      "type": "skill",
+      "category": "prompting",
+      "description": "Técnicas para reduzir alucinações.",
+      "level": "mid",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "alucinação",
+        "grounding",
+        "hallucination",
+        "evidências"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 4
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "grounding",
+          "delimitação de fontes",
+          "clarificação",
+          "verificação de evidências"
+        ],
+        "practice_examples": [
+          "Fundamentar resposta em fontes (grounding)",
+          "Verificar evidências antes de responder"
+        ],
+        "interview_topics": [
+          "Como reduzir alucinações",
+          "Grounding e citação de fontes"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-001",
+      "source": "ai-junior-uso-de-ai",
+      "target": "ai-modelos-inference",
+      "type": "contains"
+    },
+    {
+      "id": "edge-002",
+      "source": "ai-modelos-inference",
+      "target": "ai-comparar-modelos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-003",
+      "source": "ai-modelos-inference",
+      "target": "ai-parametros-inferencia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-004",
+      "source": "ai-modelos-inference",
+      "target": "ai-chamadas-api-modelos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-005",
+      "source": "ai-modelos-inference",
+      "target": "ai-io-estruturado",
+      "type": "contains"
+    },
+    {
+      "id": "edge-006",
+      "source": "ai-modelos-inference",
+      "target": "ai-avaliacao-respostas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-007",
+      "source": "ai-modelos-inference",
+      "target": "ai-otimizacao-custo-inferencia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-008",
+      "source": "ai-junior-uso-de-ai",
+      "target": "ai-prompt-engineering",
+      "type": "contains"
+    },
+    {
+      "id": "edge-009",
+      "source": "ai-prompt-engineering",
+      "target": "ai-prompts-estruturados",
+      "type": "contains"
+    },
+    {
+      "id": "edge-010",
+      "source": "ai-prompt-engineering",
+      "target": "ai-instrucoes-reutilizaveis",
+      "type": "contains"
+    },
+    {
+      "id": "edge-011",
+      "source": "ai-prompt-engineering",
+      "target": "ai-few-shot",
+      "type": "contains"
+    },
+    {
+      "id": "edge-012",
+      "source": "ai-prompt-engineering",
+      "target": "ai-fluxos-conversacionais",
+      "type": "contains"
+    },
+    {
+      "id": "edge-013",
+      "source": "ai-prompt-engineering",
+      "target": "ai-validacao-saidas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-014",
+      "source": "ai-prompt-engineering",
+      "target": "ai-reducao-alucinacoes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-015",
+      "source": "ai-junior-uso-de-ai",
+      "target": "software-basico",
+      "type": "references"
+    },
+    {
+      "id": "edge-016",
+      "source": "ai-junior-uso-de-ai",
+      "target": "software-intermediario",
+      "type": "references"
+    },
+    {
+      "id": "edge-017",
+      "source": "ai-junior-uso-de-ai",
+      "target": "design-software-basico",
+      "type": "references"
+    },
+    {
+      "id": "edge-018",
+      "source": "ai-junior-uso-de-ai",
+      "target": "banco-dados-basico",
+      "type": "references"
+    },
+    {
+      "id": "edge-019",
+      "source": "ai-junior-uso-de-ai",
+      "target": "cloud-fundamentals-basico",
+      "type": "references"
+    },
+    {
+      "id": "edge-020",
+      "source": "ai-junior-uso-de-ai",
+      "target": "devops-fundamentals",
+      "type": "references"
+    },
+    {
+      "id": "edge-021",
+      "source": "integracao-apis-rest",
+      "target": "ai-chamadas-api-modelos",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-022",
+      "source": "serializacao-json",
+      "target": "ai-io-estruturado",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-023",
+      "source": "ai-prompts-estruturados",
+      "target": "ai-instrucoes-reutilizaveis",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-024",
+      "source": "ai-prompts-estruturados",
+      "target": "ai-few-shot",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-025",
+      "source": "ai-io-estruturado",
+      "target": "ai-validacao-saidas",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-026",
+      "source": "ai-comparar-modelos",
+      "target": "ai-chamadas-api-modelos",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-027",
+      "source": "ai-chamadas-api-modelos",
+      "target": "ai-otimizacao-custo-inferencia",
+      "type": "prerequisite"
+    }
+  ]
+}

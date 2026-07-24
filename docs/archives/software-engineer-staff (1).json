@@ -1,0 +1,1692 @@
+{
+  "id": "software-engineer-staff",
+  "title": "Software Engineer — Staff",
+  "role": "software_engineer",
+  "version": "1.0.0",
+  "description": "Roadmap base para Software Engineer — bloco STAFF (Escala Organizacional). Herda o bloco Sênior por referência (sem copiar os nós).",
+  "market": [
+    "brazil",
+    "international"
+  ],
+  "metadata": {
+    "author": "",
+    "created_at": "2026-07-13",
+    "updated_at": "2026-07-13",
+    "inherited_from": "software-engineer-senior",
+    "tags": [
+      "architecture",
+      "scalability",
+      "governance",
+      "leadership",
+      "staff"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "staff-escala-organizacional",
+      "name": "STAFF Escala Organizacional",
+      "type": "domain",
+      "category": "career",
+      "description": "Competências de escala organizacional e influência técnica de um Staff Engineer.",
+      "level": "staff",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Herdado de Sênior",
+          "Padronização",
+          "Escala",
+          "Decisões organizacionais"
+        ],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "herdado-de-senior",
+      "name": "Herdado de Sênior",
+      "type": "group",
+      "category": "career",
+      "description": "Referência ao bloco SÊNIOR (e, por transitividade, a Pleno e Júnior), herdado como pré-requisito. Os nós vivem no documento 'software-engineer-senior'; aqui há apenas a relação 'inherits'.",
+      "level": "senior",
+      "importance": 9,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "foco-organizacional",
+      "name": "Foco Organizacional",
+      "type": "group",
+      "category": "career",
+      "description": "Competências novas que caracterizam a evolução de Sênior para Staff: escala e influência organizacional.",
+      "level": "staff",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "padronizacao",
+      "name": "Padronização",
+      "type": "module",
+      "category": "governance",
+      "description": "Módulo Staff: Padronização.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 47,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Padrões de arquitetura",
+          "Governança",
+          "Guidelines",
+          "Stack"
+        ],
+        "practice_examples": [
+          "Definir padrão arquitetural da org",
+          "Instituir processo de RFC"
+        ],
+        "interview_topics": [
+          "Governança técnica em escala",
+          "Como padronizar sem atrito"
+        ]
+      }
+    },
+    {
+      "id": "padroes-arquitetura",
+      "name": "Definição de padrões de arquitetura",
+      "type": "skill",
+      "category": "governance",
+      "description": "Definição de padrões e arquiteturas de referência para a organização.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "padrões de arquitetura",
+        "architecture standards",
+        "arquitetura de referência"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "padrões arquiteturais",
+          "arquitetura de referência",
+          "conformidade"
+        ],
+        "practice_examples": [
+          "Definir padrão arquitetural para a org",
+          "Criar arquitetura de referência"
+        ],
+        "interview_topics": [
+          "Como padronizar arquitetura entre times",
+          "Governança de arquitetura"
+        ]
+      }
+    },
+    {
+      "id": "padroes-codigo",
+      "name": "Definição de padrões de código",
+      "type": "skill",
+      "category": "governance",
+      "description": "Padrões de código e convenções em nível organizacional.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "padrões de código",
+        "style guide",
+        "lint"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "style guides",
+          "linters",
+          "convenções"
+        ],
+        "practice_examples": [
+          "Estabelecer style guide",
+          "Configurar lint na org"
+        ],
+        "interview_topics": [
+          "Padronização de código em escala",
+          "Como impor padrões sem atrito"
+        ]
+      }
+    },
+    {
+      "id": "guidelines-tecnicos",
+      "name": "Criação de guidelines técnicos",
+      "type": "skill",
+      "category": "governance",
+      "description": "Criação de diretrizes e guidelines técnicos.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "guidelines",
+        "diretrizes técnicas"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "diretrizes",
+          "templates",
+          "checklists"
+        ],
+        "practice_examples": [
+          "Escrever um guideline técnico",
+          "Criar checklist de revisão"
+        ],
+        "interview_topics": [
+          "Guidelines técnicos",
+          "Adoção de diretrizes"
+        ]
+      }
+    },
+    {
+      "id": "padronizacao-stack",
+      "name": "Padronização de stack",
+      "type": "skill",
+      "category": "governance",
+      "description": "Padronização e seleção de stack tecnológica.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "stack",
+        "padronização de tecnologia",
+        "tech radar"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "tech radar",
+          "seleção de tecnologia",
+          "consolidação"
+        ],
+        "practice_examples": [
+          "Definir stack padrão da org",
+          "Montar um tech radar"
+        ],
+        "interview_topics": [
+          "Como padronizar stack",
+          "Trade-offs de padronizar tecnologia"
+        ]
+      }
+    },
+    {
+      "id": "governanca-tecnica",
+      "name": "Governança técnica",
+      "type": "skill",
+      "category": "governance",
+      "description": "Governança técnica: processos, comitês e conformidade.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "governança",
+        "tech governance",
+        "comitê técnico",
+        "rfc"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "governança",
+          "comitês",
+          "conformidade",
+          "RFCs"
+        ],
+        "practice_examples": [
+          "Instituir processo de RFC",
+          "Definir governança técnica"
+        ],
+        "interview_topics": [
+          "Governança técnica em escala",
+          "Processo de RFC/ADR"
+        ]
+      }
+    },
+    {
+      "id": "documentacao-estruturada",
+      "name": "Documentação estruturada",
+      "type": "skill",
+      "category": "documentation",
+      "description": "Documentação técnica estruturada em escala organizacional.",
+      "level": "staff",
+      "importance": 6,
+      "estimated_hours": 5,
+      "aliases": [
+        "documentação",
+        "docs",
+        "knowledge base"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 4,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "documentação estruturada",
+          "ADRs",
+          "knowledge base"
+        ],
+        "practice_examples": [
+          "Estruturar documentação técnica da org",
+          "Padronizar ADRs"
+        ],
+        "interview_topics": [
+          "Documentação em escala",
+          "Como manter docs vivas"
+        ]
+      }
+    },
+    {
+      "id": "boas-praticas-organizacionais",
+      "name": "Definição de boas práticas organizacionais",
+      "type": "skill",
+      "category": "governance",
+      "description": "Definição e disseminação de boas práticas de engenharia.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "boas práticas",
+        "best practices",
+        "engineering excellence"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "boas práticas",
+          "excelência de engenharia",
+          "disseminação"
+        ],
+        "practice_examples": [
+          "Definir boas práticas de engenharia",
+          "Disseminar práticas entre times"
+        ],
+        "interview_topics": [
+          "Como escalar boas práticas",
+          "Excelência de engenharia"
+        ]
+      }
+    },
+    {
+      "id": "escala",
+      "name": "Escala",
+      "type": "module",
+      "category": "scalability",
+      "description": "Módulo Staff: Escala.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 70,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Sistemas distribuídos",
+          "Alta disponibilidade",
+          "Observabilidade",
+          "Performance"
+        ],
+        "practice_examples": [
+          "Escalar um sistema distribuído",
+          "Definir SLOs e alertas"
+        ],
+        "interview_topics": [
+          "Escalar sistemas distribuídos",
+          "Alta disponibilidade e SLAs"
+        ]
+      }
+    },
+    {
+      "id": "escalabilidade-distribuidos",
+      "name": "Escalabilidade de sistemas distribuídos",
+      "type": "skill",
+      "category": "scalability",
+      "description": "Escalabilidade de sistemas distribuídos.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 14,
+      "aliases": [
+        "sistemas distribuídos",
+        "escalabilidade",
+        "distributed systems"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "sharding",
+          "particionamento",
+          "coordenação",
+          "consenso"
+        ],
+        "practice_examples": [
+          "Escalar um sistema distribuído",
+          "Particionar dados por shard"
+        ],
+        "interview_topics": [
+          "Escalar sistemas distribuídos",
+          "Sharding e particionamento"
+        ]
+      }
+    },
+    {
+      "id": "alta-disponibilidade",
+      "name": "Alta disponibilidade",
+      "type": "skill",
+      "category": "scalability",
+      "description": "Projeto de sistemas de alta disponibilidade.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "alta disponibilidade",
+        "ha",
+        "sla",
+        "redundância"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "redundância",
+          "SLAs",
+          "failover",
+          "tolerância a falhas"
+        ],
+        "practice_examples": [
+          "Projetar sistema com HA",
+          "Definir SLAs e SLOs"
+        ],
+        "interview_topics": [
+          "Alta disponibilidade",
+          "SLA vs SLO vs SLI"
+        ]
+      }
+    },
+    {
+      "id": "multi-regiao",
+      "name": "Multi região",
+      "type": "skill",
+      "category": "scalability",
+      "description": "Arquiteturas multi-região e disaster recovery.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 10,
+      "aliases": [
+        "multi região",
+        "multi-region",
+        "geo-distribuição"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "replicação multi-região",
+          "latência",
+          "DR"
+        ],
+        "practice_examples": [
+          "Projetar deploy multi-região",
+          "Planejar disaster recovery"
+        ],
+        "interview_topics": [
+          "Arquitetura multi-região",
+          "Replicação e latência"
+        ]
+      }
+    },
+    {
+      "id": "custo-vs-performance",
+      "name": "Otimização de custo vs performance",
+      "type": "skill",
+      "category": "performance",
+      "description": "Otimização do trade-off entre custo e performance.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "custo",
+        "performance",
+        "finops",
+        "trade-off"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "custo",
+          "performance",
+          "right-sizing",
+          "finops"
+        ],
+        "practice_examples": [
+          "Otimizar custo mantendo performance",
+          "Right-sizing de recursos"
+        ],
+        "interview_topics": [
+          "Trade-off custo vs performance",
+          "FinOps em escala"
+        ]
+      }
+    },
+    {
+      "id": "observabilidade-escala",
+      "name": "Observabilidade em escala",
+      "type": "skill",
+      "category": "observability",
+      "description": "Observabilidade de sistemas em escala.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "observabilidade",
+        "tracing",
+        "métricas",
+        "logs",
+        "slo"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "métricas",
+          "logs",
+          "traces",
+          "SLOs",
+          "alerting"
+        ],
+        "practice_examples": [
+          "Instrumentar observabilidade de um sistema",
+          "Definir SLOs e alertas"
+        ],
+        "interview_topics": [
+          "Observabilidade em escala",
+          "Métricas, logs e traces"
+        ]
+      }
+    },
+    {
+      "id": "crescimento-sistema",
+      "name": "Estratégias de crescimento de sistema",
+      "type": "skill",
+      "category": "scalability",
+      "description": "Estratégias e capacity planning para crescimento.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 8,
+      "aliases": [
+        "crescimento",
+        "capacity planning",
+        "evolução de sistema"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "capacity planning",
+          "evolução",
+          "gargalos futuros"
+        ],
+        "practice_examples": [
+          "Planejar capacidade para crescimento",
+          "Antecipar gargalos"
+        ],
+        "interview_topics": [
+          "Capacity planning",
+          "Como preparar sistema para crescer 10x"
+        ]
+      }
+    },
+    {
+      "id": "performance-larga-escala",
+      "name": "Performance em larga escala",
+      "type": "skill",
+      "category": "performance",
+      "description": "Otimização de performance em larga escala.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 10,
+      "aliases": [
+        "performance",
+        "larga escala",
+        "throughput",
+        "latência"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "latência",
+          "throughput",
+          "otimização em escala"
+        ],
+        "practice_examples": [
+          "Otimizar latência em larga escala",
+          "Reduzir cauda de latência (p99)"
+        ],
+        "interview_topics": [
+          "Performance em larga escala",
+          "Latência p50 vs p99"
+        ]
+      }
+    },
+    {
+      "id": "decisoes-organizacionais",
+      "name": "Decisões Organizacionais",
+      "type": "module",
+      "category": "leadership",
+      "description": "Módulo Staff: Decisões Organizacionais.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 58,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "Trade-offs técnico vs negócio",
+          "Estratégia",
+          "Roadmap",
+          "Dívida técnica"
+        ],
+        "practice_examples": [
+          "Definir estratégia arquitetural de longo prazo",
+          "Mapear e priorizar dívida técnica"
+        ],
+        "interview_topics": [
+          "Equilibrar técnico e negócio",
+          "Como gerir dívida técnica"
+        ]
+      }
+    },
+    {
+      "id": "trade-offs-tecnico-negocio",
+      "name": "Trade offs técnicos vs negócio",
+      "type": "skill",
+      "category": "leadership",
+      "description": "Avaliação de trade-offs entre técnica e negócio.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "trade-offs",
+        "técnico vs negócio",
+        "decisão"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "trade-offs",
+          "prazo vs qualidade",
+          "impacto de negócio"
+        ],
+        "practice_examples": [
+          "Avaliar trade-off técnico vs prazo",
+          "Comunicar decisão a stakeholders"
+        ],
+        "interview_topics": [
+          "Como equilibrar técnico e negócio",
+          "Decisões com trade-off de negócio"
+        ]
+      }
+    },
+    {
+      "id": "escolha-stack",
+      "name": "Escolha de stack",
+      "type": "skill",
+      "category": "strategy",
+      "description": "Escolha estratégica de stack tecnológica.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "escolha de stack",
+        "seleção de tecnologia",
+        "build vs buy"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "seleção de tecnologia",
+          "build vs buy",
+          "maturidade"
+        ],
+        "practice_examples": [
+          "Avaliar e escolher uma stack",
+          "Decidir build vs buy"
+        ],
+        "interview_topics": [
+          "Como escolher uma stack",
+          "Build vs buy"
+        ]
+      }
+    },
+    {
+      "id": "estrategia-arquitetura",
+      "name": "Estratégia de arquitetura",
+      "type": "skill",
+      "category": "strategy",
+      "description": "Definição da estratégia e visão arquitetural.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 10,
+      "aliases": [
+        "estratégia arquitetural",
+        "visão técnica",
+        "north star"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 8,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "visão arquitetural",
+          "north star técnico",
+          "evolução"
+        ],
+        "practice_examples": [
+          "Definir estratégia arquitetural de longo prazo",
+          "Alinhar arquitetura à estratégia de negócio"
+        ],
+        "interview_topics": [
+          "Estratégia de arquitetura",
+          "Visão técnica de longo prazo"
+        ]
+      }
+    },
+    {
+      "id": "roadmap-tecnico",
+      "name": "Definição de roadmap técnico",
+      "type": "skill",
+      "category": "strategy",
+      "description": "Construção e sequenciamento de roadmap técnico.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "roadmap técnico",
+        "planejamento técnico"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "roadmap técnico",
+          "marcos",
+          "dependências"
+        ],
+        "practice_examples": [
+          "Construir um roadmap técnico",
+          "Sequenciar iniciativas técnicas"
+        ],
+        "interview_topics": [
+          "Como montar roadmap técnico",
+          "Priorizar roadmap"
+        ]
+      }
+    },
+    {
+      "id": "alinhamento-produto",
+      "name": "Alinhamento com produto",
+      "type": "skill",
+      "category": "leadership",
+      "description": "Alinhamento entre engenharia e produto.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "alinhamento com produto",
+        "product",
+        "parceria"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "parceria eng/produto",
+          "objetivos comuns",
+          "comunicação"
+        ],
+        "practice_examples": [
+          "Alinhar prioridades técnicas com produto",
+          "Traduzir requisitos em decisões técnicas"
+        ],
+        "interview_topics": [
+          "Alinhamento eng e produto",
+          "Como negociar prioridades com PM"
+        ]
+      }
+    },
+    {
+      "id": "priorizacao-tecnica",
+      "name": "Priorização técnica",
+      "type": "skill",
+      "category": "leadership",
+      "description": "Priorização de trabalho técnico por impacto.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "priorização",
+        "backlog técnico",
+        "impacto vs esforço"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "impacto vs esforço",
+          "priorização",
+          "backlog técnico"
+        ],
+        "practice_examples": [
+          "Priorizar backlog técnico por impacto",
+          "Justificar priorização a stakeholders"
+        ],
+        "interview_topics": [
+          "Como priorizar trabalho técnico",
+          "Impacto vs esforço"
+        ]
+      }
+    },
+    {
+      "id": "gestao-divida-tecnica",
+      "name": "Gestão de dívida técnica",
+      "type": "skill",
+      "category": "leadership",
+      "description": "Gestão estratégica de dívida técnica.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "dívida técnica",
+        "tech debt",
+        "refatoração estratégica"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 3
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "dívida técnica",
+          "quantificação",
+          "plano de pagamento"
+        ],
+        "practice_examples": [
+          "Mapear e priorizar dívida técnica",
+          "Negociar tempo para pagar dívida"
+        ],
+        "interview_topics": [
+          "Como gerir dívida técnica",
+          "Quando pagar vs conviver com a dívida"
+        ]
+      }
+    },
+    {
+      "id": "risco-tecnico",
+      "name": "Avaliação de risco técnico",
+      "type": "skill",
+      "category": "leadership",
+      "description": "Avaliação e mitigação de riscos técnicos.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "risco técnico",
+        "risk assessment",
+        "mitigação"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "identificação de riscos",
+          "mitigação",
+          "contingência"
+        ],
+        "practice_examples": [
+          "Avaliar riscos técnicos de um projeto",
+          "Definir plano de mitigação"
+        ],
+        "interview_topics": [
+          "Avaliação de risco técnico",
+          "Como mitigar riscos de arquitetura"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-001",
+      "source": "staff-escala-organizacional",
+      "target": "herdado-de-senior",
+      "type": "contains"
+    },
+    {
+      "id": "edge-002",
+      "source": "herdado-de-senior",
+      "target": "senior-arquitetura-decisao",
+      "type": "inherits"
+    },
+    {
+      "id": "edge-003",
+      "source": "staff-escala-organizacional",
+      "target": "foco-organizacional",
+      "type": "contains"
+    },
+    {
+      "id": "edge-004",
+      "source": "foco-organizacional",
+      "target": "padronizacao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-005",
+      "source": "padronizacao",
+      "target": "padroes-arquitetura",
+      "type": "contains"
+    },
+    {
+      "id": "edge-006",
+      "source": "padronizacao",
+      "target": "padroes-codigo",
+      "type": "contains"
+    },
+    {
+      "id": "edge-007",
+      "source": "padronizacao",
+      "target": "guidelines-tecnicos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-008",
+      "source": "padronizacao",
+      "target": "padronizacao-stack",
+      "type": "contains"
+    },
+    {
+      "id": "edge-009",
+      "source": "padronizacao",
+      "target": "governanca-tecnica",
+      "type": "contains"
+    },
+    {
+      "id": "edge-010",
+      "source": "padronizacao",
+      "target": "documentacao-estruturada",
+      "type": "contains"
+    },
+    {
+      "id": "edge-011",
+      "source": "padronizacao",
+      "target": "boas-praticas-organizacionais",
+      "type": "contains"
+    },
+    {
+      "id": "edge-012",
+      "source": "foco-organizacional",
+      "target": "escala",
+      "type": "contains"
+    },
+    {
+      "id": "edge-013",
+      "source": "escala",
+      "target": "escalabilidade-distribuidos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-014",
+      "source": "escala",
+      "target": "alta-disponibilidade",
+      "type": "contains"
+    },
+    {
+      "id": "edge-015",
+      "source": "escala",
+      "target": "multi-regiao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-016",
+      "source": "escala",
+      "target": "custo-vs-performance",
+      "type": "contains"
+    },
+    {
+      "id": "edge-017",
+      "source": "escala",
+      "target": "observabilidade-escala",
+      "type": "contains"
+    },
+    {
+      "id": "edge-018",
+      "source": "escala",
+      "target": "crescimento-sistema",
+      "type": "contains"
+    },
+    {
+      "id": "edge-019",
+      "source": "escala",
+      "target": "performance-larga-escala",
+      "type": "contains"
+    },
+    {
+      "id": "edge-020",
+      "source": "foco-organizacional",
+      "target": "decisoes-organizacionais",
+      "type": "contains"
+    },
+    {
+      "id": "edge-021",
+      "source": "decisoes-organizacionais",
+      "target": "trade-offs-tecnico-negocio",
+      "type": "contains"
+    },
+    {
+      "id": "edge-022",
+      "source": "decisoes-organizacionais",
+      "target": "escolha-stack",
+      "type": "contains"
+    },
+    {
+      "id": "edge-023",
+      "source": "decisoes-organizacionais",
+      "target": "estrategia-arquitetura",
+      "type": "contains"
+    },
+    {
+      "id": "edge-024",
+      "source": "decisoes-organizacionais",
+      "target": "roadmap-tecnico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-025",
+      "source": "decisoes-organizacionais",
+      "target": "alinhamento-produto",
+      "type": "contains"
+    },
+    {
+      "id": "edge-026",
+      "source": "decisoes-organizacionais",
+      "target": "priorizacao-tecnica",
+      "type": "contains"
+    },
+    {
+      "id": "edge-027",
+      "source": "decisoes-organizacionais",
+      "target": "gestao-divida-tecnica",
+      "type": "contains"
+    },
+    {
+      "id": "edge-028",
+      "source": "decisoes-organizacionais",
+      "target": "risco-tecnico",
+      "type": "contains"
+    },
+    {
+      "id": "edge-029",
+      "source": "trade-offs-arquiteturais",
+      "target": "estrategia-arquitetura",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-030",
+      "source": "design-escala-manutencao",
+      "target": "escalabilidade-distribuidos",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-031",
+      "source": "clean-architecture",
+      "target": "padroes-arquitetura",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-032",
+      "source": "escalabilidade-distribuidos",
+      "target": "multi-regiao",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-033",
+      "source": "alta-disponibilidade",
+      "target": "multi-regiao",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-034",
+      "source": "estrategia-arquitetura",
+      "target": "roadmap-tecnico",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-035",
+      "source": "padroes-arquitetura",
+      "target": "governanca-tecnica",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-036",
+      "source": "observabilidade-escala",
+      "target": "performance-larga-escala",
+      "type": "prerequisite"
+    }
+  ]
+}

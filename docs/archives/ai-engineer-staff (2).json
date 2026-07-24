@@ -1,0 +1,2181 @@
+{
+  "id": "ai-engineer-staff",
+  "title": "AI Engineer — Staff",
+  "role": "ai_engineer",
+  "version": "1.0.0",
+  "description": "Roadmap base para AI Engineer — bloco STAFF (Escala Organizacional). Herda o bloco AI Sênior por referência. Conteúdo 100% específico de IA (sem reuso do SE).",
+  "market": [
+    "brazil",
+    "international"
+  ],
+  "metadata": {
+    "author": "",
+    "created_at": "2026-07-13",
+    "updated_at": "2026-07-13",
+    "inherited_from": "ai-engineer-senior",
+    "tags": [
+      "ai",
+      "platform",
+      "governance",
+      "ai-ops",
+      "staff"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "ai-staff-escala-organizacional",
+      "name": "STAFF Escala Organizacional",
+      "type": "domain",
+      "category": "career",
+      "description": "Competências de escala organizacional e influência técnica de um AI Engineer Staff: padronização, plataforma e governança de IA corporativa.",
+      "level": "staff",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "Herdado de Sênior",
+          "Padronização de AI",
+          "Arquitetura organizacional",
+          "Governança e escala"
+        ],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-herdado-de-senior",
+      "name": "Herdado de Sênior",
+      "type": "group",
+      "category": "career",
+      "description": "Referência ao bloco AI Engineer Sênior (e transitivamente Pleno e Júnior), herdado como pré-requisito. Os nós vivem no documento 'ai-engineer-senior'; aqui há apenas a relação 'inherits'.",
+      "level": "senior",
+      "importance": 9,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": true,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-foco-organizacional",
+      "name": "Foco Organizacional",
+      "type": "group",
+      "category": "career",
+      "description": "Competências novas que caracterizam a evolução de AI Sênior para Staff: escala e influência organizacional em IA.",
+      "level": "staff",
+      "importance": 10,
+      "estimated_hours": 0,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 1
+        }
+      },
+      "interview": {
+        "priority": 0,
+        "asked_frequency": "none",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [],
+        "practice_examples": [],
+        "interview_topics": []
+      }
+    },
+    {
+      "id": "ai-padronizacao-ai",
+      "name": "Padronização de AI",
+      "type": "module",
+      "category": "governance",
+      "description": "Módulo AI Engineer (Staff): Padronização de AI.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 60,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "reference architectures",
+          "templates",
+          "integração",
+          "contratos",
+          "CI/CD",
+          "catálogo"
+        ],
+        "practice_examples": [
+          "Definir reference architecture para RAG",
+          "Padronizar CI/CD de apps de IA"
+        ],
+        "interview_topics": [
+          "Reference architectures de IA",
+          "Governança de prompts"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-reference-architectures",
+      "name": "Definir reference architectures para LLM apps, RAG, agentes e pipelines de inferência",
+      "type": "skill",
+      "category": "governance",
+      "description": "Reference architectures corporativas de IA.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "reference architecture",
+        "padrões de arquitetura de IA"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "LLM apps",
+          "RAG",
+          "agentes",
+          "pipelines de inferência"
+        ],
+        "practice_examples": [
+          "Definir reference architecture para RAG",
+          "Padronizar arquitetura de agentes"
+        ],
+        "interview_topics": [
+          "Reference architectures de IA",
+          "Padrões para LLM apps"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-templates-servicos",
+      "name": "Criar templates reutilizáveis para serviços de IA com logging, tracing, testes e deploy padronizados",
+      "type": "skill",
+      "category": "governance",
+      "description": "Templates padronizados para serviços de IA.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "templates",
+        "scaffolding",
+        "service template"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "logging",
+          "tracing",
+          "testes",
+          "deploy padronizado"
+        ],
+        "practice_examples": [
+          "Criar template de serviço de IA",
+          "Padronizar logging/tracing"
+        ],
+        "interview_topics": [
+          "Templates de serviço de IA",
+          "Padronização de deploy"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-integracao-modelos",
+      "name": "Estabelecer padrões de integração com modelos via APIs, SDKs, gateways e abstrações internas",
+      "type": "skill",
+      "category": "governance",
+      "description": "Padrões de integração e abstração de modelos.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "padrões de integração",
+        "gateway de LLM",
+        "abstração de modelo"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "APIs",
+          "SDKs",
+          "gateways",
+          "abstrações internas"
+        ],
+        "practice_examples": [
+          "Definir gateway/abstração para modelos",
+          "Padronizar SDK interno"
+        ],
+        "interview_topics": [
+          "Abstração de provedores de modelo",
+          "LLM gateway"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-contratos-io",
+      "name": "Padronizar contratos de entrada e saída para prompts, tools, embeddings, retrievers e agentes",
+      "type": "skill",
+      "category": "governance",
+      "description": "Contratos padronizados de entrada/saída de IA.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "contratos",
+        "schema",
+        "i/o padronizado"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "contratos de prompts",
+          "tools",
+          "embeddings",
+          "retrievers",
+          "agentes"
+        ],
+        "practice_examples": [
+          "Definir contrato de I/O para tools",
+          "Padronizar schema de retrievers"
+        ],
+        "interview_topics": [
+          "Contratos padronizados de IA",
+          "Schema de entrada/saída"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-criterios-selecao",
+      "name": "Definir critérios técnicos para seleção de modelos, provedores, embeddings e vector databases",
+      "type": "skill",
+      "category": "governance",
+      "description": "Critérios de seleção de modelos e provedores.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "critérios de seleção",
+        "seleção de modelo/provedor"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "modelos",
+          "provedores",
+          "embeddings",
+          "vector databases"
+        ],
+        "practice_examples": [
+          "Definir critérios de seleção de vector DB",
+          "Matriz de decisão de provedores"
+        ],
+        "interview_topics": [
+          "Como padronizar seleção de modelos",
+          "Critérios de escolha de vector DB"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-guidelines-prompt",
+      "name": "Criar guidelines de prompt engineering para versionamento, avaliação, fallback e reutilização",
+      "type": "skill",
+      "category": "governance",
+      "description": "Guidelines corporativos de prompt engineering.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "guidelines de prompt",
+        "prompt governance"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "versionamento",
+          "avaliação",
+          "fallback",
+          "reutilização"
+        ],
+        "practice_examples": [
+          "Escrever guideline de prompt engineering",
+          "Padronizar versionamento de prompts"
+        ],
+        "interview_topics": [
+          "Governança de prompts",
+          "Versionamento e reutilização de prompts"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-observabilidade",
+      "name": "Estabelecer padrões de observabilidade para latência, custo, qualidade, segurança e uso de tokens",
+      "type": "skill",
+      "category": "governance",
+      "description": "Padrões de observabilidade de IA.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "padrões de observabilidade",
+        "telemetria de IA"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "latência",
+          "custo",
+          "qualidade",
+          "segurança",
+          "tokens"
+        ],
+        "practice_examples": [
+          "Padronizar telemetria de IA",
+          "Definir métricas obrigatórias"
+        ],
+        "interview_topics": [
+          "Padrões de observabilidade de IA",
+          "Métricas de latência/custo/qualidade"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-bibliotecas-internas",
+      "name": "Implementar bibliotecas internas para reutilização de componentes de AI engineering",
+      "type": "skill",
+      "category": "governance",
+      "description": "Bibliotecas internas de componentes de IA.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "bibliotecas internas",
+        "shared libs",
+        "reuso"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "bibliotecas internas",
+          "componentes reutilizáveis",
+          "versionamento"
+        ],
+        "practice_examples": [
+          "Criar biblioteca interna de componentes de IA",
+          "Publicar e versionar libs"
+        ],
+        "interview_topics": [
+          "Reutilização de componentes de IA",
+          "Bibliotecas internas"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-cicd",
+      "name": "Definir padrões de CI/CD para aplicações de IA com validação automática de prompts, datasets e modelos",
+      "type": "skill",
+      "category": "governance",
+      "description": "Padrões de CI/CD para aplicações de IA.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "padrões de ci/cd",
+        "validação automática"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "CI/CD",
+          "validação de prompts/datasets/modelos"
+        ],
+        "practice_examples": [
+          "Padronizar CI/CD para apps de IA",
+          "Automatizar validação de prompts/datasets"
+        ],
+        "interview_topics": [
+          "Padrões de CI/CD para IA",
+          "Validação automática em pipeline"
+        ]
+      }
+    },
+    {
+      "id": "ai-std-catalogo-componentes",
+      "name": "Criar catálogo técnico de componentes aprovados para construção de soluções de IA",
+      "type": "skill",
+      "category": "governance",
+      "description": "Catálogo de componentes aprovados.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "catálogo de componentes",
+        "tech catalog",
+        "approved components"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "catálogo técnico",
+          "componentes aprovados",
+          "governança"
+        ],
+        "practice_examples": [
+          "Montar catálogo de componentes aprovados",
+          "Definir processo de aprovação"
+        ],
+        "interview_topics": [
+          "Catálogo técnico de IA",
+          "Componentes aprovados"
+        ]
+      }
+    },
+    {
+      "id": "ai-arquitetura-organizacional",
+      "name": "Arquitetura organizacional",
+      "type": "module",
+      "category": "platform",
+      "description": "Módulo AI Engineer (Staff): Arquitetura organizacional.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 60,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "AI platform",
+          "topologias",
+          "operating model",
+          "golden paths",
+          "ownership",
+          "roadmap"
+        ],
+        "practice_examples": [
+          "Desenhar uma AI platform corporativa",
+          "Estruturar golden paths"
+        ],
+        "interview_topics": [
+          "AI platform corporativa",
+          "Centralizado vs federado"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-ai-platform",
+      "name": "Desenhar uma AI platform corporativa com serviços compartilhados para times de produto e engenharia",
+      "type": "skill",
+      "category": "platform",
+      "description": "Design de AI platform corporativa.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 10,
+      "aliases": [
+        "ai platform",
+        "plataforma de IA",
+        "serviços compartilhados"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "AI platform",
+          "serviços compartilhados",
+          "times de produto/engenharia"
+        ],
+        "practice_examples": [
+          "Desenhar uma AI platform corporativa",
+          "Definir serviços compartilhados"
+        ],
+        "interview_topics": [
+          "AI platform corporativa",
+          "Serviços compartilhados de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-topologias",
+      "name": "Definir topologias de arquitetura para centralização, federação e self-service de capacidades de IA",
+      "type": "skill",
+      "category": "platform",
+      "description": "Topologias de arquitetura de IA (central/federado/self-service).",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "topologias",
+        "centralização",
+        "federação",
+        "self-service"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "centralização",
+          "federação",
+          "self-service"
+        ],
+        "practice_examples": [
+          "Escolher topologia (central vs federada)",
+          "Habilitar self-service de IA"
+        ],
+        "interview_topics": [
+          "Centralizado vs federado",
+          "Self-service de capacidades de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-operating-model",
+      "name": "Criar operating model técnico para AI Engineering, Machine Learning, Dados, Segurança e Produto",
+      "type": "skill",
+      "category": "platform",
+      "description": "Operating model técnico entre disciplinas.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "operating model",
+        "modelo operacional"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "AI Engineering",
+          "ML",
+          "Dados",
+          "Segurança",
+          "Produto"
+        ],
+        "practice_examples": [
+          "Definir operating model entre AI/ML/Dados/Segurança",
+          "Mapear responsabilidades"
+        ],
+        "interview_topics": [
+          "Operating model técnico",
+          "Interfaces entre disciplinas"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-processos-arquitetura",
+      "name": "Estabelecer processos de arquitetura para revisão, aprovação e evolução de soluções de IA em escala",
+      "type": "skill",
+      "category": "platform",
+      "description": "Processos de arquitetura em escala.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "processos de arquitetura",
+        "architecture review"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "revisão",
+          "aprovação",
+          "evolução",
+          "escala"
+        ],
+        "practice_examples": [
+          "Instituir architecture review de IA",
+          "Definir gates de aprovação"
+        ],
+        "interview_topics": [
+          "Processos de arquitetura em escala",
+          "Review e aprovação de soluções de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-integracao-plataformas",
+      "name": "Definir padrões de integração entre AI platform, data platform, cloud platform e sistemas corporativos",
+      "type": "skill",
+      "category": "platform",
+      "description": "Integração entre plataformas corporativas.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "integração de plataformas",
+        "platform integration"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "AI platform",
+          "data platform",
+          "cloud platform",
+          "sistemas corporativos"
+        ],
+        "practice_examples": [
+          "Integrar AI platform com data/cloud platform",
+          "Padronizar integração corporativa"
+        ],
+        "interview_topics": [
+          "Integração entre plataformas",
+          "AI platform x data platform"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-ownership",
+      "name": "Criar modelo de ownership para componentes de IA, produtos internos, APIs, agentes e pipelines",
+      "type": "skill",
+      "category": "platform",
+      "description": "Modelo de ownership de componentes de IA.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "ownership",
+        "responsabilidade",
+        "product ownership"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "ownership",
+          "produtos internos",
+          "APIs",
+          "agentes",
+          "pipelines"
+        ],
+        "practice_examples": [
+          "Definir modelo de ownership de componentes",
+          "Atribuir donos a APIs/agentes"
+        ],
+        "interview_topics": [
+          "Modelo de ownership",
+          "Quem é dono de um componente de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-golden-paths",
+      "name": "Estruturar golden paths para acelerar entrega de soluções de IA com segurança e consistência",
+      "type": "skill",
+      "category": "platform",
+      "description": "Golden paths para entrega acelerada e segura.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "golden paths",
+        "paved road",
+        "developer experience"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "golden paths",
+          "aceleração",
+          "segurança",
+          "consistência"
+        ],
+        "practice_examples": [
+          "Estruturar um golden path para app de IA",
+          "Padronizar caminho seguro de entrega"
+        ],
+        "interview_topics": [
+          "Golden paths / paved road",
+          "Como acelerar entrega com segurança"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-interoperabilidade",
+      "name": "Definir estratégia de interoperabilidade entre provedores de LLM, ferramentas internas e sistemas legados",
+      "type": "skill",
+      "category": "platform",
+      "description": "Estratégia de interoperabilidade multi-provider.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "interoperabilidade",
+        "multi-provider",
+        "legado"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "provedores de LLM",
+          "ferramentas internas",
+          "sistemas legados"
+        ],
+        "practice_examples": [
+          "Definir estratégia multi-provider de LLM",
+          "Integrar com sistemas legados"
+        ],
+        "interview_topics": [
+          "Interoperabilidade entre provedores",
+          "Estratégia multi-LLM"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-mapas-dependencia",
+      "name": "Criar mapas de dependência técnica para reduzir acoplamento entre aplicações de IA e plataformas centrais",
+      "type": "skill",
+      "category": "platform",
+      "description": "Mapas de dependência para reduzir acoplamento.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 6,
+      "aliases": [
+        "mapas de dependência",
+        "acoplamento",
+        "dependency mapping"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "mapas de dependência",
+          "acoplamento",
+          "plataformas centrais"
+        ],
+        "practice_examples": [
+          "Mapear dependências entre apps e plataforma",
+          "Reduzir acoplamento identificado"
+        ],
+        "interview_topics": [
+          "Mapas de dependência técnica",
+          "Reduzir acoplamento em escala"
+        ]
+      }
+    },
+    {
+      "id": "ai-org-roadmap-arquitetural",
+      "name": "Estabelecer roadmap arquitetural para evolução de IA corporativa orientado a escalabilidade, custo e risco",
+      "type": "skill",
+      "category": "platform",
+      "description": "Roadmap arquitetural de IA corporativa.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "roadmap arquitetural",
+        "evolução corporativa"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "roadmap arquitetural",
+          "escalabilidade",
+          "custo",
+          "risco"
+        ],
+        "practice_examples": [
+          "Construir roadmap arquitetural de IA corporativa",
+          "Priorizar por custo/risco"
+        ],
+        "interview_topics": [
+          "Roadmap arquitetural de IA",
+          "Evolução orientada a custo e risco"
+        ]
+      }
+    },
+    {
+      "id": "ai-governanca-escala",
+      "name": "Governança e escala",
+      "type": "module",
+      "category": "governance",
+      "description": "Módulo AI Engineer (Staff): Governança e escala.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 60,
+      "aliases": [],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "AI governance",
+          "model risk",
+          "avaliação contínua",
+          "guardrails",
+          "FinOps",
+          "compliance"
+        ],
+        "practice_examples": [
+          "Implementar AI governance",
+          "Criar mecanismos de FinOps por workload"
+        ],
+        "interview_topics": [
+          "AI governance",
+          "Model risk management"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-ai-governance",
+      "name": "Implementar AI governance com políticas técnicas para uso de modelos, dados, prompts e agentes",
+      "type": "skill",
+      "category": "governance",
+      "description": "AI governance corporativa.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "ai governance",
+        "governança de IA",
+        "políticas"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "políticas técnicas",
+          "modelos",
+          "dados",
+          "prompts",
+          "agentes"
+        ],
+        "practice_examples": [
+          "Definir políticas de uso de modelos/dados",
+          "Implementar AI governance"
+        ],
+        "interview_topics": [
+          "AI governance",
+          "Políticas técnicas para IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-model-risk",
+      "name": "Definir processos de model risk management para avaliação, aprovação e monitoramento de soluções de IA",
+      "type": "skill",
+      "category": "governance",
+      "description": "Model risk management.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "model risk management",
+        "mrm",
+        "gestão de risco de modelo"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "avaliação de risco",
+          "aprovação",
+          "monitoramento"
+        ],
+        "practice_examples": [
+          "Instituir processo de model risk management",
+          "Aprovar e monitorar soluções de IA"
+        ],
+        "interview_topics": [
+          "Model risk management",
+          "Aprovação e monitoramento de modelos"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-avaliacao-continua",
+      "name": "Criar pipelines de avaliação contínua com métricas de qualidade, segurança, factualidade e custo",
+      "type": "skill",
+      "category": "evaluation",
+      "description": "Avaliação contínua em produção.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 8,
+      "aliases": [
+        "avaliação contínua",
+        "continuous eval"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "qualidade",
+          "segurança",
+          "factualidade",
+          "custo"
+        ],
+        "practice_examples": [
+          "Montar avaliação contínua em produção",
+          "Medir factualidade e custo continuamente"
+        ],
+        "interview_topics": [
+          "Avaliação contínua de IA",
+          "Métricas de factualidade"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-guardrails",
+      "name": "Implementar guardrails para proteção contra prompt injection, vazamento de dados e respostas inseguras",
+      "type": "skill",
+      "category": "security",
+      "description": "Guardrails de segurança em escala.",
+      "level": "staff",
+      "importance": 9,
+      "estimated_hours": 8,
+      "aliases": [
+        "guardrails",
+        "prompt injection",
+        "dlp",
+        "safety"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 7,
+        "asked_frequency": "high",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "prompt injection",
+          "vazamento de dados",
+          "respostas inseguras"
+        ],
+        "practice_examples": [
+          "Implementar guardrails de segurança em escala",
+          "Bloquear respostas inseguras"
+        ],
+        "interview_topics": [
+          "Guardrails contra prompt injection",
+          "Proteção contra vazamento de dados"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-politicas-acesso",
+      "name": "Definir políticas de acesso, segregação e auditoria para dados sensíveis usados em aplicações de IA",
+      "type": "skill",
+      "category": "security",
+      "description": "Governança de dados sensíveis em IA.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "políticas de acesso",
+        "segregação",
+        "auditoria",
+        "dados sensíveis"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "acesso",
+          "segregação",
+          "auditoria",
+          "dados sensíveis"
+        ],
+        "practice_examples": [
+          "Definir políticas de acesso a dados sensíveis",
+          "Habilitar auditoria de uso"
+        ],
+        "interview_topics": [
+          "Governança de dados sensíveis em IA",
+          "Segregação e auditoria"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-finops",
+      "name": "Criar mecanismos de FinOps para controle de custo por produto, time, modelo, endpoint e workload",
+      "type": "skill",
+      "category": "governance",
+      "description": "FinOps de IA.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "finops",
+        "controle de custo",
+        "chargeback"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "custo por produto/time/modelo/endpoint/workload",
+          "chargeback"
+        ],
+        "practice_examples": [
+          "Implementar FinOps de IA por workload",
+          "Atribuir custo por time/produto"
+        ],
+        "interview_topics": [
+          "FinOps de IA",
+          "Controle de custo por endpoint/modelo"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-dashboards",
+      "name": "Implementar dashboards executivos e técnicos para adoção, performance, risco e ROI de soluções de IA",
+      "type": "skill",
+      "category": "governance",
+      "description": "Dashboards executivos e técnicos de IA.",
+      "level": "staff",
+      "importance": 7,
+      "estimated_hours": 5,
+      "aliases": [
+        "dashboards",
+        "kpis",
+        "roi de IA"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 5,
+        "asked_frequency": "low",
+        "must_know": false
+      },
+      "content_guidance": {
+        "topics": [
+          "adoção",
+          "performance",
+          "risco",
+          "ROI"
+        ],
+        "practice_examples": [
+          "Criar dashboard executivo de adoção e ROI",
+          "Dashboard técnico de performance/risco"
+        ],
+        "interview_topics": [
+          "Métricas executivas de IA",
+          "ROI de soluções de IA"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-lifecycle",
+      "name": "Definir processos de lifecycle management para prompts, modelos, datasets, embeddings e agentes",
+      "type": "skill",
+      "category": "governance",
+      "description": "Lifecycle management de artefatos de IA.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "lifecycle management",
+        "ciclo de vida",
+        "deprecação"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "ciclo de vida",
+          "versionamento",
+          "deprecação"
+        ],
+        "practice_examples": [
+          "Definir lifecycle de prompts/modelos",
+          "Processo de deprecação de embeddings"
+        ],
+        "interview_topics": [
+          "Lifecycle management de IA",
+          "Deprecação de modelos/prompts"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-compliance",
+      "name": "Criar frameworks de compliance para IA alinhados a privacidade, segurança, auditoria e rastreabilidade",
+      "type": "skill",
+      "category": "governance",
+      "description": "Frameworks de compliance de IA.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "compliance",
+        "privacidade",
+        "auditoria",
+        "rastreabilidade"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "privacidade",
+          "segurança",
+          "auditoria",
+          "rastreabilidade"
+        ],
+        "practice_examples": [
+          "Montar framework de compliance de IA",
+          "Garantir rastreabilidade e auditoria"
+        ],
+        "interview_topics": [
+          "Compliance de IA",
+          "Privacidade e rastreabilidade"
+        ]
+      }
+    },
+    {
+      "id": "ai-gov-operacao-multi-time",
+      "name": "Estruturar operação multi-time para suporte, incident response e melhoria contínua de plataformas de IA",
+      "type": "skill",
+      "category": "governance",
+      "description": "Operação multi-time de plataformas de IA.",
+      "level": "staff",
+      "importance": 8,
+      "estimated_hours": 6,
+      "aliases": [
+        "operação multi-time",
+        "incident response",
+        "on-call"
+      ],
+      "requirements_by_level": {
+        "junior": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "mid": {
+          "required": false,
+          "expected_depth": 1
+        },
+        "senior": {
+          "required": false,
+          "expected_depth": 2
+        },
+        "staff": {
+          "required": true,
+          "expected_depth": 5
+        }
+      },
+      "interview": {
+        "priority": 6,
+        "asked_frequency": "medium",
+        "must_know": true
+      },
+      "content_guidance": {
+        "topics": [
+          "suporte",
+          "incident response",
+          "melhoria contínua"
+        ],
+        "practice_examples": [
+          "Estruturar operação multi-time de IA",
+          "Definir incident response para plataformas de IA"
+        ],
+        "interview_topics": [
+          "Operação de plataformas de IA",
+          "Incident response em IA"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-001",
+      "source": "ai-staff-escala-organizacional",
+      "target": "ai-herdado-de-senior",
+      "type": "contains"
+    },
+    {
+      "id": "edge-002",
+      "source": "ai-herdado-de-senior",
+      "target": "ai-senior-arquitetura-de-ai",
+      "type": "inherits"
+    },
+    {
+      "id": "edge-003",
+      "source": "ai-staff-escala-organizacional",
+      "target": "ai-foco-organizacional",
+      "type": "contains"
+    },
+    {
+      "id": "edge-004",
+      "source": "ai-foco-organizacional",
+      "target": "ai-padronizacao-ai",
+      "type": "contains"
+    },
+    {
+      "id": "edge-005",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-reference-architectures",
+      "type": "contains"
+    },
+    {
+      "id": "edge-006",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-templates-servicos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-007",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-integracao-modelos",
+      "type": "contains"
+    },
+    {
+      "id": "edge-008",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-contratos-io",
+      "type": "contains"
+    },
+    {
+      "id": "edge-009",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-criterios-selecao",
+      "type": "contains"
+    },
+    {
+      "id": "edge-010",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-guidelines-prompt",
+      "type": "contains"
+    },
+    {
+      "id": "edge-011",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-observabilidade",
+      "type": "contains"
+    },
+    {
+      "id": "edge-012",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-bibliotecas-internas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-013",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-cicd",
+      "type": "contains"
+    },
+    {
+      "id": "edge-014",
+      "source": "ai-padronizacao-ai",
+      "target": "ai-std-catalogo-componentes",
+      "type": "contains"
+    },
+    {
+      "id": "edge-015",
+      "source": "ai-foco-organizacional",
+      "target": "ai-arquitetura-organizacional",
+      "type": "contains"
+    },
+    {
+      "id": "edge-016",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-ai-platform",
+      "type": "contains"
+    },
+    {
+      "id": "edge-017",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-topologias",
+      "type": "contains"
+    },
+    {
+      "id": "edge-018",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-operating-model",
+      "type": "contains"
+    },
+    {
+      "id": "edge-019",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-processos-arquitetura",
+      "type": "contains"
+    },
+    {
+      "id": "edge-020",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-integracao-plataformas",
+      "type": "contains"
+    },
+    {
+      "id": "edge-021",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-ownership",
+      "type": "contains"
+    },
+    {
+      "id": "edge-022",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-golden-paths",
+      "type": "contains"
+    },
+    {
+      "id": "edge-023",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-interoperabilidade",
+      "type": "contains"
+    },
+    {
+      "id": "edge-024",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-mapas-dependencia",
+      "type": "contains"
+    },
+    {
+      "id": "edge-025",
+      "source": "ai-arquitetura-organizacional",
+      "target": "ai-org-roadmap-arquitetural",
+      "type": "contains"
+    },
+    {
+      "id": "edge-026",
+      "source": "ai-foco-organizacional",
+      "target": "ai-governanca-escala",
+      "type": "contains"
+    },
+    {
+      "id": "edge-027",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-ai-governance",
+      "type": "contains"
+    },
+    {
+      "id": "edge-028",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-model-risk",
+      "type": "contains"
+    },
+    {
+      "id": "edge-029",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-avaliacao-continua",
+      "type": "contains"
+    },
+    {
+      "id": "edge-030",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-guardrails",
+      "type": "contains"
+    },
+    {
+      "id": "edge-031",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-politicas-acesso",
+      "type": "contains"
+    },
+    {
+      "id": "edge-032",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-finops",
+      "type": "contains"
+    },
+    {
+      "id": "edge-033",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-dashboards",
+      "type": "contains"
+    },
+    {
+      "id": "edge-034",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-lifecycle",
+      "type": "contains"
+    },
+    {
+      "id": "edge-035",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-compliance",
+      "type": "contains"
+    },
+    {
+      "id": "edge-036",
+      "source": "ai-governanca-escala",
+      "target": "ai-gov-operacao-multi-time",
+      "type": "contains"
+    },
+    {
+      "id": "edge-037",
+      "source": "ai-reference-architectures",
+      "target": "ai-std-reference-architectures",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-038",
+      "source": "ai-arquitetar-aplicacoes-ia",
+      "target": "ai-org-ai-platform",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-039",
+      "source": "ai-seguranca-ia",
+      "target": "ai-gov-guardrails",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-040",
+      "source": "ai-pipelines-avaliacao",
+      "target": "ai-gov-avaliacao-continua",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-041",
+      "source": "ai-org-ai-platform",
+      "target": "ai-org-topologias",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-042",
+      "source": "ai-org-ai-platform",
+      "target": "ai-org-golden-paths",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-043",
+      "source": "ai-std-reference-architectures",
+      "target": "ai-std-catalogo-componentes",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-044",
+      "source": "ai-gov-ai-governance",
+      "target": "ai-gov-model-risk",
+      "type": "prerequisite"
+    },
+    {
+      "id": "edge-045",
+      "source": "ai-gov-model-risk",
+      "target": "ai-gov-compliance",
+      "type": "prerequisite"
+    }
+  ]
+}
