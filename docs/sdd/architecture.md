@@ -26,25 +26,23 @@ strict subset of the Base Roadmap.
 ```
 /
 ├─ apps/
-│  ├─ web/                # Next.js (App Router, TS, Tailwind, shadcn/ui)
-│  └─ api/                # FastAPI + LangGraph (Python, Poetry/uv)
-├─ packages/
-│  └─ shared-types/        # TS types shared with frontend (DTOs)
+│  ├─ ui/                 # Streamlit frontend (Python, uv)
+│  └─ api/                # FastAPI + LangGraph (Python, uv)
 ├─ docs/
 │  ├─ archives/           # Base Roadmap JSON files (source of truth)
+│  ├─ sql/                # Postgres schema migrations
 │  └─ sdd/                # this document
 ├─ .context/
 │  ├─ project_context.md
 │  ├─ decisions.md
 │  └─ decomposition.json
-├─ Makefile               # root orchestration: install/dev/test/lint/seed
-├─ package.json           # pnpm workspace root
-├─ pnpm-workspace.yaml
+├─ scripts/run.py         # uv run orchestration (Windows-friendly)
+├─ docker-compose.yml
 └─ .gitignore
 ```
 
-**Tooling decisions (ADR-001):** pnpm workspaces for JS, Poetry/uv for Python,
-root Makefile for cross-ecosystem orchestration. NO Nx.
+**Tooling decisions:** pure Python monorepo via uv; `scripts/run.py` for
+orchestration (no Make/Node).
 
 ---
 
@@ -52,53 +50,50 @@ root Makefile for cross-ecosystem orchestration. NO Nx.
 
 | ID | Component | Responsibility | SDD § |
 |----|-----------|----------------|-------|
-| C-FE | Frontend (apps/web) | Responsive UI, auth-gated routes, 3 product surfaces | §4 |
-| C-AUTH | Auth subsystem | Auth.js credentials, JWT issuing, Neon user store, invite flow | §5 |
+| C-FE | Frontend (apps/ui) | Streamlit UI, auth gate, form / progress / results | §4 |
+| C-AUTH | Auth subsystem | Streamlit login, argon2 + Postgres users, HS256 JWT mint for API | §5 |
 | C-API | Backend FastAPI | REST + SSE, Pydantic DTOs, CORS, JWT verify, logging | §6 |
 | C-DATA | Base Roadmap data layer | JSON loader, Pydantic models, in-memory node index | §7 |
 | C-RAG | RAG / Qdrant | Ingestion, embedding, startup seeder, hybrid retriever | §8 |
 | C-AGENT | Agentic LangGraph | Graph nodes + strict-subset guardrail + structured output | §9 |
-| C-DB | Relational store (Neon) | users, sessions, analysis_history tables | §10 |
-| C-DEPLOY | Deployment | Dockerfile, Railway/Vercel configs, env, README | §11 |
+| C-DB | Relational store (Neon) | users, analyses tables | §10 |
+| C-DEPLOY | Deployment | Dockerfiles, Railway (api + ui), env, README | §11 |
 
 ---
 
 ## 4. Frontend (C-FE)
 
-- **Stack:** Next.js App Router, TypeScript strict, Tailwind CSS, shadcn/ui
-  (Radix primitives). Auth.js v5 for auth.
-- **Routing groups:**
-  - `/sign-in` — public sign-in page (no signup).
-  - `(app)/` — protected group (Auth.js middleware); contains:
-    - `/` → `analyze` surface (input form).
-    - `/analyze/:id` → `progress` surface (SSE stream) and `results` surface.
-- **Responsive shell:** `<Header/>`, `<Nav/>` (mobile drawer), `<Main/>`.
-  Breakpoints; mobile-first.
-- **Design system tokens:** color, spacing, typography defined via Tailwind
-  theme + shadcn primitives.
-- **API integration:** typed fetcher hitting FastAPI `/analyze` SSE endpoint;
-  DTOs synchronized from `packages/shared-types`.
+- **Stack:** Streamlit (Python), server-side httpx to FastAPI.
+- **Surfaces (session-state pages):**
+  - Sign-in — public; no signup.
+  - Home — protected CV + description form.
+  - Progress — SSE stream of agent steps.
+  - Results — level resume, score, personalized roadmap.
+- **Shell:** brand header, sign-out, main content, footer caption.
+- **Theme:** `.streamlit/config.toml` dark tokens (approximate prior design).
+- **API integration:** `ui.api.client` posts multipart `/analyze` and consumes
+  `/analyze/{id}/events` SSE; DTOs mirrored from FastAPI Pydantic schemas.
 
 ---
 
 ## 5. Auth Subsystem (C-AUTH)
 
-- **Provider:** Auth.js v5 credentials provider.
-- **Password hashing:** argon2.
-- **Session:** JWT in HttpOnly cookies; short-lived access + refresh.
-- **Public routes:** only `/sign-in`. No self-signup.
-- **Invite flow:** admin creates users via a CLI/script backed by Neon
-  Postgres (admin token readable from env; no admin UI required for MVP).
-- **Backend verification (C-API):** FastAPI dependency decodes & verifies the
-  Auth.js JWT (shared secret / JWKS), attaching `user_id` to the request
-  state. Protected endpoints reject unauthenticated requests with 401.
+- **Provider:** Streamlit form + Postgres `users` lookup.
+- **Password hashing:** argon2-cffi.
+- **Session:** Streamlit `st.session_state` after successful login.
+- **API bridge:** UI mints short-lived HS256 JWT (`sub`, `email`, `is_admin`)
+  with `AUTHJWT_SECRET` matching the API verifier.
+- **Public surface:** only sign-in. No self-signup.
+- **Invite flow:** `apps/ui/scripts/create_user.py` (and seed_test_user).
+- **Backend verification (C-API):** FastAPI `HTTPBearer` JWT HS256 dependency;
+  protected endpoints return 401 if invalid/expired.
 
 ---
 
 ## 6. Backend FastAPI (C-API)
 
 - **App factory:** `create_app()` producing the FastAPI instance.
-- **Middleware:** CORS allowlist (Vercel domain + localhost), structured JSON
+- **Middleware:** CORS allowlist (Streamlit origin + localhost), structured JSON
   logging with request-id, JWT verification dependency.
 - **Endpoints:**
   - `GET /healthz` — unauthenticated liveness probe.
@@ -109,7 +104,7 @@ root Makefile for cross-ecosystem orchestration. NO Nx.
 - **Pydantic v2 DTOs:** `AnalyzeRequest`, `AnalyzeResponse`, `RoadmapNode`,
   `LevelResume`, `AgentProgressEvent`.
 - **Settings:** pydantic-settings loading env vars (Qdrant URL/key, Neon DSN,
-  Auth.js secret, embedding model, LLM provider/key).
+  JWT secret, embedding model, LLM provider/key).
 - **Startup hook:** invoke C-RAG seeder (idempotent) before serving.
 
 ---
@@ -179,31 +174,23 @@ root Makefile for cross-ecosystem orchestration. NO Nx.
   - `users(id UUID PK, email UNIQUE, password_hash, created_at, is_admin BOOL)`.
   - `analyses(id UUID PK, user_id FK, request JSONB, result JSONB,
     status ENUM[running,done,failed], created_at, completed_at)`.
-  - Optional `sessions` only if Auth.js uses DB sessions (MVP uses JWT, so
-    no sessions table).
-- **Migrations:** one migration framework — Drizzle ORM (TS, for frontend
-  / Auth.js) — or a shared SQL migration directory. Decision: use Drizzle in
-  `packages/db` so both the Auth.js side and any admin tooling share one
-  schema definition. The FastAPI side uses asyncpg + reflects the same schema
-  via Pydantic models (no second ORM).
-- **Seed:** an admin user + restricted test users via a guarded `make seed-admin`
-  with env-supplied credentials.
+- **Migrations:** SQL files under `docs/sql`, applied by
+  `apps/ui/scripts/migrate.py` (psycopg). FastAPI uses asyncpg against the
+  same schema (no second ORM).
+- **Seed:** `uv run scripts/run.py seed-admin` / `seed-test`.
 
 ---
 
 ## 11. Deployment (C-DEPLOY)
 
-- **Frontend:** `apps/web` → Vercel (auto-detect Next.js). Env vars:
-  `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `AUTHJS_JWKS_URL` / shared secret,
-  `NEXT_PUBLIC_API_BASE_URL`.
-- **Backend:** `apps/api` → Railway via `Dockerfile` (slim Python base, uv
-  install, `uvicorn` entrypoint). Env vars: `QDRANT_URL`, `QDRANT_API_KEY`,
-  `DATABASE_URL`, `LLM_API_KEY`, `EMBEDDING_MODEL`, `AUTHJS_JWT_SECRET`,
-  `CORS_ALLOW`, `BASE_ROADMAP_PATH`.
+- **Frontend:** `apps/ui` → Railway via `apps/ui/Dockerfile` (Streamlit).
+  Env: `API_BASE_URL`, `DATABASE_URL`, `AUTHJWT_SECRET`.
+- **Backend:** `apps/api` → Railway via `apps/api/Dockerfile` (uvicorn).
+  Env: `QDRANT_URL`, `QDRANT_API_KEY`, `DATABASE_URL`, `LLM_API_KEY`,
+  `EMBEDDING_MODEL`, `AUTHJWT_SECRET`, `CORS_ALLOW`, `BASE_ROADMAP_PATH`.
 - **Qdrant:** Qdrant Cloud free cluster; collection auto-created by seeder.
 - **Neon:** serverless Postgres free branch for dev + main branch for prod.
-- **CI guard (optional, MVP):** on push to main → lint + typecheck + tests;
-  no auto-deploy.
+- **CI guard (optional, MVP):** on push to main → lint + tests; no auto-deploy.
 
 ---
 
@@ -217,9 +204,8 @@ root Makefile for cross-ecosystem orchestration. NO Nx.
   the canonical index — never trusts the LLM alone.
 - **No orchestration overhead:** no queues, no workers, no GPU. One process
   per service.
-- **DTO synchronization:** `packages/shared-types` is generated/edited in
-  lockstep with the FastAPI Pydantic schemas (manual keep-in-sync for MVP;
-  no codegen pipeline required).
+- **DTO synchronization:** Streamlit `ui.api.models` kept in lockstep with
+  FastAPI Pydantic schemas (manual; no codegen).
 
 ---
 
@@ -227,12 +213,11 @@ root Makefile for cross-ecosystem orchestration. NO Nx.
 
 - A Task may only touch files listed here or logically subordinate to a
   declared component.
-- A Task may only introduce dependencies already in the locked stack
-  (ADR-007): Next.js, Tailwind, shadcn/ui, Auth.js v5, FastAPI, Pydantic v2,
-  LangGraph, qdrant-client, asyncpg / Drizzle, Poetry/uv, pnpm.
-- No Task may add: Nx, queues (Celery/RQ), Redis, a second ORM, a frontend
-  state library beyond what Next.js + fetch provide for MVP, a separate
-  worker process, or any cloud service not in §11.
+- A Task may only introduce dependencies already in the locked stack:
+  Streamlit, httpx, FastAPI, Pydantic v2, LangGraph, qdrant-client,
+  asyncpg / psycopg, argon2-cffi, python-jose, uv.
+- No Task may add: Node/Next.js, Nx, queues (Celery/RQ), Redis, a second ORM,
+  a separate worker process, or any cloud service not in §11.
 
 ---
 

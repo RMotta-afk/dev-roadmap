@@ -10,34 +10,29 @@ assessment.
 
 - **Target users:** engineers seeking a personalized development path.
 - **Access:** restricted — the site is NOT public; users are created by an
-  admin (no self-signup), and all routes are auth-gated.
+  admin (no self-signup), and all surfaces are auth-gated.
 
 ## 2. Architecture & Constraints
-- **Repository:** monorepo. `apps/web` (Next.js), `apps/api` (FastAPI + LangGraph),
-  `packages/` (shared TS types/roadmap client), `tools/`.
-- **Tooling:** `pnpm` workspaces (frontend) + `Poetry`/`uv` (backend) + root
-  `Makefile`. NO Nx (see ADR-001). Kept intentionally simple.
-- **Languages:** Python (backend + AI workflows), TypeScript/Next.js (frontend).
-- **UI constraint:** responsive-first, must work on phones and desktops.
+- **Repository:** monorepo. `apps/ui` (Streamlit), `apps/api` (FastAPI + LangGraph).
+- **Tooling:** `uv` for both apps + `scripts/run.py`. NO Node/pnpm/Make/Nx.
+- **Languages:** Python only (UI + backend + AI workflows).
+- **UI constraint:** simple internal Streamlit UI (form, progress, results).
 
-## 3. Deployment Topology (cheap & simple — see ADRs 002-007)
+## 3. Deployment Topology (cheap & simple)
 | Layer        | Host                  | Notes |
 |--------------|-----------------------|-------|
-| Frontend     | Vercel                | Next.js App Router |
-| Backend API  | Railway               | FastAPI + LangGraph, single web service |
+| Frontend     | Railway               | Streamlit (`apps/ui`) |
+| Backend API  | Railway               | FastAPI + LangGraph |
 | Vector DB    | Qdrant Cloud (free)   | 1GB managed cluster |
-| Relational   | Neon Postgres (free)  | Users, sessions, analysis history |
+| Relational   | Neon Postgres (free)  | Users, analysis history |
 | Roadmap data | in-repo JSON (`docs/archives/*.json`) | seeded into Qdrant at API startup |
 
 ## 4. Base Roadmap (Source of Truth)
-`docs/archives/*.json` — roles: `software_engineer`, `ai_engineer`,
-`frontend_engineer`; levels: junior → mid → senior → staff; nodes carry
-`requirements_by_level`, `importance`, `aliases`, `content_guidance`,
-`interview`.
+`docs/archives/*.json` — roles/levels and nodes with requirements, importance,
+aliases, content guidance.
 
-**STRICT RULE (business constraint, see ADR-008):** the agent's
-Personalized Roadmap output MUST be a pure subset of these nodes. It may only
-*select and filter* — never invent, generate, or hallucinate new items.
+**STRICT RULE (ADR-008):** Personalized Roadmap MUST be a pure subset of these
+nodes — select/filter only, never invent.
 
 ## 5. Data Inputs (DTO)
 ```
@@ -47,46 +42,37 @@ Personalized Roadmap output MUST be a pure subset of these nodes. It may only
 
 ## 6. Outputs (DTO)
 ```
-{ level_resume: str,
+{ level_resume | level_estimate,
   compatibility_score: int (0-100),
-  personalized_roadmap: RoadmapNode[] }   # strictly a subset of Base Roadmap
+  personalized_roadmap: RoadmapNode[] }
 ```
 
-## 7. Frontend — apps/web (Next.js)
-- App Router; Tailwind + shadcn/ui (Radix) for accessible, responsive components.
-- Mobile-first responsive layout (phones + computers).
-- Auth-gated routes via Auth.js middleware (NextAuth v5).
-- Three product surfaces: (a) input form, (b) streaming progress / loader,
-  (c) results view (Level Resume, Compatibility Score, Personalized Roadmap).
+## 7. Frontend — apps/ui (Streamlit)
+- Sign-in, analyze form, SSE progress, results.
+- Server-side httpx + JWT mint to FastAPI.
+- Session state after argon2 login against Postgres.
 
 ## 8. Backend — apps/api (FastAPI)
-- REST + **Server-Sent Events** for streaming agent progress.
-- Pydantic v2 request/response schemas; CORS allowlist.
-- Verifies JWT from Auth.js; protected endpoints.
-- Structured JSON logging; **self-seeds Qdrant at startup** if collection empty.
+- REST + SSE for streaming agent progress.
+- Pydantic v2; CORS allowlist; JWT Bearer verify (`AUTHJWT_SECRET`).
+- Structured JSON logging; self-seeds Qdrant at startup if empty.
 
 ## 9. Agentic Layer (LangGraph)
-Graph nodes: **ingest → strip → analyze → compare (via Qdrant retrieval) →
-level-guess → roadmap-select**.
-- Guardrails: structured output schema; strict-subset validator forbids
-  hallucinated roadmap items (see ADR-008); max iterations + clear stop criteria.
-- Tools: Qdrant retriever (role/level/category filters), roadmap validator.
+Graph: **ingest → strip → analyze → compare → level-guess → roadmap-select**.
+Strict-subset validator on final roadmap (ADR-008).
 
 ## 10. RAG & Vector Store (Qdrant)
-- Ingestion: parse 12 JSONs, chunk by node, embed, store with metadata
-  `{role, level, node_id, category, importance}`.
-- Collection design: one collection, filtered by role + level.
-- Hybrid search (dense + sparse); tuned top-k for subset selection.
+Parse archives, embed nodes, hybrid retrieve with filters.
 
-## 11. Auth & Access Control (Auth.js v5)
-- Credentials provider: email/password (argon2) in Neon Postgres.
-- JWT session cookies; middleware protects all app routes.
-- Invite-only: admin creates users (no public signup route).
+## 11. Auth & Access Control
+- Streamlit credentials against Neon/Postgres users (argon2).
+- Short-lived HS256 JWT for API (`sub`, `email`, `is_admin`).
+- Invite-only: CLI create_user / seed_test_user (no public signup).
 
 ## 12. Non-Functional
-- **Cost ceiling:** stay within all free/starter tiers for MVP.
-- **Simplicity rule:** one backend service, no queues, no GPU.
-- **Security:** secrets via env vars (never in repo); CV files ephemeral.
-- **Observability:** structured logs; request ids.
+- Cost: free/starter tiers for MVP.
+- One backend process, no queues, no GPU.
+- Secrets via env; CV files ephemeral.
+- Structured logs.
 
-> Authoritative architecture decisions live in `.context/decisions.md` (ADRs).
+> ADRs: `.context/decisions.md`

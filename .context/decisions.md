@@ -15,12 +15,10 @@ preserved.
 - **Context:** The project must be a monorepo with a Python backend and a
   Next.js frontend. Nx was considered because it offers unified task graphs,
   caching and codegen for polyglot monorepos.
-- **Decision:** Use a **plain workspace + root Makefile** instead of Nx.
-  - `pnpm` workspaces for the JavaScript/TypeScript side (frontend + shared
-    packages).
-  - `Poetry` (or `uv`) for the Python side (backend + agentic layer).
-  - A root `Makefile` (and a thin `package.json` scripts layer) orchestrates
-    install, dev, test, lint, and seed commands across both ecosystems.
+- **Decision:** Use a **plain uv monorepo** instead of Nx (later: pure Python;
+  see ADR-009).
+  - Originally: `pnpm` + `uv` + Makefile.
+  - Now: `uv` for API and UI; `scripts/run.py` orchestrates install/dev/seed.
 - **Rationale:** Matches the project's "simplest possible" constraint. Nx's
   Python support relies on a third-party plugin (`@nxlv/python`), adding
   cognitive/operational overhead for a small project. A plain workspace + Make
@@ -120,18 +118,18 @@ preserved.
 
 ---
 
-## ADR-007 — Tech stack summary (locked)
+## ADR-007 — Tech stack summary (historical lock; superseded for FE by ADR-009)
 
 | Concern              | Choice                                      |
 |-----------------------|---------------------------------------------|
-| Monorepo tooling      | pnpm workspaces + Poetry/uv + root Makefile |
-| Frontend              | Next.js (App Router) + Tailwind + shadcn/ui |
+| Monorepo tooling      | uv + scripts/run.py (was pnpm/Make)         |
+| Frontend              | Streamlit (was Next.js) — see ADR-009       |
 | Backend framework     | FastAPI (async, Pydantic v2)                |
 | Agentic layer         | LangGraph                                    |
 | Vector store          | Qdrant Cloud (free)                         |
 | Relational store      | Neon Postgres (free)                        |
-| Auth                  | Auth.js v5 + JWT credentials                |
-| Frontend hosting      | Vercel                                       |
+| Auth                  | Streamlit login + HS256 JWT (ADR-009)       |
+| Frontend hosting      | Railway                                      |
 | Backend hosting       | Railway                                      |
 | Base Roadmap source   | `docs/archives/*.json` (versioned in repo)  |
 
@@ -145,5 +143,22 @@ preserved.
   LangGraph final node: the validator rejects any roadmap item whose `id` is
   not present in the loaded Base Roadmap. The agent re-plans or emits a
   validation error rather than returning hallucinated items.
-- **Rationale:** Hard-codes the project's core business constraint at the
+  - **Rationale:** Hard-codes the project's core business constraint at the
   graph layer, not just the prompt.
+
+---
+
+## ADR-009 — Replace Next.js with Streamlit (internal-use UI)
+
+- **Date:** 2026-07-24
+- **Status:** Accepted
+- **Context:** Product is simple and internal. Maintaining Next.js + Auth.js +
+  pnpm + Vercel added polyglot complexity while the backend is fully Python.
+- **Decision:**
+  - Remove `apps/web`, `packages/*`, and all Node/pnpm tooling.
+  - Add `apps/ui` Streamlit client that talks to FastAPI with server-side
+    httpx and mints HS256 JWTs after argon2 login against Postgres.
+  - Host both UI and API on Railway; keep Neon + Qdrant Cloud.
+  - Own schema SQL under `docs/sql` with Python migrate/seed scripts.
+- **Rationale:** One language, simpler local/dev ops, same analysis contracts.
+- **Revisit trigger:** Multi-tenant public product or heavy client-side UX.

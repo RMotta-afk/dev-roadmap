@@ -19,13 +19,14 @@ class Settings(BaseSettings):
 
     # LLM / Embeddings
     llm_api_key: str = Field(default="")
+    llm_model: str = Field(default="gpt-4o-mini")
     embedding_model: str = Field(default="text-embedding-3-small")
 
     # Auth
     authjwt_secret: str = Field(default="change-me-in-production")
 
     # CORS
-    cors_allow: str = Field(default="http://localhost:3000")
+    cors_allow: str = Field(default="http://localhost:8501")
 
     # Roadmap data
     base_roadmap_path: Path = Field(default=Path("docs/archives"))

@@ -1,103 +1,82 @@
-# Deployment Task — Future Checklist
+# Deployment Task — Streamlit + FastAPI
 
 > **Status:** NOT STARTED  
-> **Assigned to:** TBD  
-> **Target date:** TBD
-
-This file tracks the remaining work needed to deploy the application to production (Vercel + Railway + Qdrant Cloud + Neon Postgres).
+> **Stack:** Railway (api + ui) · Neon Postgres · Qdrant Cloud  
+> **Removed:** Vercel / Next.js / Node
 
 ---
 
 ## Pre-Deploy Checklist
 
-### Environment Setup
-- [ ] Copy `.env.example` → `.env.production` (do not commit)
-- [ ] Set `AUTH_SECRET` to a strong random string (32+ chars)
-- [ ] Set `AUTHJS_JWT_SECRET` to match `AUTH_SECRET`
-- [ ] Set `LLM_API_KEY` to a real OpenAI API key (or keep empty for mock mode)
-- [ ] Set `QDRANT_URL` and `QDRANT_API_KEY` from Qdrant Cloud dashboard
-- [ ] Set `DATABASE_URL` from Neon Postgres dashboard
-- [ ] Set `NEXT_PUBLIC_API_BASE_URL` to the Railway backend URL
-- [ ] Set `NEXTAUTH_URL` to the Vercel frontend URL
-- [ ] Set `CORS_ALLOW` to the Vercel frontend URL
+### Environment
 
-### Backend (Railway)
-- [ ] Create Railway project
-- [ ] Connect GitHub repo, set root directory to `apps/api`
-- [ ] Add all environment variables from `.env.production`
-- [ ] Verify `Dockerfile` builds successfully
-- [ ] Verify `/healthz` responds after deploy
-- [ ] Verify Qdrant seeding runs on first boot (idempotent)
-- [ ] Run database migrations (`pnpm db:push` or `pnpm db:migrate` against Neon)
+- [ ] Copy `.env.example` → production secrets (do not commit)
+- [ ] Set `AUTHJWT_SECRET` to a strong random string (32+ chars) — **same value on api and ui**
+- [ ] Set `LLM_API_KEY` (or leave empty for mock mode)
+- [ ] Set `QDRANT_URL` and `QDRANT_API_KEY` from Qdrant Cloud
+- [ ] Set `DATABASE_URL` from Neon (api may use `postgresql+asyncpg://…`)
+- [ ] Set UI `API_BASE_URL` to the Railway API public or private URL
+- [ ] Set `CORS_ALLOW` if any browser client calls the API (optional when UI uses server-side httpx only)
+- [ ] Set `BASE_ROADMAP_PATH=docs/archives` on api
 
-### Frontend (Vercel)
-- [ ] Create Vercel project
-- [ ] Connect GitHub repo, set root directory to `apps/web`
-- [ ] Add environment variables:
-  - `NEXTAUTH_URL`
-  - `AUTH_SECRET`
-  - `NEXT_PUBLIC_API_BASE_URL`
-- [ ] Verify build succeeds
-- [ ] Verify `/sign-in` loads
-- [ ] Verify proxy middleware redirects unauthenticated users
+### Database (Neon)
 
-### Database (Neon Postgres)
 - [ ] Create Neon project + branch
-- [ ] Run initial migration (`pnpm db:push`)
-- [ ] Create admin user (`pnpm db:seed-admin` or run CLI manually)
-- [ ] Verify connection from Railway backend
+- [ ] Run `uv run python apps/ui/scripts/migrate.py` against Neon (`DATABASE_URL` without requiring Node)
+- [ ] Create admin: `uv run python apps/ui/scripts/create_user.py you@company.com '…' --admin`
+- [ ] Verify api and ui can connect
 
-### Vector Store (Qdrant Cloud)
+### Vector store (Qdrant Cloud)
+
 - [ ] Create free-tier cluster
-- [ ] Copy URL + API key
-- [ ] Verify backend connects on boot
-- [ ] Verify collection `roadmap_nodes` is created and seeded
+- [ ] Copy URL + API key onto api service
+- [ ] Confirm collection `roadmap_nodes` seeds on first api boot
+
+### Backend (Railway — api)
+
+- [ ] Create Railway project / service
+- [ ] Root / Dockerfile: repo root context, `apps/api/Dockerfile`
+- [ ] Env vars from checklist above
+- [ ] Verify `GET /healthz` → `{"status":"ok"}`
+- [ ] Confirm Qdrant seed logs on first boot
+
+### Frontend (Railway — ui)
+
+- [ ] Second Railway service from same repo
+- [ ] Dockerfile: `apps/ui/Dockerfile` (build context = repo root)
+- [ ] Env: `API_BASE_URL`, `DATABASE_URL`, `AUTHJWT_SECRET` (match api)
+- [ ] Prefer Railway private networking URL for `API_BASE_URL` when both services share a project
+- [ ] Open public UI URL; confirm sign-in page loads
+- [ ] Port: Streamlit listens on `$PORT` if Railway injects it — override CMD if needed:
+
+```dockerfile
+CMD streamlit run src/ui/app.py --server.port=${PORT:-8501} --server.address=0.0.0.0
+```
 
 ---
 
 ## Post-Deploy Verification
 
-- [ ] End-to-end smoke test:
-  1. Sign in with admin credentials
-  2. Submit a CV + description
-  3. Watch streaming progress
-  4. Verify results page shows Level Resume, Score, Roadmap
-- [ ] Verify strict-subset guardrail (no hallucinated items)
-- [ ] Verify analysis history persists to Neon
-- [ ] Verify invite-only access (no public sign-up)
-- [ ] Check logs on Railway for errors
-- [ ] Check Vercel function logs for errors
+- [ ] Sign in with admin credentials
+- [ ] Submit CV + description
+- [ ] Watch streaming progress steps
+- [ ] Results show level resume, score, roadmap
+- [ ] Invite-only: no public signup
+- [ ] Check Railway logs on api and ui
 
 ---
 
-## Rollback Plan
+## Rollback
 
-If deployment fails:
-1. Railway: revert to previous deployment in dashboard
-2. Vercel: revert to previous deployment in dashboard
-3. Neon: branch from previous stable state if needed
-4. Qdrant: re-seed from `docs/archives/*.json`
+1. Railway: redeploy previous successful deployment per service  
+2. Neon: restore branch / PITR if schema broken  
+3. Qdrant: re-seed from `docs/archives/*.json` via api restart  
 
 ---
 
-## Cost Estimation (MVP)
+## Local Docker parity
 
-| Service | Tier | Monthly Cost |
-|---------|------|-------------|
-| Vercel | Hobby (free) | $0 |
-| Railway | Starter | ~$5/mo |
-| Neon | Free tier | $0 |
-| Qdrant Cloud | Free tier (1GB) | $0 |
-| OpenAI API | Pay-as-you-go | ~$0-5/mo (light usage) |
-| **Total** | | **~$5/mo** |
-
----
-
-## Notes
-
-- Do **not** commit `.env` or `.env.production` to Git
-- Keep `docs/archives/*.json` in the repo — they are the canonical Base Roadmap
-- The Qdrant seeder is idempotent; safe to re-deploy
-- Railway auto-deploys on push to `main` if configured
-
-> Created: 2026-07-24
+```bash
+docker compose up --build
+# UI http://localhost:8501  API http://localhost:8000/healthz
+```

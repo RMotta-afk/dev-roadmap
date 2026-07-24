@@ -1,124 +1,95 @@
 # CV Analyzer & Roadmap Generator
 
-Monorepo for an agentic CV analysis and personalized engineering roadmap generation tool.
+Restricted-access app that ingests an engineer's CV and description, runs an agentic analysis against a Base Roadmap, and returns a personalized development path.
 
-This is a restricted-access web application that ingests an engineer's CV and brief description, runs an agentic analysis against a Base Roadmap of expected engineering abilities, and returns a personalized development path.
+**Stack:** Streamlit UI · FastAPI + LangGraph API · Postgres · Qdrant (pure Python; no Node).
 
-## Project Structure
+## Project structure
 
-- `apps/web` — Next.js frontend (App Router, TypeScript, Tailwind, shadcn/ui)
-- `apps/api` — FastAPI + LangGraph backend (Python, uv)
-- `packages/shared-types` — Shared TypeScript types and DTOs
-- `packages/db` — Drizzle ORM database package
+- `apps/ui` — Streamlit frontend (login, CV form, SSE progress, results)
+- `apps/api` — FastAPI + LangGraph backend
+- `docs/archives` — Base roadmap JSON
+- `docs/sql` — Postgres schema migrations
+- `scripts/run.py` — cross-platform orchestration via `uv run`
 
-## Quick Start
+## Quick start (from zero)
 
-```bash
-pnpm install:all    # Install all dependencies
-pnpm infra:up       # Start Postgres + Qdrant in Docker
-pnpm db:push        # Run database migrations
-pnpm db:seed-admin  # Create an admin user (follow prompts)
-pnpm dev            # Start frontend and backend dev servers
+```powershell
+# From repo root (PowerShell, CMD, or bash)
+uv run scripts/run.py setup
+
+# Terminal 1 — API
+uv run scripts/run.py api
+
+# Terminal 2 — UI
+uv run scripts/run.py ui
 ```
 
-Open http://localhost:3000 and sign in with the admin credentials you just created.
+Open http://localhost:8501
 
-## pnpm Scripts (cross-platform)
+Or step by step:
 
-| Script | Description |
-|--------|-------------|
-| `pnpm install:all` | Install JS dependencies via `pnpm install` and Python dependencies via `uv sync` |
-| `pnpm dev` | Run frontend (`:3000`) and backend (`:8000`) concurrently via `concurrently` |
-| `pnpm dev:web` | Run only the Next.js dev server |
-| `pnpm dev:api` | Run only the FastAPI dev server |
-| `pnpm build` | Build the Next.js frontend for production |
-| `pnpm test` | Run tests across all JS workspaces and pytest in `apps/api` |
-| `pnpm lint` | Run linters across all JS workspaces and `ruff check` in `apps/api` |
-| `pnpm format` | Run formatters across all JS workspaces and `ruff format` in `apps/api` |
-| `pnpm infra:up` | Start local Docker services (Postgres + Qdrant) |
-| `pnpm infra:down` | Stop local Docker services |
-| `pnpm db:push` | Push Drizzle schema to the database |
-| `pnpm db:migrate` | Run Drizzle migrations |
-| `pnpm db:studio` | Open Drizzle Studio GUI |
-| `pnpm db:seed-admin` | Create an admin user via CLI |
-
-## Development Notes
-
-- **Frontend tooling**: pnpm workspaces, Next.js 16, Tailwind v4, shadcn/ui
-- **Backend tooling**: uv (Python package manager), FastAPI, LangGraph, Qdrant
-- **Orchestration**: root `package.json` scripts using `concurrently` for cross-platform parallel execution
-- **Requirements**: Node.js ≥ 18 + pnpm ≥ 9, Python ≥ 3.11 + uv, Docker Desktop
-
-## Demo Setup
-
-See [`DEMO_SETUP.md`](./DEMO_SETUP.md) for a step-by-step guide to run the app locally for a client presentation.
-
-## Deployment
-
-### Local Development
-
-```bash
-pnpm install:all
-pnpm infra:up
-pnpm db:push
-pnpm db:seed-admin
-pnpm dev
+```powershell
+uv run scripts/run.py env
+uv run scripts/run.py install
+uv run scripts/run.py infra-up
+uv run scripts/run.py migrate
+uv run scripts/run.py seed-test
+uv run scripts/run.py api   # terminal 1
+uv run scripts/run.py ui    # terminal 2
 ```
 
-### Deploy Backend (Railway)
+## Test user
 
-1. Connect your repo to Railway
-2. Set the root directory to `apps/api`
-3. Add environment variables from `.env.example`
-4. Railway will auto-detect the `Dockerfile` and deploy
+After `seed-test`:
 
-```bash
-cd apps/api && docker build -t cv-analyzer-api .
-docker run -p 8000:8000 --env-file .env cv-analyzer-api
-```
-
-### Deploy Frontend (Vercel)
-
-```bash
-cd apps/web && vercel --prod
-```
-
-Make sure environment variables are configured in the Vercel dashboard.
-
-### Environment Variables Checklist
-
-Copy `.env.local` to `.env` and fill in all values:
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `NEXTAUTH_URL` | Yes | Frontend URL for auth callbacks |
-| `AUTH_SECRET` | Yes | Secret for encrypting auth tokens (NextAuth v5) |
-| `NEXT_PUBLIC_API_BASE_URL` | Yes | Public API URL used by the browser |
-| `QDRANT_URL` | Yes | Qdrant vector DB endpoint |
-| `QDRANT_API_KEY` | No | Qdrant API key (if secured) |
-| `DATABASE_URL` | Yes | PostgreSQL connection string |
-| `LLM_API_KEY` | No | OpenAI API key (leave empty for mock mode) |
-| `EMBEDDING_MODEL` | Yes | Embedding model name |
-| `AUTHJS_JWT_SECRET` | Yes | JWT signing secret (must match `AUTH_SECRET`) |
-| `CORS_ALLOW` | Yes | Allowed CORS origin |
-| `BASE_ROADMAP_PATH` | Yes | Path to base roadmap archive files |
-
-### Seed Users
-
-**Quick test user (pre-configured):**
-```bash
-pnpm db:seed-test
-```
-Creates the test user for development:
 - Email: `mundo.dev@cv-analyzer.local`
 - Password: `f3l!pe_p@llm@`
 
-**Custom admin user:**
-```bash
-pnpm db:seed-admin
+Custom admin:
+
+```powershell
+uv run scripts/run.py seed-admin
 ```
-Follow the prompts to create your own admin user. No public sign-up page exists.
 
-## License
+## Orchestration commands
 
-Private — internal use only.
+| Command | Description |
+|---------|-------------|
+| `uv run scripts/run.py setup` | env + install + infra + migrate + seed-test |
+| `uv run scripts/run.py env` | Copy `.env.example` → `.env` if missing |
+| `uv run scripts/run.py install` | `uv sync` for api and ui |
+| `uv run scripts/run.py infra-up` | Docker Postgres + Qdrant |
+| `uv run scripts/run.py infra-down` | Stop Docker services |
+| `uv run scripts/run.py migrate` | Apply `docs/sql` |
+| `uv run scripts/run.py seed-test` | Create demo user |
+| `uv run scripts/run.py seed-admin` | Interactive admin user |
+| `uv run scripts/run.py api` | FastAPI `:8000` |
+| `uv run scripts/run.py ui` | Streamlit `:8501` |
+| `uv run scripts/run.py test` | Pytest both apps |
+| `uv run scripts/run.py lint` | Ruff both apps |
+
+## Environment
+
+| Variable | Service | Description |
+|----------|---------|-------------|
+| `DATABASE_URL` | api, ui | Postgres DSN (`+asyncpg` ok; UI strips it) |
+| `AUTHJWT_SECRET` | api, ui | Shared HS256 secret for API bearer JWTs |
+| `API_BASE_URL` | ui | FastAPI base URL (default `http://localhost:8000`) |
+| `QDRANT_URL` / `QDRANT_API_KEY` | api | Vector store |
+| `LLM_API_KEY` | api | OpenAI key; empty = mock mode |
+| `LLM_MODEL` / `EMBEDDING_MODEL` | api | Model names |
+| `CORS_ALLOW` | api | Optional browser origins |
+| `BASE_ROADMAP_PATH` | api | Path to roadmap JSON (default `docs/archives`) |
+
+## Deployment
+
+- **API + UI:** Railway (two services), Dockerfiles under `apps/api` and `apps/ui`
+- **DB:** Neon Postgres
+- **Vectors:** Qdrant Cloud
+
+See [`DEPLOYMENT_TASK.md`](./DEPLOYMENT_TASK.md).
+
+## Demo
+
+See [`DEMO_SETUP.md`](./DEMO_SETUP.md).

@@ -10,7 +10,7 @@ security = HTTPBearer(auto_error=False)
 async def get_current_user(
     credentials: HTTPAuthorizationCredentials | None = Depends(security),
 ) -> dict:
-    """Decode and verify the Auth.js JWT Bearer token."""
+    """Decode and verify the HS256 Bearer JWT (minted by Streamlit UI)."""
     if credentials is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

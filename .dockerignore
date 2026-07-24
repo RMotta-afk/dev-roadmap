@@ -4,8 +4,7 @@
 **/.venv
 **/.ruff_cache
 **/__pycache__
-apps/web
-packages
+**/.pytest_cache
 .env
 .env.local
 .env.example

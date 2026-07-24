@@ -1,8 +1,6 @@
-# Dependencies
+# Dependencies / build
 node_modules/
 .pnpm-store/
-
-# Build outputs
 .next/
 dist/
 build/
@@ -18,6 +16,10 @@ venv/
 ENV/
 env/
 .uv/
+*.egg-info/
+
+# Streamlit
+.streamlit/secrets.toml
 
 # Environment
 .env
@@ -41,6 +43,9 @@ logs/
 # Testing
 coverage/
 *.lcov
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
 
 # Misc
 *.tgz
@@ -49,3 +54,4 @@ coverage/
 # Keep archives for roadmap data
 !docs/archives/
 !docs/sdd/
+!docs/sql/
