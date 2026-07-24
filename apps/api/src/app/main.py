@@ -45,3 +45,7 @@ def create_app() -> FastAPI:
     app.include_router(analyze_router)
 
     return app
+
+
+# Module-level app instance for uvicorn CLI
+app = create_app()

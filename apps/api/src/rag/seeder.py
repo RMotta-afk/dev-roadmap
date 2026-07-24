@@ -14,11 +14,22 @@ COLLECTION_NAME = "roadmap_nodes"
 
 
 async def seed_roadmap_collection() -> None:
-    """Seed Qdrant with roadmap nodes if the collection is empty or missing."""
+    """Seed Qdrant with roadmap nodes if the collection is empty or missing.
+    
+    Gracefully skips if Qdrant is not reachable (e.g., local demo without Docker).
+    """
     qdrant = QdrantRagClient()
 
-    # Ensure collection exists (creates with 1536-dim cosine vectors if missing)
-    await qdrant.init_collection(name=COLLECTION_NAME)
+    try:
+        # Ensure collection exists (creates with 1536-dim cosine vectors if missing)
+        await qdrant.init_collection(name=COLLECTION_NAME)
+    except Exception as exc:
+        logger.warning(
+            "Qdrant not reachable at %s — skipping seed. Error: %s",
+            settings.qdrant_url,
+            exc,
+        )
+        return
 
     # Idempotency check: skip if collection already contains points
     count_result = await qdrant.client.count(collection_name=COLLECTION_NAME)
