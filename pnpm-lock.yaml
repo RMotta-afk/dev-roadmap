@@ -69,7 +69,11 @@ importers:
         specifier: ^5
         version: 5.9.3
 
-  packages/shared-types: {}
+  packages/shared-types:
+    devDependencies:
+      typescript:
+        specifier: ^5
+        version: 5.9.3
 
 packages:
 

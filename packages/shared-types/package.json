@@ -4,8 +4,10 @@
   "private": true,
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "tsc --watch"
   },
-  "devDependencies": {},
-  "dependencies": {}
+  "devDependencies": {
+    "typescript": "^5"
+  }
 }
