@@ -1,17 +1,30 @@
 from pathlib import Path
 
 from pydantic import Field
-from pydantic_settings import BaseSettings, SettingsConfigDict
-
-_ROOT_CANDIDATES = [
-    Path.cwd() / ".env",
-    Path(__file__).resolve().parents[3] / ".env",  # apps/ui/.env
-    Path(__file__).resolve().parents[4] / ".env",  # repo root .env
-]
+from pydantic_settings import (
+    BaseSettings,
+    PydanticBaseSettingsSource,
+    SettingsConfigDict,
+)
 
 
 def _env_files() -> tuple[str, ...]:
-    found = [str(p) for p in _ROOT_CANDIDATES if p.is_file()]
+    # config.py lives at apps/ui/src/ui/config.py
+    #   parents[2] -> apps/ui
+    #   parents[4] -> repo root
+    this_file = Path(__file__).resolve()
+    candidates = [
+        this_file.parents[4] / ".env",
+        this_file.parents[2] / ".env",
+        (Path.cwd() / ".env").resolve(),
+    ]
+    found: list[str] = []
+    seen: set[str] = set()
+    for p in candidates:
+        key = str(p)
+        if p.is_file() and key not in seen:
+            seen.add(key)
+            found.append(key)
     return tuple(found) if found else (".env",)
 
 
@@ -28,6 +41,22 @@ class Settings(BaseSettings):
     )
     authjwt_secret: str = Field(default="change-me-in-production")
     jwt_expiry_minutes: int = Field(default=15)
+
+    @classmethod
+    def settings_customise_sources(
+        cls,
+        settings_cls: type[BaseSettings],
+        init_settings: PydanticBaseSettingsSource,
+        env_settings: PydanticBaseSettingsSource,
+        dotenv_settings: PydanticBaseSettingsSource,
+        file_secret_settings: PydanticBaseSettingsSource,
+    ) -> tuple[PydanticBaseSettingsSource, ...]:
+        return (
+            init_settings,
+            dotenv_settings,
+            env_settings,
+            file_secret_settings,
+        )
 
     def sync_database_url(self) -> str:
         url = self.database_url

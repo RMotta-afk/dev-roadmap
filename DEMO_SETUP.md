@@ -34,11 +34,10 @@ cd C:\_projects\_dev-roadmap\dev-roadmap
 uv run scripts/run.py setup
 ```
 
-Then two terminals:
+Then one command (API + UI, shared env):
 
 ```powershell
-uv run scripts/run.py api
-uv run scripts/run.py ui
+uv run scripts/run.py dev
 ```
 
 Open http://localhost:8501

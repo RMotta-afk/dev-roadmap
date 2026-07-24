@@ -18,11 +18,8 @@ Restricted-access app that ingests an engineer's CV and description, runs an age
 # From repo root (PowerShell, CMD, or bash)
 uv run scripts/run.py setup
 
-# Terminal 1 — API
-uv run scripts/run.py api
-
-# Terminal 2 — UI
-uv run scripts/run.py ui
+# One process: API + UI, same root .env
+uv run scripts/run.py dev
 ```
 
 Open http://localhost:8501
@@ -35,8 +32,7 @@ uv run scripts/run.py install
 uv run scripts/run.py infra-up
 uv run scripts/run.py migrate
 uv run scripts/run.py seed-test
-uv run scripts/run.py api   # terminal 1
-uv run scripts/run.py ui    # terminal 2
+uv run scripts/run.py dev   # API :8000 + UI :8501 together
 ```
 
 ## Test user
@@ -64,8 +60,9 @@ uv run scripts/run.py seed-admin
 | `uv run scripts/run.py migrate` | Apply `docs/sql` |
 | `uv run scripts/run.py seed-test` | Create demo user |
 | `uv run scripts/run.py seed-admin` | Interactive admin user |
-| `uv run scripts/run.py api` | FastAPI `:8000` |
-| `uv run scripts/run.py ui` | Streamlit `:8501` |
+| `uv run scripts/run.py dev` | API + UI together (same root `.env`) |
+| `uv run scripts/run.py api` | FastAPI `:8000` only |
+| `uv run scripts/run.py ui` | Streamlit `:8501` only |
 | `uv run scripts/run.py test` | Pytest both apps |
 | `uv run scripts/run.py lint` | Ruff both apps |
 
