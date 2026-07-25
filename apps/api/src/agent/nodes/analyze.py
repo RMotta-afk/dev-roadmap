@@ -2,13 +2,11 @@
 
 from __future__ import annotations
 
-import json
 from typing import Any
-
-import httpx
 
 from agent.state import AgentState
 from app.config import settings
+from llm.client import get_llm_client
 
 
 # Structured prompt that asks the model to return valid JSON.
@@ -63,29 +61,11 @@ def _build_messages(
 
 
 async def _call_llm(messages: list[dict[str, str]]) -> dict[str, Any]:
-    """Call OpenAI-compatible chat completions endpoint."""
+    """Call the LLM via the shared ModelClient."""
     if not settings.llm_api_key:
         raise RuntimeError("LLM API key is not configured")
-
-    url = "https://api.openai.com/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {settings.llm_api_key}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "model": settings.embedding_model,  # fallback reuse; override with dedicated chat model if desired
-        "messages": messages,
-        "temperature": 0.2,
-        "response_format": {"type": "json_object"},
-    }
-
-    async with httpx.AsyncClient(timeout=60.0) as client:
-        response = await client.post(url, headers=headers, json=payload)
-        response.raise_for_status()
-        data = response.json()
-
-    content = data["choices"][0]["message"]["content"]
-    return json.loads(content)
+    client = get_llm_client()
+    return await client.chat_json(messages)
 
 
 def _mock_extraction(raw_cv_text: str, raw_description: str) -> dict[str, Any]:
@@ -167,7 +147,7 @@ async def analyze_node(state: AgentState) -> AgentState:
 
     # Seed technologies/skills from the structured profile's Top Skills so the
     # deterministic strip output always contributes to the analysis.
-    top_skills = (state.profile or {}).get("top_skills", [])
+    top_skills = (state.profile or {}).get("top_skills", []) # change top_skills to skills
     technologies = _dedupe(list(extraction.get("technologies", [])) + top_skills)
     skills = _dedupe(list(extraction.get("skills", [])) + top_skills)
 

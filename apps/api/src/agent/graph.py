@@ -56,26 +56,36 @@ async def stream_analysis(
         user_name=user_name,
     )
 
-    # Stream each node completion
-    async for event in graph.astream(initial_state):
-        node_name = event.get("node", "unknown")
-        yield {
-            "node": node_name,
-            "status": "completed",
-            "message": f"Node {node_name} completed",
-            "payload": event,
-        }
+    # Emit a pipeline-started event so the frontend gets immediate feedback
+    yield {
+        "node": "pipeline",
+        "status": "started",
+        "message": "Analysis pipeline started",
+        "payload": {},
+    }
 
-    # Final result event
-    final_state = event  # last event holds final state
+    # Stream each node completion (stream_mode="updates" yields {node_name: state_dict})
+    final: dict = {}
+    async for update in graph.astream(initial_state, stream_mode="updates"):
+        for node_name, node_output in update.items():
+            output = node_output if isinstance(node_output, dict) else {}
+            final.update(output)
+            yield {
+                "node": node_name,
+                "status": "completed",
+                "message": f"Node {node_name} completed",
+                "payload": output,
+            }
+
+    # Final result event built from accumulated state
     yield {
         "node": "result",
         "status": "completed",
         "message": "Analysis complete",
         "payload": {
-            "level_estimate": final_state.level_estimate,
-            "compatibility_score": final_state.compatibility_score,
-            "personalized_roadmap": final_state.personalized_roadmap,
-            "errors": final_state.errors,
+            "level_estimate": final.get("level_estimate"),
+            "compatibility_score": final.get("compatibility_score"),
+            "personalized_roadmap": final.get("personalized_roadmap"),
+            "errors": final.get("errors", []),
         },
     }

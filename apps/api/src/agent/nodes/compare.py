@@ -38,7 +38,13 @@ async def compare_node(state: AgentState) -> AgentState:
             if not isinstance(item, str):
                 continue
 
-            results: list[RoadmapNode] = await retriever.retrieve(item, top_k=5)
+            try:
+                results: list[RoadmapNode] = await retriever.retrieve(item, top_k=5)
+            except Exception as exc:
+                state.errors.append(
+                    f"Retrieval failed for '{item}' ({type(exc).__name__})"
+                )
+                continue
             for node in results:
                 if node.id in seen_ids:
                     continue

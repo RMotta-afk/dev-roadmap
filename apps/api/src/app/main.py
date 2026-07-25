@@ -9,21 +9,30 @@ from fastapi.responses import JSONResponse
 from app.api.analyze import router as analyze_router
 from app.config import settings
 from app.middleware import RequestLoggingMiddleware
+from llm.client import get_llm_client
 from rag.seeder import seed_roadmap_collection
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan context manager for startup/shutdown hooks."""
-    await seed_roadmap_collection()
+    print(f"[startup] base_roadmap_path={settings.base_roadmap_path}", flush=True)
+    n = await seed_roadmap_collection()
+    print(f"[startup] qdrant seed upserted={n}", flush=True)
     yield
-    # Placeholder: cleanup logic can be added here.
-
+    await get_llm_client().aclose()
 
 def create_app() -> FastAPI:
     app = FastAPI(
         title="Dev Roadmap API",
         lifespan=lifespan,
+    )
+
+    secret = settings.authjwt_secret
+    print(
+        f"[auth] access-token secret loaded len={len(secret)} "
+        f"suffix=...{secret[-4:] if len(secret) >= 4 else secret!r}",
+        flush=True,
     )
 
     # CORS

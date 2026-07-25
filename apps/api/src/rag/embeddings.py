@@ -1,11 +1,9 @@
 import hashlib
 import random
 from abc import ABC, abstractmethod
-from typing import Any
-
-import httpx
 
 from app.config import settings
+from llm.client import get_llm_client
 
 
 class EmbeddingService(ABC):
@@ -18,46 +16,12 @@ class EmbeddingService(ABC):
 
 
 class OpenAIEmbeddingService(EmbeddingService):
-    """Embedding service backed by the OpenAI API."""
-
-    def __init__(self, api_key: str | None = None, model: str | None = None) -> None:
-        self.api_key = api_key or settings.llm_api_key
-        self.model = model or settings.embedding_model
-        self._client: httpx.AsyncClient | None = None
-
-    @property
-    def client(self) -> httpx.AsyncClient:
-        if self._client is None:
-            self._client = httpx.AsyncClient(
-                base_url="https://api.openai.com/v1",
-                headers={
-                    "Authorization": f"Bearer {self.api_key}",
-                    "Content-Type": "application/json",
-                },
-                timeout=60.0,
-            )
-        return self._client
+    """Embedding service backed by the shared OpenAI ModelClient."""
 
     async def embed(self, texts: list[str]) -> list[list[float]]:
         if not texts:
             return []
-
-        response = await self.client.post(
-            "/embeddings",
-            json={
-                "input": texts,
-                "model": self.model,
-            },
-        )
-        response.raise_for_status()
-        data = response.json()
-        embeddings = sorted(data["data"], key=lambda x: x["index"])
-        return [item["embedding"] for item in embeddings]
-
-    async def close(self) -> None:
-        if self._client is not None:
-            await self._client.aclose()
-            self._client = None
+        return await get_llm_client().embed(texts)
 
 
 class MockEmbeddingService(EmbeddingService):
