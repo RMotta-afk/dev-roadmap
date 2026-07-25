@@ -53,6 +53,14 @@ class QdrantRagClient:
         )
         return True
 
+    async def delete_collection(self, name: str = "roadmap_nodes") -> bool:
+        """Drop collection if it exists. Returns True when something was removed."""
+        exists = await self.client.collection_exists(collection_name=name)
+        if not exists:
+            return False
+        await self.client.delete_collection(collection_name=name)
+        return True
+
     async def upsert_points(
         self,
         collection: str,
@@ -90,9 +98,9 @@ class QdrantRagClient:
         limit: int = 5,
     ) -> list[dict[str, Any]]:
         """Search a collection by vector similarity."""
-        results = await self.client.search(
+        result = await self.client.query_points(
             collection_name=collection,
-            query_vector=vector,
+            query=vector,
             query_filter=filter,
             limit=limit,
             with_payload=True,
@@ -104,5 +112,5 @@ class QdrantRagClient:
                 "score": r.score,
                 "payload": r.payload,
             }
-            for r in results
+            for r in result.points
         ]

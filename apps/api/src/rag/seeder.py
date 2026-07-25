@@ -1,7 +1,8 @@
 """Idempotent Qdrant seeder for roadmap RAG data."""
 
-import json
-import logging
+from __future__ import annotations
+
+import sys
 
 from app.config import settings
 from rag.embeddings import get_embedding_service
@@ -9,47 +10,53 @@ from rag.qdrant_client import QdrantRagClient
 from roadmap.loader import load_all_roadmaps
 from roadmap.models import RoadmapNode
 
-logger = logging.getLogger("rag.seeder")
 COLLECTION_NAME = "roadmap_nodes"
 
 
-async def seed_roadmap_collection() -> None:
+def _log(msg: str) -> None:
+    print(f"[rag.seeder] {msg}", flush=True)
+    sys.stdout.flush()
+
+
+async def seed_roadmap_collection(*, force: bool = False) -> int:
     """Seed Qdrant with roadmap nodes if the collection is empty or missing.
-    
-    Gracefully skips if Qdrant is not reachable (e.g., local demo without Docker).
+
+    Returns the number of points upserted (0 if skipped or failed).
+    Gracefully skips if Qdrant is not reachable.
     """
+    path = settings.base_roadmap_path
+    _log(f"roadmap path={path} exists={path.is_dir()}")
+
     qdrant = QdrantRagClient()
 
     try:
-        # Ensure collection exists (creates with 1536-dim cosine vectors if missing)
+        if force:
+            deleted = await qdrant.delete_collection(name=COLLECTION_NAME)
+            _log(f"force: delete collection '{COLLECTION_NAME}' -> {deleted}")
         await qdrant.init_collection(name=COLLECTION_NAME)
     except Exception as exc:
-        logger.warning(
-            "Qdrant not reachable at %s — skipping seed. Error: %s",
-            settings.qdrant_url,
-            exc,
-        )
-        return
+        _log(f"Qdrant not reachable at {settings.qdrant_url} — skip seed. Error: {exc}")
+        return 0
 
-    # Idempotency check: skip if collection already contains points
     count_result = await qdrant.client.count(collection_name=COLLECTION_NAME)
-    if count_result.count > 0:
-        logger.info(
-            "Skipped seeding: collection '%s' already has %s points.",
-            COLLECTION_NAME,
-            count_result.count,
+    if count_result.count > 0 and not force:
+        _log(
+            f"Skipped seeding: collection '{COLLECTION_NAME}' "
+            f"already has {count_result.count} points."
         )
-        return
+        return 0
 
-    # Load all roadmap files from the configured base path
+    if not path.is_dir():
+        _log(f"ERROR: roadmap directory missing: {path}")
+        return 0
+
     roadmaps = load_all_roadmaps()
+    json_files = sorted(path.glob("*.json"))
+    _log(f"found {len(json_files)} json file(s), loaded {len(roadmaps)} roadmap(s)")
     if not roadmaps:
-        logger.warning(
-            "No roadmap files found at %s.", settings.base_roadmap_path
-        )
-        return
+        _log(f"No roadmap files loaded from {path}")
+        return 0
 
-    # Pair each node with its parent roadmap role and build embedding texts
     nodes_with_role: list[tuple[RoadmapNode, str]] = []
     texts: list[str] = []
     for roadmap in roadmaps:
@@ -63,38 +70,25 @@ async def seed_roadmap_collection() -> None:
             texts.append(text)
 
     if not texts:
-        logger.warning("No nodes found in roadmap files.")
-        return
+        _log("No nodes found in roadmap files.")
+        return 0
 
-    # Generate embeddings in a single batch call
+    _log(f"embedding {len(texts)} node(s)…")
     embedding_service = get_embedding_service()
     embeddings = await embedding_service.embed(texts)
 
-    # Build Qdrant points with structured payloads
     points: list[dict] = []
-    for (node, role), vector in zip(nodes_with_role, embeddings):
+    for (node, role), vector in zip(nodes_with_role, embeddings, strict=True):
+        payload = node.model_dump(mode="json")
+        payload["role"] = role
         points.append(
             {
                 "id": node.id,
                 "vector": vector,
-                "payload": {
-                    "role": role,
-                    "level": node.level.value,
-                    "node_id": node.id,
-                    "category": node.category,
-                    "importance": node.importance,
-                    "name": node.name,
-                    "description": node.description,
-                    "content_guidance": json.dumps(
-                        node.content_guidance.model_dump(), ensure_ascii=False
-                    ),
-                },
+                "payload": payload,
             }
         )
 
     await qdrant.upsert_points(collection=COLLECTION_NAME, points=points)
-    logger.info(
-        "Seeded %s points into collection '%s'.",
-        len(points),
-        COLLECTION_NAME,
-    )
+    _log(f"Seeded {len(points)} points into collection '{COLLECTION_NAME}'.")
+    return len(points)
