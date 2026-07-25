@@ -28,32 +28,43 @@ services:
       dockerfile: apps/api/Dockerfile
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     environment:
+      # Host .env is interpolated by Compose; force same default as .env.example
       DATABASE_URL: postgresql+asyncpg://cv_analyzer:localdev@postgres:5432/cv_analyzer
       QDRANT_URL: http://qdrant:6333
-      QDRANT_API_KEY: ""
+      QDRANT_API_KEY: ${QDRANT_API_KEY:-}
       LLM_API_KEY: ${LLM_API_KEY:-}
-      LLM_MODEL: gpt-4o-mini
-      EMBEDDING_MODEL: text-embedding-3-small
-      AUTHJWT_SECRET: ${AUTHJWT_SECRET:-change-me-in-production}
-      CORS_ALLOW: http://localhost:8501
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-text-embedding-3-small}
+      AUTHJWT_SECRET: ${AUTHJWT_SECRET:-local-dev-secret-change-in-production}
+      CORS_ALLOW: ${CORS_ALLOW:-http://localhost:8501}
       BASE_ROADMAP_PATH: docs/archives
+      PYTHONUNBUFFERED: "1"
+      LOG_LEVEL: ${LOG_LEVEL:-info}
     depends_on:
       postgres:
         condition: service_healthy
       qdrant:
         condition: service_started
+    # Follow logs: docker compose logs -f api
 
+  # Optional: docker compose --profile full up
   ui:
+    profiles: ["full"]
     build:
       context: .
       dockerfile: apps/ui/Dockerfile
     ports:
       - "8501:8501"
+    env_file:
+      - .env
     environment:
       API_BASE_URL: http://api:8000
       DATABASE_URL: postgresql://cv_analyzer:localdev@postgres:5432/cv_analyzer
-      AUTHJWT_SECRET: ${AUTHJWT_SECRET:-change-me-in-production}
+      AUTHJWT_SECRET: ${AUTHJWT_SECRET:-local-dev-secret-change-in-production}
+      PYTHONUNBUFFERED: "1"
     depends_on:
       postgres:
         condition: service_healthy

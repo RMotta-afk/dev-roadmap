@@ -89,11 +89,50 @@ def cmd_install(_: argparse.Namespace) -> None:
 
 
 def cmd_infra_up(_: argparse.Namespace) -> None:
+    """Postgres + Qdrant only (no API container — free :8000 for local API)."""
     _run(["docker", "compose", "up", "-d", "postgres", "qdrant"], env=_merged_env())
+    # Avoid port clash if an old API container is still up
+    _run(
+        ["docker", "compose", "stop", "api"],
+        env=_merged_env(),
+        check=False,
+    )
+
+
+def cmd_api_docker(_: argparse.Namespace) -> None:
+    """Build/start API (+ postgres, qdrant) in Docker. Prefer `dev` for local API testing."""
+    env = _merged_env()
+    secret = env.get("AUTHJWT_SECRET", "")
+    print(f"Building API image with AUTHJWT_SECRET len={len(secret)} (from root .env)")
+    _run(
+        ["docker", "compose", "up", "-d", "--build", "postgres", "qdrant", "api"],
+        env=env,
+    )
+    print()
+    print("API:  http://localhost:8000/healthz")
+    print("Logs: docker compose logs -f api")
+    print("UI:   uv run scripts/run.py ui")
 
 
 def cmd_infra_down(_: argparse.Namespace) -> None:
     _run(["docker", "compose", "down"], env=_merged_env())
+
+
+def _local_app_env() -> dict[str, str]:
+    """Root .env + paths that work when cwd is apps/api or apps/ui."""
+    env = _merged_env()
+    # Absolute so apps/api cwd still finds repo roadmaps
+    env["BASE_ROADMAP_PATH"] = str(ROOT / "docs" / "archives")
+    # Local processes talk to Docker-published ports on the host
+    if not env.get("QDRANT_URL") or "qdrant:" in env.get("QDRANT_URL", ""):
+        env["QDRANT_URL"] = "http://localhost:6333"
+    if not env.get("API_BASE_URL") or "://api:" in env.get("API_BASE_URL", ""):
+        env["API_BASE_URL"] = "http://localhost:8000"
+    # Local API/UI expect host Postgres port, not docker service hostname
+    db = env.get("DATABASE_URL", "")
+    if "@postgres:" in db:
+        env["DATABASE_URL"] = db.replace("@postgres:", "@localhost:")
+    return env
 
 
 def cmd_migrate(_: argparse.Namespace) -> None:
@@ -108,7 +147,22 @@ def cmd_seed_admin(_: argparse.Namespace) -> None:
     _uv("run", "python", "scripts/create_user.py", "--admin", cwd=UI, env=_merged_env())
 
 
+def cmd_seed_qdrant(args: argparse.Namespace) -> None:
+    """Seed roadmap_nodes in local Qdrant (Docker on :6333)."""
+    env = _local_app_env()
+    cmd = ["run", "python", "scripts/seed_qdrant.py"]
+    if getattr(args, "force", False):
+        cmd.append("--force")
+    print(f"Seeding Qdrant from {env.get('BASE_ROADMAP_PATH')} …")
+    _uv(*cmd, cwd=API, env=env)
+
+
 def cmd_api(_: argparse.Namespace) -> None:
+    env = _local_app_env()
+    print(
+        f"Local API :8000  AUTHJWT_SECRET len={len(env.get('AUTHJWT_SECRET', ''))}  "
+        f"QDRANT={env.get('QDRANT_URL')}  ROADMAP={env.get('BASE_ROADMAP_PATH')}"
+    )
     _uv(
         "run",
         "uvicorn",
@@ -121,11 +175,43 @@ def cmd_api(_: argparse.Namespace) -> None:
         "--app-dir",
         "src",
         cwd=API,
-        env=_merged_env(),
+        env=env,
+    )
+
+
+def cmd_api_debug(_: argparse.Namespace) -> None:
+    """Local API under debugpy (no reload — breakpoints work). Port 5678 attach-ready."""
+    env = _local_app_env()
+    print(
+        f"API debug :8000  debugpy :5678  AUTHJWT_SECRET len={len(env.get('AUTHJWT_SECRET', ''))}"
+    )
+    print("In Cursor/VS Code: Run and Debug → 'API debug'  OR attach to 5678")
+    print("Breakpoints: apps/api/src/app/auth.py  get_current_user / decode_access_token")
+    # No --reload: child process breaks debugger attachment
+    _uv(
+        "run",
+        "python",
+        "-m",
+        "debugpy",
+        "--listen",
+        "5678",
+        "-m",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000",
+        "--app-dir",
+        "src",
+        cwd=API,
+        env=env,
     )
 
 
 def cmd_ui(_: argparse.Namespace) -> None:
+    env = _local_app_env()
+    print(f"Local UI :8501  API_BASE_URL={env.get('API_BASE_URL')}")
     _uv(
         "run",
         "streamlit",
@@ -136,7 +222,7 @@ def cmd_ui(_: argparse.Namespace) -> None:
         "--server.address",
         "127.0.0.1",
         cwd=UI,
-        env=_merged_env(),
+        env=env,
     )
 
 
@@ -158,15 +244,18 @@ def _terminate(proc: subprocess.Popen[bytes]) -> None:
 
 
 def cmd_dev(_: argparse.Namespace) -> None:
-    """Start API + UI together with the same root .env."""
+    """Infra in Docker; local API + UI with the same root .env."""
     if not ROOT_ENV.is_file():
         print(f"Missing {ROOT_ENV}. Run: uv run scripts/run.py env", file=sys.stderr)
         raise SystemExit(1)
 
-    env = _merged_env()
+    print("Ensuring Postgres + Qdrant are up (Docker); stopping container API if any…")
+    cmd_infra_up(argparse.Namespace())
+
+    env = _local_app_env()
     secret = env.get("AUTHJWT_SECRET", "")
     print(f"Using AUTHJWT_SECRET from root .env (len={len(secret)})")
-    print("Starting API :8000 and UI :8501 — Ctrl+C stops both")
+    print("Starting local API :8000 and UI :8501 — Ctrl+C stops both")
 
     creationflags = 0
     if sys.platform == "win32":
@@ -267,10 +356,13 @@ def main() -> None:
         "install": cmd_install,
         "infra-up": cmd_infra_up,
         "infra-down": cmd_infra_down,
+        "api-docker": cmd_api_docker,
         "migrate": cmd_migrate,
         "seed-test": cmd_seed_test,
         "seed-admin": cmd_seed_admin,
+        "seed-qdrant": cmd_seed_qdrant,
         "api": cmd_api,
+        "api-debug": cmd_api_debug,
         "ui": cmd_ui,
         "dev": cmd_dev,
         "test": cmd_test,
@@ -279,7 +371,13 @@ def main() -> None:
     }
 
     for name in handlers:
-        sub.add_parser(name)
+        p = sub.add_parser(name)
+        if name == "seed-qdrant":
+            p.add_argument(
+                "--force",
+                action="store_true",
+                help="Drop and re-seed roadmap_nodes",
+            )
 
     args = parser.parse_args()
     handlers[args.command](args)
