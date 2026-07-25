@@ -44,6 +44,69 @@ Open http://localhost:8501
 
 ---
 
+## Hybrid: API in Docker, UI local (auth debugging)
+
+Use this when you want `docker compose logs -f api` while running Streamlit on the host.
+
+```powershell
+cd C:\_projects\_dev-roadmap\dev-roadmap
+
+# Ensure .env exists and AUTHJWT_SECRET matches for UI + API
+uv run scripts/run.py env
+
+# Postgres + Qdrant + API container (rebuilds image)
+uv run scripts/run.py api-docker
+
+# Terminal A — API auth/access logs
+docker compose logs -f api
+
+# Terminal B — UI only (same root .env: AUTHJWT_SECRET + API_BASE_URL)
+uv run scripts/run.py ui
+```
+
+Open http://localhost:8501 · sign in · submit analyze.
+
+**What to compare in logs**
+
+| Source | Line |
+|--------|------|
+| UI stdout | `[ui.auth] minted token … secret_len=… suffix=…` |
+| `docker compose logs -f api` startup | `[auth] access-token secret loaded len=… suffix=…` |
+| API on each request | `[app.auth] OK …` or `[app.auth] FAIL invalid signature …` |
+
+`secret_len` and `suffix` must match. If they don’t, UI and container are not using the same `AUTHJWT_SECRET`.
+
+Stop containers: `uv run scripts/run.py infra-down` (or `docker compose down`).
+
+---
+
+## Recommended: containers (DB/vector) + local API + local UI
+
+Best layout for testing auth and watching API stdout:
+
+```powershell
+cd C:\_projects\_dev-roadmap\dev-roadmap
+
+uv run scripts/run.py env
+uv run scripts/run.py install
+uv run scripts/run.py infra-up    # Postgres + Qdrant; frees :8000 if API container was up
+uv run scripts/run.py migrate
+uv run scripts/run.py seed-test
+
+# Terminal 1 — local API (auth prints here)
+uv run scripts/run.py api
+
+# Terminal 2 — local UI
+uv run scripts/run.py ui
+```
+
+Or one command after infra is ready: `uv run scripts/run.py dev`  
+(`dev` runs `infra-up` then local API + UI.)
+
+Uses root `.env`: `AUTHJWT_SECRET`, `API_BASE_URL=http://localhost:8000`, DB/Qdrant on `localhost`.
+
+---
+
 ## Manual steps
 
 ### 1. Environment
