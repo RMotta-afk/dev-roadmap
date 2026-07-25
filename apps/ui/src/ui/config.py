@@ -9,23 +9,38 @@ from pydantic_settings import (
 
 
 def _env_files() -> tuple[str, ...]:
-    # config.py lives at apps/ui/src/ui/config.py
-    #   parents[2] -> apps/ui
-    #   parents[4] -> repo root
+    """Discover .env files by walking up from this file and cwd."""
     this_file = Path(__file__).resolve()
-    candidates = [
-        this_file.parents[4] / ".env",
-        this_file.parents[2] / ".env",
-        (Path.cwd() / ".env").resolve(),
-    ]
+    candidates: list[Path] = []
+    for parent in this_file.parents:
+        candidates.append(parent / ".env")
+        if parent.parent == parent:
+            break
+    candidates.append((Path.cwd() / ".env").resolve())
+
     found: list[str] = []
     seen: set[str] = set()
     for p in candidates:
-        key = str(p)
+        try:
+            key = str(p.resolve())
+        except OSError:
+            key = str(p)
         if p.is_file() and key not in seen:
             seen.add(key)
             found.append(key)
     return tuple(found) if found else (".env",)
+
+
+def _preload_dotenv() -> None:
+    try:
+        from dotenv import load_dotenv
+    except ImportError:
+        return
+    for path in _env_files():
+        load_dotenv(path, override=True)
+
+
+_preload_dotenv()
 
 
 class Settings(BaseSettings):
@@ -39,7 +54,7 @@ class Settings(BaseSettings):
     database_url: str = Field(
         default="postgresql://cv_analyzer:localdev@localhost:5432/cv_analyzer"
     )
-    authjwt_secret: str = Field(default="change-me-in-production")
+    authjwt_secret: str = Field(default="local-dev-secret-change-in-production")
     jwt_expiry_minutes: int = Field(default=15)
 
     @classmethod
@@ -53,8 +68,8 @@ class Settings(BaseSettings):
     ) -> tuple[PydanticBaseSettingsSource, ...]:
         return (
             init_settings,
-            dotenv_settings,
             env_settings,
+            dotenv_settings,
             file_secret_settings,
         )
 
