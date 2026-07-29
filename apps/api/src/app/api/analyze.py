@@ -2,21 +2,26 @@
 
 from __future__ import annotations
 
+import asyncio
+import logging
 import uuid
 from typing import Annotated, AsyncIterator
 
-from fastapi import APIRouter, Depends, Form, UploadFile, status
-from fastapi.responses import StreamingResponse
+from fastapi import APIRouter, Depends, Form, HTTPException, UploadFile, status
+from fastapi.responses import Response, StreamingResponse
 
 from agent.graph import stream_analysis
 from agent.pdf_parser import extract_cv_text
 from app.auth import require_auth
+from app.pdf.pdf_export import build_pdf
 from app.schemas import AgentProgressEvent, AnalyzeResponse
 from app.storage.analyses import create_analysis, get_analysis, update_analysis
 from roadmap.index import RoadmapIndex
 from roadmap.loader import flatten_nodes, load_all_roadmaps
 
 router = APIRouter(tags=["analyze"])
+
+logger = logging.getLogger("api.analyze")
 
 
 # Module-level singleton — loaded on first use
@@ -137,4 +142,65 @@ async def analyze_events(
             user_name=user_name,
         ),
         media_type="text/event-stream",
+    )
+
+
+@router.get("/analyze/{analysis_id}/pdf")
+async def download_pdf(
+    analysis_id: str,
+    user: dict = Depends(require_auth),
+) -> Response:
+    """Download analysis results as a PDF roadmap (Portuguese)."""
+    analysis = await get_analysis(analysis_id)
+    if analysis is None:
+        raise HTTPException(status_code=404, detail="Análise não encontrada")
+
+    if str(analysis["user_id"]) != user["user_id"]:
+        raise HTTPException(status_code=403, detail="Acesso negado")
+
+    if analysis.get("status") != "done":
+        raise HTTPException(
+            status_code=400,
+            detail="Análise ainda não concluída",
+        )
+
+    result_dict = analysis.get("result") or {}
+    request_dict = analysis.get("request") or {}
+    user_name = request_dict.get("user_name", "Usuario")
+
+    pdf_bytes: bytes | None = None
+    last_error: Exception | None = None
+
+    for attempt in range(3):
+        try:
+            pdf_bytes = build_pdf(result_dict, user_name)
+            break
+        except Exception as exc:
+            last_error = exc
+            logger.warning(
+                f"PDF generation attempt {attempt + 1} failed for analysis {analysis_id}: {exc}"
+            )
+            if attempt < 2:
+                await asyncio.sleep(0.5)
+
+    if pdf_bytes is None:
+        logger.error(
+            f"PDF generation failed after 3 attempts for analysis {analysis_id}: {last_error}",
+            exc_info=last_error,
+        )
+        raise HTTPException(
+            status_code=500,
+            detail="Falha ao gerar PDF após 3 tentativas",
+        )
+
+    safe_name = user_name.strip().replace(" ", "_")
+    filename = f"{safe_name}_roadmap.pdf"
+
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Cache-Control": "no-store",
+        },
     )
