@@ -1,0 +1,50 @@
+{
+  "level": "mid",
+  "title": "PLENO Sistemas com AI",
+  "inherits_from": "junior",
+  "group_count": 7,
+  "groups": [
+    {
+      "id": "ai_engineer-mid-group-9",
+      "number": 9,
+      "name": "Data Engineering & Pipelines",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-mid-group-10",
+      "number": 10,
+      "name": "Cloud for AI",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-mid-group-11",
+      "number": 11,
+      "name": "DevOps for AI",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-mid-group-12",
+      "number": 12,
+      "name": "Memory & Retrieval RAG",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-mid-group-13",
+      "number": 13,
+      "name": "Agentic Systems",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-mid-group-14",
+      "number": 14,
+      "name": "Banco de Dados",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-mid-group-15",
+      "number": 15,
+      "name": "Design de Software",
+      "ownership": "referencia"
+    }
+  ]
+}

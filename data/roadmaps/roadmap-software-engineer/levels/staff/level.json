@@ -1,0 +1,7 @@
+{
+  "level": "staff",
+  "title": "STAFF Escala Organizacional",
+  "inherits_from": "senior",
+  "group_count": 0,
+  "groups": []
+}

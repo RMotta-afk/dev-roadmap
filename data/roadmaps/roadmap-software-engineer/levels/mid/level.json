@@ -1,0 +1,20 @@
+{
+  "level": "mid",
+  "title": "PLENO Autonomia",
+  "inherits_from": "junior",
+  "group_count": 2,
+  "groups": [
+    {
+      "id": "software_engineer-mid-group-6",
+      "number": 6,
+      "name": "Design de Software",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-mid-group-7",
+      "number": 7,
+      "name": "Banco de Dados",
+      "ownership": "proprio"
+    }
+  ]
+}

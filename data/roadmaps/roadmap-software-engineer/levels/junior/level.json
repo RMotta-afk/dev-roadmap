@@ -1,0 +1,38 @@
+{
+  "level": "junior",
+  "title": "JÚNIOR Fundamentos",
+  "inherits_from": null,
+  "group_count": 5,
+  "groups": [
+    {
+      "id": "software_engineer-junior-group-1",
+      "number": 1,
+      "name": "Desenvolvimento de Software",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-junior-group-2",
+      "number": 2,
+      "name": "Desenvolvimento de Software",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-junior-group-3",
+      "number": 3,
+      "name": "Design de Software",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-junior-group-4",
+      "number": 4,
+      "name": "Banco de Dados",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-junior-group-5",
+      "number": 5,
+      "name": "Cloud Fundamentals",
+      "ownership": "proprio"
+    }
+  ]
+}

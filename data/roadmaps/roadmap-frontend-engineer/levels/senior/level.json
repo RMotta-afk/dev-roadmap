@@ -1,0 +1,50 @@
+{
+  "level": "senior",
+  "title": "SÊNIOR Arquitetura Front-end",
+  "inherits_from": "mid",
+  "group_count": 7,
+  "groups": [
+    {
+      "id": "frontend_engineer-senior-group-18",
+      "number": 18,
+      "name": "Frontend Engineering",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-senior-group-19",
+      "number": 19,
+      "name": "Web Platform & Browser",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-senior-group-20",
+      "number": 20,
+      "name": "CSS & Layout Systems",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-senior-group-21",
+      "number": 21,
+      "name": "UI Architecture & Component Systems",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-senior-group-22",
+      "number": 22,
+      "name": "Frontend Performance",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-senior-group-23",
+      "number": 23,
+      "name": "Design Systems & UX Engineering",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-senior-group-24",
+      "number": 24,
+      "name": "Design de Soluções Front-end",
+      "ownership": "proprio"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "level": "junior",
+  "title": "JÚNIOR Uso de AI",
+  "inherits_from": null,
+  "group_count": 7,
+  "groups": [
+    {
+      "id": "ai_engineer-junior-group-1",
+      "number": 1,
+      "name": "Modelos & Inference",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-junior-group-2",
+      "number": 2,
+      "name": "Prompt Engineering & Interaction",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-junior-group-3",
+      "number": 3,
+      "name": "Desenvolvimento de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-junior-group-4",
+      "number": 4,
+      "name": "Desenvolvimento de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-junior-group-5",
+      "number": 5,
+      "name": "Design de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-junior-group-6",
+      "number": 6,
+      "name": "Banco de Dados",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-junior-group-7",
+      "number": 7,
+      "name": "Cloud Fundamentals",
+      "ownership": "referencia"
+    }
+  ]
+}

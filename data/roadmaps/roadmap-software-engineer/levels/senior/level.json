@@ -1,0 +1,32 @@
+{
+  "level": "senior",
+  "title": "SÊNIOR Arquitetura e Decisão",
+  "inherits_from": "mid",
+  "group_count": 4,
+  "groups": [
+    {
+      "id": "software_engineer-senior-group-12",
+      "number": 12,
+      "name": "Desenvolvimento de Software",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-senior-group-13",
+      "number": 13,
+      "name": "Design de Software",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-senior-group-14",
+      "number": 14,
+      "name": "Design de Soluções",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-senior-group-15",
+      "number": 15,
+      "name": "Design de Soluções",
+      "ownership": "proprio"
+    }
+  ]
+}

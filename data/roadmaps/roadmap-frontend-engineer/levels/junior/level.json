@@ -1,0 +1,62 @@
+{
+  "level": "junior",
+  "title": "JÚNIOR Construção de UI",
+  "inherits_from": null,
+  "group_count": 9,
+  "groups": [
+    {
+      "id": "frontend_engineer-junior-group-1",
+      "number": 1,
+      "name": "Frontend Engineering",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-junior-group-2",
+      "number": 2,
+      "name": "Frontend Engineering",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-junior-group-3",
+      "number": 3,
+      "name": "Web Platform & Browser",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-junior-group-4",
+      "number": 4,
+      "name": "CSS & Layout Systems",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-junior-group-5",
+      "number": 5,
+      "name": "Desenvolvimento de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "frontend_engineer-junior-group-6",
+      "number": 6,
+      "name": "Desenvolvimento de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "frontend_engineer-junior-group-7",
+      "number": 7,
+      "name": "Design de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "frontend_engineer-junior-group-8",
+      "number": 8,
+      "name": "Banco de Dados",
+      "ownership": "referencia"
+    },
+    {
+      "id": "frontend_engineer-junior-group-9",
+      "number": 9,
+      "name": "Cloud Fundamentals",
+      "ownership": "referencia"
+    }
+  ]
+}

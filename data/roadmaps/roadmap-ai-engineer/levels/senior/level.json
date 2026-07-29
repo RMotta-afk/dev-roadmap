@@ -1,0 +1,68 @@
+{
+  "level": "senior",
+  "title": "SÊNIOR Arquitetura de AI",
+  "inherits_from": "mid",
+  "group_count": 10,
+  "groups": [
+    {
+      "id": "ai_engineer-senior-group-16",
+      "number": 16,
+      "name": "AI Architecture & Orchestration",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-senior-group-17",
+      "number": 17,
+      "name": "AI Ops, Evaluation & Security",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-senior-group-18",
+      "number": 18,
+      "name": "Modelos & Inference",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-senior-group-19",
+      "number": 19,
+      "name": "Prompt Engineering & Interaction",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-senior-group-20",
+      "number": 20,
+      "name": "Memory & Retrieval RAG",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-senior-group-21",
+      "number": 21,
+      "name": "Agentic Systems",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-senior-group-22",
+      "number": 22,
+      "name": "Desenvolvimento de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-senior-group-23",
+      "number": 23,
+      "name": "Design de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-senior-group-24",
+      "number": 24,
+      "name": "Design de Soluções",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-senior-group-25",
+      "number": 25,
+      "name": "Design de Soluções",
+      "ownership": "referencia"
+    }
+  ]
+}

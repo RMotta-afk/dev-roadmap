@@ -1,0 +1,38 @@
+{
+  "level": "mid",
+  "title": "PLENO Aplicações de UI",
+  "inherits_from": "junior",
+  "group_count": 5,
+  "groups": [
+    {
+      "id": "frontend_engineer-mid-group-13",
+      "number": 13,
+      "name": "Web Platform & Browser",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-mid-group-14",
+      "number": 14,
+      "name": "UI Architecture & Component Systems",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-mid-group-15",
+      "number": 15,
+      "name": "UI Architecture & Component Systems",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-mid-group-16",
+      "number": 16,
+      "name": "Design de Software",
+      "ownership": "referencia"
+    },
+    {
+      "id": "frontend_engineer-mid-group-17",
+      "number": 17,
+      "name": "Banco de Dados",
+      "ownership": "referencia"
+    }
+  ]
+}
