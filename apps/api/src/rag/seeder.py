@@ -1,4 +1,7 @@
-"""Idempotent Qdrant seeder for roadmap RAG data."""
+"""Idempotent Qdrant seeder for roadmap RAG data.
+
+Includes exponential backoff retry for connection errors.
+"""
 
 from __future__ import annotations
 
@@ -12,18 +15,47 @@ from roadmap.models import RoadmapNode
 
 COLLECTION_NAME = "roadmap_nodes"
 
+MAX_RETRIES = 5
+BASE_DELAY = 1.0
+MAX_DELAY = 30.0
+
 
 def _log(msg: str) -> None:
     print(f"[rag.seeder] {msg}", flush=True)
     sys.stdout.flush()
 
 
-async def seed_roadmap_collection(*, force: bool = False) -> int:
+def _is_retryable(exc: Exception) -> bool:
+    """Check if an error is transient and worth retrying."""
+    msg = str(exc).lower()
+    return any(
+        kw in msg
+        for kw in [
+            "connection",
+            "timeout",
+            "refused",
+            "unavailable",
+            "network",
+        ]
+    )
+
+
+async def seed_roadmap_collection(
+    *, force: bool = False
+) -> int:
     """Seed Qdrant with roadmap nodes if the collection is empty or missing.
 
+    Retries on connection errors with exponential backoff.
+
     Returns the number of points upserted (0 if skipped or failed).
-    Gracefully skips if Qdrant is not reachable.
+    Gracefully skips if Qdrant is not reachable after all retries.
     """
+
+    return await _seed_once(force=force)
+
+
+async def _seed_once(*, force: bool = False) -> int:
+    """Single attempt to seed Qdrant. Contains the actual logic."""
     path = settings.base_roadmap_path
     _log(f"roadmap path={path} exists={path.is_dir()}")
 
@@ -63,10 +95,13 @@ async def seed_roadmap_collection(*, force: bool = False) -> int:
         role = roadmap.role.value
         for node in roadmap.nodes:
             nodes_with_role.append((node, role))
-            text = (
-                f"{node.name} {node.description} "
-                f"{' '.join(node.content_guidance.topics)}"
-            )
+            text_parts = [node.name, node.description, node.category]
+            text_parts.append(f"Level: {node.level.value}")
+            if node.content_guidance:
+                text_parts.append(" ".join(node.content_guidance.topics))
+            if node.ownership == "referencia" and node.reference_target:
+                text_parts.append(f"References: {node.reference_target}")
+            text = " ".join(text_parts)
             texts.append(text)
 
     if not texts:

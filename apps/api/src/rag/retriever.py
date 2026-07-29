@@ -34,6 +34,20 @@ class RoadmapRetriever:
         Optional *role* and *level* filters are applied as Qdrant payload
         filters. Results are returned sorted by relevance (highest score
         first).
+        
+        The retriever now supports the updated RoadmapNode structure with:
+        - parent_id for hierarchy traversal
+        - ownership for filtering by "proprio" vs "referencia"
+        - Enhanced text embeddings with level and category information
+        
+        Args:
+            query: Text query to search for
+            role: Optional role filter (e.g., "ai_engineer", "software_engineer")
+            level: Optional level filter (e.g., "junior", "mid", "senior", "staff")
+            top_k: Maximum number of results to return
+            
+        Returns:
+            List of RoadmapNode objects matching the query and filters
         """
         vectors = await self.embedding_service.embed([query])
         vector = vectors[0]

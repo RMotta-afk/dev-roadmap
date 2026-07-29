@@ -1,7 +1,7 @@
 """Base Roadmap data layer."""
 
 from roadmap.index import RoadmapIndex
-from roadmap.loader import flatten_nodes, load_all_roadmaps, load_roadmaps
+from roadmap.loader import flatten_nodes, load_all_roadmaps, load_roadmaps, load_skill_groups
 from roadmap.models import (
     CareerLevel,
     ContentGuidance,
@@ -11,6 +11,7 @@ from roadmap.models import (
     RoadmapMetadata,
     RoadmapNode,
     RoadmapRole,
+    SkillGroup,
 )
 
 __all__ = [
@@ -20,10 +21,12 @@ __all__ = [
     "InterviewInfo",
     "load_all_roadmaps",
     "load_roadmaps",
+    "load_skill_groups",
     "RequirementsByLevel",
     "RoadmapFile",
     "RoadmapIndex",
     "RoadmapMetadata",
     "RoadmapNode",
     "RoadmapRole",
+    "SkillGroup",
 ]
