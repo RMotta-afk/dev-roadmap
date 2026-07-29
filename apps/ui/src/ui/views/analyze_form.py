@@ -72,6 +72,7 @@ def render_analyze_form() -> None:
         st.error(f"Submission failed: {exc}")
         return
 
+    st.session_state.user_name = user_name.strip()
     st.session_state.analysis_id = res.analysis_id
     st.session_state.events = []
     st.session_state.result = None

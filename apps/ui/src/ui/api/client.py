@@ -104,6 +104,33 @@ def extract_result(event: AgentProgressEvent) -> AnalyzeResult | None:
     return normalize_result_payload(event.payload)
 
 
+def fetch_pdf(analysis_id: str, token: str) -> bytes:
+    """Fetch analysis PDF from API.
+
+    Raises:
+        ApiError: On API failure, unauthorized access, or incomplete analysis.
+    """
+    url = f"{settings.api_base_url.rstrip('/')}/analyze/{analysis_id}/pdf"
+    headers = _auth_headers(token)
+
+    try:
+        response = httpx.get(url, headers=headers, timeout=30.0)
+    except httpx.TimeoutException as exc:
+        raise ApiError("Tempo esgotado ao gerar PDF") from exc
+    except httpx.RequestError as exc:
+        raise ApiError(f"Erro de conexão: {exc}") from exc
+
+    if response.status_code == 200:
+        return response.content
+    if response.status_code == 404:
+        raise ApiError("Análise não encontrada")
+    if response.status_code == 403:
+        raise ApiError("Acesso negado")
+    if response.status_code == 400:
+        raise ApiError("Análise ainda em andamento")
+    raise ApiError(f"Erro ao gerar PDF: {response.text}")
+
+
 def read_upload_bytes(uploaded_file: Any) -> tuple[str, bytes]:
     name = getattr(uploaded_file, "name", None) or "cv.bin"
     data = uploaded_file.getvalue()

@@ -2,7 +2,15 @@ from __future__ import annotations
 
 import streamlit as st
 
+from ui.api.client import ApiError, fetch_pdf
 from ui.api.models import AnalyzeResult
+
+
+def _parse_name_for_filename(full_name: str) -> str:
+    if not full_name or not full_name.strip():
+        return "Usuario"
+    parts = full_name.strip().split()
+    return "_".join(parts)
 
 
 def render_results() -> None:
@@ -69,3 +77,32 @@ def render_results() -> None:
 
     if result.errors:
         st.warning("Pipeline reported errors:\n\n" + "\n".join(f"- {e}" for e in result.errors))
+
+    st.markdown("---")
+    st.markdown("### 📄 Exportar Roadmap")
+
+    analysis_id = st.session_state.get("analysis_id")
+    token = st.session_state.get("token")
+    user_name = st.session_state.get("user_name", "")
+
+    if not analysis_id or not token:
+        st.info("Informações da sessão não disponíveis para exportação.")
+    else:
+        if st.button("📥 Baixar PDF do Roadmap", type="primary", use_container_width=True):
+            try:
+                with st.spinner("Gerando PDF..."):
+                    pdf_bytes = fetch_pdf(analysis_id, token)
+
+                filename = f"{_parse_name_for_filename(user_name)}_roadmap.pdf"
+                st.download_button(
+                    label="Clique aqui para salvar o PDF",
+                    data=pdf_bytes,
+                    file_name=filename,
+                    mime="application/pdf",
+                    type="secondary",
+                    use_container_width=True
+                )
+                st.success("PDF pronto! Clique no botão acima para baixar.")
+
+            except ApiError as e:
+                st.error(f"Erro ao gerar PDF: {e}")
