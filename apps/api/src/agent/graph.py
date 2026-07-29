@@ -23,7 +23,7 @@ def build_analysis_graph(index: RoadmapIndex) -> StateGraph:
     workflow.add_node("strip", strip_node)
     workflow.add_node("analyze", analyze_node)
     workflow.add_node("compare", compare_node)
-    workflow.add_node("level_guess", level_guess_node)
+    workflow.add_node("level_guess", level_guess_node(index))
     workflow.add_node("roadmap_select", roadmap_select_node(index))
 
     # Edges (sequential pipeline)
@@ -78,12 +78,19 @@ async def stream_analysis(
             }
 
     # Final result event built from accumulated state
+    career_frame = final.get("career_frame")
+    level_resume = final.get("level_resume")
+    
     yield {
         "node": "result",
         "status": "completed",
         "message": "Analysis complete",
         "payload": {
-            "level_estimate": final.get("level_estimate"),
+            "level_estimate": final.get("level_estimate"),  # backward compat
+            "level_resume": level_resume.model_dump() if level_resume else None,
+            "target_role": career_frame.target_role if career_frame else None,
+            "target_level": career_frame.target_level if career_frame else None,
+            "focus_areas": career_frame.focus_areas if career_frame else [],
             "compatibility_score": final.get("compatibility_score"),
             "personalized_roadmap": final.get("personalized_roadmap"),
             "errors": final.get("errors", []),
