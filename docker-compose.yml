@@ -40,7 +40,7 @@ services:
       EMBEDDING_MODEL: ${EMBEDDING_MODEL:-text-embedding-3-small}
       AUTHJWT_SECRET: ${AUTHJWT_SECRET:-local-dev-secret-change-in-production}
       CORS_ALLOW: ${CORS_ALLOW:-http://localhost:8501}
-      BASE_ROADMAP_PATH: docs/archives
+      BASE_ROADMAP_PATH: data/roadmaps
       PYTHONUNBUFFERED: "1"
       LOG_LEVEL: ${LOG_LEVEL:-info}
     depends_on:

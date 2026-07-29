@@ -122,7 +122,7 @@ def _local_app_env() -> dict[str, str]:
     """Root .env + paths that work when cwd is apps/api or apps/ui."""
     env = _merged_env()
     # Absolute so apps/api cwd still finds repo roadmaps
-    env["BASE_ROADMAP_PATH"] = str(ROOT / "docs" / "archives")
+    env["BASE_ROADMAP_PATH"] = str(ROOT / "data" / "roadmaps")
     # Local processes talk to Docker-published ports on the host
     if not env.get("QDRANT_URL") or "qdrant:" in env.get("QDRANT_URL", ""):
         env["QDRANT_URL"] = "http://localhost:6333"
@@ -154,6 +154,19 @@ def cmd_seed_qdrant(args: argparse.Namespace) -> None:
     if getattr(args, "force", False):
         cmd.append("--force")
     print(f"Seeding Qdrant from {env.get('BASE_ROADMAP_PATH')} …")
+    _uv(*cmd, cwd=API, env=env)
+
+
+def cmd_generate_roadmaps(args: argparse.Namespace) -> None:
+    """Generate roadmap JSON files from markdown archives (with hash check)."""
+    force = getattr(args, "force", False)
+
+    cmd = ["run", "python", "scripts/generate_roadmaps.py"]
+    if force:
+        cmd.append("--force")
+
+    env = _merged_env()
+    print("Generating roadmap data…")
     _uv(*cmd, cwd=API, env=env)
 
 
@@ -244,13 +257,45 @@ def _terminate(proc: subprocess.Popen[bytes]) -> None:
 
 
 def cmd_dev(_: argparse.Namespace) -> None:
-    """Infra in Docker; local API + UI with the same root .env."""
+    """Infra in Docker; local API + UI with the same root .env.
+
+    Performs the following steps in order:
+    1. Ensure Postgres + Qdrant are running
+    2. Run database migrations
+    3. Generate/update roadmap data (hash-based check)
+    4. Seed Qdrant
+    5. Start local API + UI
+    """
     if not ROOT_ENV.is_file():
         print(f"Missing {ROOT_ENV}. Run: uv run scripts/run.py env", file=sys.stderr)
         raise SystemExit(1)
 
     print("Ensuring Postgres + Qdrant are up (Docker); stopping container API if any…")
     cmd_infra_up(argparse.Namespace())
+
+    print("Running database migrations…")
+    try:
+        cmd_migrate(argparse.Namespace())
+        print("✓ Migrations complete")
+    except SystemExit:
+        print("WARNING: Migration failed, continuing…", file=sys.stderr)
+
+    print("Checking roadmap data…")
+    try:
+        cmd_generate_roadmaps(argparse.Namespace())
+        print("✓ Roadmap data ready")
+    except SystemExit as e:
+        if e.code != 0:
+            print("ERROR: Roadmap generation failed", file=sys.stderr)
+            raise
+
+    print("Seeding Qdrant (this may take a moment)…")
+    time.sleep(2)
+    try:
+        cmd_seed_qdrant(argparse.Namespace())
+        print("✓ Qdrant seeded")
+    except SystemExit:
+        print("WARNING: Qdrant seeding failed (API will retry on startup)", file=sys.stderr)
 
     env = _local_app_env()
     secret = env.get("AUTHJWT_SECRET", "")
@@ -361,6 +406,7 @@ def main() -> None:
         "seed-test": cmd_seed_test,
         "seed-admin": cmd_seed_admin,
         "seed-qdrant": cmd_seed_qdrant,
+        "generate-roadmaps": cmd_generate_roadmaps,
         "api": cmd_api,
         "api-debug": cmd_api_debug,
         "ui": cmd_ui,
@@ -377,6 +423,12 @@ def main() -> None:
                 "--force",
                 action="store_true",
                 help="Drop and re-seed roadmap_nodes",
+            )
+        if name == "generate-roadmaps":
+            p.add_argument(
+                "--force",
+                action="store_true",
+                help="Regenerate even if hashes match",
             )
 
     args = parser.parse_args()

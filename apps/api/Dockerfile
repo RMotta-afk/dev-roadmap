@@ -12,6 +12,7 @@ COPY --from=ghcr.io/astral-sh/uv:0.5.5 /uv /bin/uv
 COPY apps/api/pyproject.toml apps/api/README.md ./
 COPY apps/api/src/ ./src/
 COPY docs/archives/ ./docs/archives/
+COPY data/roadmaps/ ./data/roadmaps/
 
 # Install package so `app`, `agent`, `llm`, `rag`, `roadmap` import cleanly
 RUN uv pip install --system -e .

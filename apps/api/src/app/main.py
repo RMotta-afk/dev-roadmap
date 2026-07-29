@@ -2,7 +2,7 @@
 
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -17,8 +17,17 @@ from rag.seeder import seed_roadmap_collection
 async def lifespan(app: FastAPI):
     """Application lifespan context manager for startup/shutdown hooks."""
     print(f"[startup] base_roadmap_path={settings.base_roadmap_path}", flush=True)
-    n = await seed_roadmap_collection()
-    print(f"[startup] qdrant seed upserted={n}", flush=True)
+
+    # Auto-seed with retry (idempotent, safe for any infra)
+    try:
+        n = await seed_roadmap_collection(force=False)
+        if n > 0:
+            print(f"[startup] qdrant seed upserted={n}", flush=True)
+        else:
+            print("[startup] qdrant already seeded (skipped)", flush=True)
+    except Exception as exc:
+        print(f"[startup] qdrant seed failed (will retry): {exc}", flush=True)
+
     yield
     await get_llm_client().aclose()
 

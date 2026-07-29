@@ -81,7 +81,7 @@ class Settings(BaseSettings):
     cors_allow: str = Field(default="http://localhost:8501")
 
     # Roadmap data (relative paths resolve against monorepo root, not cwd)
-    base_roadmap_path: Path = Field(default=Path("docs/archives"))
+    base_roadmap_path: Path = Field(default=Path("data/roadmaps"))
 
     @field_validator("base_roadmap_path", mode="after")
     @classmethod
