@@ -22,7 +22,7 @@ def build_analysis_graph(index: RoadmapIndex) -> StateGraph:
     workflow.add_node("ingest", ingest_node)
     workflow.add_node("strip", strip_node)
     workflow.add_node("analyze", analyze_node)
-    workflow.add_node("compare", compare_node)
+    workflow.add_node("compare", compare_node(index))
     workflow.add_node("level_guess", level_guess_node(index))
     workflow.add_node("roadmap_select", roadmap_select_node(index))
 
