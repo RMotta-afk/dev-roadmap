@@ -98,17 +98,25 @@ def compare_node(index: RoadmapIndex):
         # Determine target role and level for filtering
         target_role = state.career_frame.target_role
         target_level = state.career_frame.target_level
+        current_level = state.career_frame.current_level
 
         # Fallback: if no target set, use current
         if not target_role:
             target_role = state.career_frame.current_role
         if not target_level:
             target_level = state.career_frame.current_level
+        if not current_level:
+            current_level = target_level
 
-        # Get ALL target nodes for classification (not just RAG-retrieved)
-        target_nodes = index.by_role_level(target_role, target_level)
-        if not target_nodes:
-            target_nodes = index.by_level(target_level)
+        # Aggregate nodes from current level through target level (inclusive)
+        if target_level == current_level:
+            target_nodes = index.by_role_level(target_role, target_level)
+        else:
+            target_nodes = index.by_role_level_range(
+                target_role, current_level, target_level
+            )
+            if not target_nodes:
+                target_nodes = index.by_level_range(current_level, target_level)
 
         # Build experience texts for embedding-similarity fallback
         experience_texts = _build_experience_texts(state)

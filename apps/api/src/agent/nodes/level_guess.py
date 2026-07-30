@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Any
 import json
 
-from agent.state import AgentState, LevelResumeData, MatchedNode
+from agent.state import AgentState, LevelResumeData
 from app.config import settings
 from llm.client import get_llm_client
 from roadmap.index import RoadmapIndex
@@ -27,39 +27,6 @@ Retorne SOMENTE um objeto JSON com estas chaves exatas:
 Seja específico, prático e encorajador. Foque no que importa para
 alcançar o objetivo.
 Não inclua formatação markdown, explicações ou texto extra fora do JSON."""
-
-
-def _compute_target_readiness(
-    matched_nodes: list[MatchedNode],
-    index: RoadmapIndex,
-) -> tuple[int, int, int]:
-    """Compute readiness metrics: (covered+known count, gap count, total).
-    
-    Uses importance weighting when available.
-    """
-    covered_weight = 0.0
-    gap_weight = 0.0
-    
-    for match in matched_nodes:
-        node = index.by_id(match.id)
-        if not node:
-            continue
-        
-        # Use importance as weight (default to 50 if not set)
-        weight = float(node.importance) if node.importance else 50.0
-        
-        if match.status in ("covered", "known_via_experience"):
-            covered_weight += weight
-        elif match.status == "gap":
-            gap_weight += weight
-    
-    total_weight = covered_weight + gap_weight
-    
-    # Convert to counts for simpler representation
-    covered_count = int(sum(1 for m in matched_nodes if m.status in ("covered", "known_via_experience")))
-    gap_count = int(sum(1 for m in matched_nodes if m.status == "gap"))
-    
-    return covered_count, gap_count, int(total_weight)
 
 
 def _compute_compatibility_score(covered_weight: float, total_weight: float) -> int:

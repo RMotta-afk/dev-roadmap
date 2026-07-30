@@ -59,9 +59,49 @@ Return ONLY a JSON object with these exact keys:
 RULES for known_competencies:
 - Extract competencies from EXPERIENCE BULLETS and project highlights, not just skills lists
 - Mark source as "experience" when proven through project work
-- Mark source as "entailed" when logically required (e.g., "deployed k8s production" → must know Docker, cloud, CI/CD)
+- Mark source as "entailed" when logically required
 - Include high confidence (0.8-1.0) for directly evidenced work
 - Include medium confidence (0.5-0.7) for entailed knowledge
+
+RULES for inferred_entailments:
+- Infer METHODOLOGIES and PRACTICES from described work, not just adjacent technologies.
+- If the user describes WHAT they built, infer WHAT PRACTICES/KNOWLEDGE that implies.
+- Focus on: performance optimization, reliability/resilience, distributed systems,
+  caching strategies, async/message-driven patterns, monitoring/observability,
+  CI/CD pipelines, architectural decision-making, agent orchestration/hand-offs,
+  security/guardrails, testing strategies, team processes, scalability patterns.
+
+EXAMPLES of methodology entailment:
+1. User: "Optimized a RAG system over 30% by implementing cache on embeddings and agentic RAG"
+   -> Entailment: {name: "Otimização de performance em workflows de dados",
+      because: "Otimização de cache em embeddings e fluxos RAG demonstra entendimento de
+                latência, throughput e estratégias de caching em sistemas de dados intensivos"}
+   -> Entailment: {name: "Orquestração de agentes e hand-offs",
+      because: "Implementação de agentic RAG implica conhecimento de orquestração
+                multi-etapa, ferramentas, hand-offs entre agentes e controle de fluxo"}
+
+2. User: "Created microservices with complex API integrations in high availability"
+   -> Entailment: {name: "Arquiteturas resilientes e tolerância a falhas",
+      because: "Trabalhar com integrações complexas em alta disponibilidade implica
+                conhecimento de circuit breakers, retries, timeouts, degradação
+                controlada e isolamento de falhas"}
+   -> Entailment: {name: "Sistemas distribuídos e cache",
+      because: "Microserviços com alta disponibilidade exigem entendimento de cache
+                distribuído, consistência eventual, balanceamento de carga e
+                comunicação assíncrona entre serviços"}
+
+3. User: "Led migration of monolith to microservices on AWS with zero downtime"
+   -> Entailment: {name: "Estratégias de migração e deploy",
+      because: "Migração zero-downtime implica conhecimento de blue-green deployment,
+                canary releases, feature flags, rollback planning e migração incremental"}
+   -> Entailment: {name: "Otimização de custo vs performance em cloud",
+      because: "Migração para AWS com zero downtime implica decisões de arquitetura
+                que balanceiam custo de infraestrutura com requisitos de performance"}
+
+- Keep source as "entailed" and confidence as 0.6 for inferred items.
+- All entailment names and because text must be in Portuguese (Brazilian).
+- Name entailments using canonical Portuguese roadmap terminology (e.g., "Otimização de performance em workflows de dados" not "Data perf optimization").
+- Prefer methodology/practice names over technology names. Inventing a technology that isn't mentioned is worse than inferring a practice that is clearly implied.
 
 RULES for roles:
 - ai_engineer: ML, AI, data science, deep learning focus

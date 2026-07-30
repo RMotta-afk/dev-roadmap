@@ -1,6 +1,6 @@
 """RoadmapIndex: fast lookup with parent-child relationships and level filtering."""
 
-from roadmap.models import CareerLevel, RoadmapNode, RoadmapRole
+from roadmap.models import CareerLevel, RoadmapNode, RoadmapRole, levels_in_range
 
 
 class RoadmapIndex:
@@ -47,6 +47,37 @@ class RoadmapIndex:
     def by_parent_id(self, parent_id: str) -> list[RoadmapNode]:
         """Retrieve all child nodes for a given parent ID."""
         return self._by_parent_id.get(parent_id, [])
+
+    def by_role_level_range(
+        self,
+        role: RoadmapRole,
+        from_level: CareerLevel,
+        to_level: CareerLevel,
+    ) -> list[RoadmapNode]:
+        """Return nodes for *role* across the level range (inclusive), deduplicated by id."""
+        seen: set[str] = set()
+        result: list[RoadmapNode] = []
+        for level in levels_in_range(from_level, to_level):
+            for node in self.by_role_level(role, level):
+                if node.id not in seen:
+                    seen.add(node.id)
+                    result.append(node)
+        return result
+
+    def by_level_range(
+        self,
+        from_level: CareerLevel,
+        to_level: CareerLevel,
+    ) -> list[RoadmapNode]:
+        """Return nodes across the level range (inclusive), deduplicated by id."""
+        seen: set[str] = set()
+        result: list[RoadmapNode] = []
+        for level in levels_in_range(from_level, to_level):
+            for node in self.by_level(level):
+                if node.id not in seen:
+                    seen.add(node.id)
+                    result.append(node)
+        return result
     
     def by_ownership(self, ownership: str) -> list[RoadmapNode]:
         """Retrieve all nodes by ownership type ('proprio' or 'referencia')."""

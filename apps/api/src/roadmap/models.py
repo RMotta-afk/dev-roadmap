@@ -23,6 +23,28 @@ class CareerLevel(str, Enum):
     staff = "staff"
 
 
+LEVEL_ORDER: list[CareerLevel] = [
+    CareerLevel.junior,
+    CareerLevel.mid,
+    CareerLevel.senior,
+    CareerLevel.staff,
+]
+
+
+def levels_in_range(from_level: CareerLevel, to_level: CareerLevel) -> list[CareerLevel]:
+    """Return all levels from *from_level* through *to_level* (inclusive).
+
+    Raises ValueError if *from_level* is after *to_level* in LEVEL_ORDER.
+    """
+    from_idx = LEVEL_ORDER.index(from_level)
+    to_idx = LEVEL_ORDER.index(to_level)
+    if from_idx > to_idx:
+        raise ValueError(
+            f"from_level {from_level!r} is after to_level {to_level!r} in level order"
+        )
+    return LEVEL_ORDER[from_idx : to_idx + 1]
+
+
 class RequirementsByLevel(BaseModel):
     """Requirement depth for a given career level."""
 

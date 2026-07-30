@@ -149,14 +149,27 @@ orchestration (no Make/Node).
 - **Graph nodes (sequential):**
   1. `ingest` — accept CV bytes + description, store ephemeral, emit progress.
   2. `strip` — extract clean text from CV (PDF/DOCX/TXT).
-  3. `analyze` — LLM tool-call with structured schema: extract skills,
-     technologies, years of experience, domain areas.
-  4. `compare` — call C-RAG retriever for relevant Base Roadmap nodes
-     matching extracted skills; identify gaps.
-  5. `level_guess` — estimate seniority (junior/mid/senior/staff) +
-     trajectory narrative; compute `compatibility_score` (0-100).
-  6. `roadmap_select` — select subset of nodes addressing gaps/next steps;
-     emit `personalized_roadmap`.
+   3. `analyze` — LLM tool-call with structured schema: extract skills,
+      technologies, years of experience, domain areas, known_competencies
+      (evidence-based), and inferred_entailments (methodology/practice
+      implications from experience descriptions).
+   4. `compare` — classify ALL target role+level nodes spanning the
+      range from current_level through target_level (inclusive) against
+      the user's extracted skills and known competencies. Each node is
+      marked as covered / known_via_experience / gap via: (a) exact
+      skill/alias intersection, (b) competency name match, (c) embedding
+      cosine-similarity fallback (threshold 0.75).
+   5. `level_guess` — estimate seniority (junior/mid/senior/staff) +
+      trajectory narrative; compute `compatibility_score` (0-100) as
+      weighted coverage of all roadmap nodes from current_level through
+      target_level (not just the target level alone). Score = sum of
+      importance weights for covered+experience nodes ÷ sum of all
+      node importance in the level range.
+   6. `roadmap_select` — select up to 25 gap nodes prioritized by:
+      (a) tokenized focus-area match against node name, category, and
+      aliases (exact phrase gets highest boost, individual tokens get
+      per-token boost), then (b) importance as tiebreaker. Passes strict-
+      subset validation (ADR-008) before emission.
 - **Strict-subset guardrail (ADR-008):** final node validates every selected
   `node_id` via `RoadmapIndex.is_valid_subset`. Invalid → re-plan once with a
   corrective prompt, then hard-error if still invalid. NEVER emit

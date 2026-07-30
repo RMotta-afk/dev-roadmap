@@ -99,20 +99,39 @@ class TestFullScoreComputation:
 
         assert self._compute_score(matched, nodes) == 61
 
-    def test_excludes_nodes_from_other_level(self):
-        index = MagicMock()
-        junior_nodes = [self._make_node("j1", 50)]
-        staff_nodes = [self._make_node("s1", 80)]
-        index.by_role_level.return_value = staff_nodes
-        index.by_id.side_effect = lambda nid: next((n for n in staff_nodes if n.id == nid), None)
-
-        matched = [
-            type("Matched", (), {"id": "s1", "status": "covered"})(),
-            type("Matched", (), {"id": "j1", "status": "gap"})(),
+    def test_score_includes_level_range(self):
+        """junior->staff should include junior+mid+senior+staff nodes in denominator."""
+        nodes = [
+            self._make_node("j1", 50),
+            self._make_node("m1", 50),
+            self._make_node("s1", 50),
+            self._make_node("sf1", 50),
         ]
 
-        score = self._compute_score(matched, staff_nodes)
-        assert score == 100
+        matched = [
+            type("Matched", (), {"id": "j1", "status": "gap"})(),
+            type("Matched", (), {"id": "m1", "status": "gap"})(),
+            type("Matched", (), {"id": "s1", "status": "gap"})(),
+            type("Matched", (), {"id": "sf1", "status": "covered"})(),
+        ]
+
+        score = self._compute_score(matched, nodes)
+        assert score == 25  # 50 / 200 = 0.25
+
+    def test_score_weighted_with_level_range(self):
+        """Different-importance nodes across levels should weight correctly."""
+        nodes = [
+            self._make_node("j1", 80),
+            self._make_node("s1", 20),
+        ]
+
+        matched = [
+            type("Matched", (), {"id": "j1", "status": "gap"})(),
+            type("Matched", (), {"id": "s1", "status": "covered"})(),
+        ]
+
+        score = self._compute_score(matched, nodes)
+        assert score == 20  # 20 / 100 = 0.2
 
     def test_empty_skills_gets_zero_score(self):
         index = MagicMock()

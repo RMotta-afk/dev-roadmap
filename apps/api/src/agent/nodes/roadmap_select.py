@@ -9,34 +9,64 @@ def _prioritize_gaps(
     index: RoadmapIndex,
     focus_areas: list[str],
 ) -> list[str]:
-    """Sort gap node IDs by focus area match, then importance."""
-    focus_lower = {f.lower() for f in focus_areas}
-    
+    """Sort gap node IDs by token-aware focus area match, alias matching, then importance."""
+    if not focus_areas:
+        scored = []
+        for match in gap_matches:
+            node = index.by_id(match.id)
+            if node:
+                scored.append((node.importance if node.importance else 50, match.id))
+        scored.sort(reverse=True, key=lambda x: x[0])
+        return [sid for _, sid in scored]
+
+    focus_phrases_lower = [f.lower().strip() for f in focus_areas]
+    focus_tokens: set[str] = set()
+    for phrase in focus_phrases_lower:
+        for token in phrase.split():
+            focus_tokens.add(token)
+
     scored_gaps = []
     for match in gap_matches:
         node = index.by_id(match.id)
         if not node:
             continue
-        
+
         score = 0
-        
-        # Priority 1: Focus area match (category or name)
-        if focus_lower:
-            if node.category.lower() in focus_lower or node.name.lower() in focus_lower:
-                score += 1000
-            # Check if any focus keyword appears in node name/category
-            for focus in focus_lower:
-                if focus in node.name.lower() or focus in node.category.lower():
-                    score += 500
-        
-        # Priority 2: Importance
+
+        searchable = [
+            node.name.lower(),
+            node.category.lower(),
+        ]
+        searchable.extend(a.lower() for a in node.aliases)
+
+        # Priority 1: Exact phrase match in name or category (highest)
+        for phrase in focus_phrases_lower:
+            for s in searchable[:2]:
+                if phrase == s:
+                    score += 1000
+                    break
+
+        # Priority 2: Token-level matches (medium boost, per token)
+        token_count = 0
+        for s in searchable:
+            for token in focus_tokens:
+                if token in s.split():
+                    token_count += 1
+        score += min(token_count * 300, 900)
+
+        # Priority 3: Substring match in any searchable field (lower than token)
+        for phrase in focus_phrases_lower:
+            for s in searchable:
+                if phrase in s:
+                    score += 200
+                    break
+
+        # Priority 4: Importance as tiebreaker
         score += node.importance if node.importance else 50
-        
+
         scored_gaps.append((score, match.id))
-    
-    # Sort by score descending
+
     scored_gaps.sort(reverse=True, key=lambda x: x[0])
-    
     return [gap_id for _, gap_id in scored_gaps]
 
 
@@ -60,7 +90,7 @@ def roadmap_select_node(index: RoadmapIndex):
         
         # Build personalized roadmap from prioritized gap nodes
         roadmap = []
-        for nid in prioritized_ids[:20]:  # cap at 20 items
+        for nid in prioritized_ids[:25]:  # cap at 25 items
             node = index.by_id(nid)
             if node:
                 roadmap.append(node.model_dump())
