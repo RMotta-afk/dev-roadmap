@@ -2,6 +2,25 @@
   "level": "staff",
   "title": "STAFF Escala Organizacional",
   "inherits_from": "senior",
-  "group_count": 0,
-  "groups": []
+  "group_count": 3,
+  "groups": [
+    {
+      "id": "ai_engineer-staff-group-26",
+      "number": 26,
+      "name": "Padronização de AI",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-staff-group-27",
+      "number": 27,
+      "name": "Arquitetura organizacional",
+      "ownership": "proprio"
+    },
+    {
+      "id": "ai_engineer-staff-group-28",
+      "number": 28,
+      "name": "Governança e escala",
+      "ownership": "proprio"
+    }
+  ]
 }

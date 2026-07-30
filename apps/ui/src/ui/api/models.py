@@ -19,7 +19,7 @@ class RoadmapNode(BaseModel):
     importance: int = 0
     description: str | None = None
     aliases: list[str] = Field(default_factory=list)
-    content_guidance: dict[str, Any] = Field(default_factory=dict)
+    content_guidance: dict[str, Any] | None = Field(default_factory=dict)
 
 
 class LevelResume(BaseModel):
@@ -61,6 +61,7 @@ def normalize_result_payload(payload: dict[str, Any]) -> AnalyzeResult:
     roadmap: list[RoadmapNode] = []
     for item in roadmap_raw:
         if isinstance(item, dict):
+            item = {**item, "content_guidance": item.get("content_guidance") or {}}
             roadmap.append(RoadmapNode.model_validate(item))
 
     score = payload.get("compatibility_score") or 0

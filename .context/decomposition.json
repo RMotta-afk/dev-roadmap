@@ -51,7 +51,39 @@
       "title": "Integration, product surfaces & deployment",
       "rationale": "Wires the annotated endpoint and SSE stream into FastAPI, persists analysis records, builds the three frontend surfaces, and adds container + Vercel/Neon/Qdrant deployment config and docs.",
       "sdd_reference": "docs/sdd/architecture.md#11-deployment-c-deploy",
-      "completion_signal": "Manual smoke matches the Mission terminal_signal; `apps/api/Dockerfile` builds; `apps/web/vercel.json` valid; `.env.example` lists every required var; README documents the deploy."
+      "completion_signal": "Manual smoke matches the Mission terminal_signal; `apps/api/Dockerfile` builds; `apps/web/vercel.json` valid; `.env.example` lists every var named in SDD §11; README documents the deploy."
+    },
+    {
+      "goal_id": "G8",
+      "title": "Fix Staff roadmap parsing and content separation",
+      "rationale": "The GROUP_PATTERN regex in archive_parser.py silently drops every Staff group from all 3 roadmaps (group_count=0) due to mandatory whitespace before ** when no level suffix exists, and the Frontend Staff ownership literal (duplicado) is unrecognized. This also silently drops some non-Staff groups without a suffix (e.g. backend Cloud Fundamentals). Fixing this ensures Staff-level nodes exist in RoadmapIndex and Qdrant for scoring and retrieval.",
+      "sdd_reference": "docs/sdd/architecture.md#7-base-roadmap-data-layer-c-data",
+      "completion_signal": "Running the parser against all 3 archives produces staff/level.json with group_count=3 for software_engineer and ai_engineer, and group_count=0 (intentional) for frontend_engineer. Staff nodes appear in Qdrant after re-seed. Existing Pleno/Senior groups are unaffected.",
+      "parallel_group": null
+    },
+    {
+      "goal_id": "G9",
+      "title": "Make experience-derived competencies count via embedding similarity",
+      "rationale": "compare_node classifies nodes as covered/known_via_experience/gap via exact string equality only. Since RoadmapNode.aliases is always empty and user CV terms (especially from English LinkedIn exports) never literally match Portuguese roadmap node names, experience-based competencies silently fall through to gap. This makes the compatibility score ignore real experience and the analysis report incorrectly flags mastered skills as gaps.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "completion_signal": "Given a CV mentioning 'reduced cloud costs by 30%', the node 'Otimização de custo vs performance' is classified as known_via_experience, not gap. English terms from LinkedIn exports also trigger known_via_experience. False positive rate ≤ 5% on a 20-node test set.",
+      "parallel_group": null
+    },
+    {
+      "goal_id": "G10",
+      "title": "Force Portuguese-only analysis output (API scope)",
+      "rationale": "The agentic analysis pipeline produces English output for level_resume (summary/strong_points/weak_points), matched_node reason strings, and fallback career_summary — even when the CV input is English Portuguese should be the output language per user requirement. The LLM prompt itself stays in English (extraction quality), but all user-facing output must be Portuguese.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "completion_signal": "Running the full pipeline with an English CV CSV export produces Portuguese level_resume.summary/strong_points/weak_points, Portuguese matched_node.reason strings, and Portuguese fallback career_summary. Existing tests pass.",
+      "parallel_group": null
+    },
+    {
+      "goal_id": "G11",
+      "title": "Fix compatibility score using full target roadmap + unify gap selection",
+      "rationale": "The compatibility score denominator is built only from RAG-retrieved nodes (seeded by the user's own skill terms), not the complete target role+level node set from RoadmapIndex.by_role_level(). True gaps are invisible because they're never queried. This structurally inflates the score (users with partial CVs get non-zero scores for roles they know nothing about). The personalization gap list in roadmap_select also uses the same biased partial set, missing entire categories of gaps.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "completion_signal": "A user with zero skills for a target role gets compatibility_score=0. A user with all target skills gets 100. The personalized roadmap contains ALL true gap nodes, not just nodes semantically close to claimed skills. Unit tests for _compute_compatibility_score pass.",
+      "parallel_group": null
     }
   ],
   "tasks": [
@@ -402,6 +434,150 @@
       "parallel_group": "P7a",
       "acceptance_test": "`docker build apps/api` succeeds and starts uvicorn; `vercel build` for apps/web validates; `.env.example` lists every var named in SDD §11; README deploy section documents Railway + Vercel + Qdrant + Neon steps.",
       "sdd_snippet": "Frontend: apps/web → Vercel (auto-detect Next.js). Env: NEXTAUTH_SECRET, NEXTAUTH_URL, AUTHJS_JWKS_URL/shared secret, NEXT_PUBLIC_API_BASE_URL. Backend: apps/api → Railway via Dockerfile (slim Python base, uv install, uvicorn entrypoint). Env: QDRANT_URL, QDRANT_API_KEY, DATABASE_URL, LLM_API_KEY, EMBEDDING_MODEL, AUTHJS_JWT_SECRET, CORS_ALLOW, BASE_ROADMAP_PATH."
+    },
+    {
+      "task_id": "T8.1",
+      "goal_id": "G8",
+      "title": "Fix GROUP_PATTERN regex whitespace in archive_parser.py",
+      "rationale": "The `\s+` before the optional level-suffix group is mandatory, causing all Staff group headers (no Básico/Intermediário/Avançado suffix) to fail regex matching. Fix by making the whitespace part of the optional non-capturing group.",
+      "sdd_reference": "docs/sdd/architecture.md#7-base-roadmap-data-layer-c-data",
+      "files": ["apps/api/src/roadmap/archive_parser.py"],
+      "blocked_by": [],
+      "parallel_group": "P8a",
+      "acceptance_test": "Regex matches group headers like `**16. Padronização** *(próprio)*` and `**25. Desenvolvimento de Software Avançado** *(duplicado do Software Engineer — Sênior)*` successfully; also still matches regular group headers with level suffixes.",
+      "sdd_snippet": "ArchiveParser.GROUP_PATTERN: regex must parse all group header formats including Staff groups with no level suffix."
+    },
+    {
+      "task_id": "T8.2",
+      "goal_id": "G8",
+      "title": "Handle duplicado ownership marker and regenerate data/roadmaps",
+      "rationale": "Frontend Staff groups use `*(duplicado do Software Engineer — Sênior)*` ownership which the parser doesn't recognize. Map this to ownership='referencia' with reference_target='software_engineer, senior'. Then regenerate all data/roadmaps/ and verify Staff group_count for backend=3, ai-engineer=3, frontend=0 (intentional).",
+      "sdd_reference": "docs/sdd/architecture.md#7-base-roadmap-data-layer-c-data",
+      "files": ["apps/api/src/roadmap/archive_parser.py"],
+      "blocked_by": ["T8.1"],
+      "parallel_group": "P8a",
+      "acceptance_test": "Running the parser on roadmap-frontend-indice.md records Frontend Staff as reference (0 own groups) referencing software_engineer/senior. Running on roadmap-backend-indice.md parses 3 Staff groups with 7-8 skills each. All Pleno/Senior groups unaffected.",
+      "sdd_snippet": "Group ownership 'duplicado' mapped to 'referencia' with reference_target pointing to the source role+level."
+    },
+    {
+      "task_id": "T8.3",
+      "goal_id": "G8",
+      "title": "Re-seed Qdrant and verify Staff nodes indexed",
+      "rationale": "After regenerating data/roadmaps with correct Staff group data, the Qdrant collection must be re-seeded so Staff-level nodes are available for RAG retrieval and scoring.",
+      "sdd_reference": "docs/sdd/architecture.md#8-rag-qdrant-c-rag",
+      "files": ["apps/api/src/rag/seeder.py", "apps/api/src/app/main.py"],
+      "blocked_by": ["T8.2"],
+      "parallel_group": "P8b",
+      "acceptance_test": "After re-seed, `retrieve('custo', role='software_engineer', level='staff', top_k=5)` returns non-empty results including 'Otimização de custo vs performance'. Staff node count in Qdrant matches expected total across all 3 roles.",
+      "sdd_snippet": "Startup seeder must re-populate Qdrant after data/roadmaps regeneration so Staff nodes are available for retrieval."
+    },
+    {
+      "task_id": "T9.1",
+      "goal_id": "G9",
+      "title": "Populate RoadmapNode.aliases in archive_parser.py with EN+PT synonyms",
+      "rationale": "archive_parser.py:295 hardcodes empty aliases array. Populating it with common EN+PT synonyms for each skill name gives the exact-match classification additional surface area without architectural changes.",
+      "sdd_reference": "docs/sdd/architecture.md#7-base-roadmap-data-layer-c-data",
+      "files": ["apps/api/src/roadmap/archive_parser.py"],
+      "blocked_by": [],
+      "parallel_group": "P9a",
+      "acceptance_test": "At least 1 alias per skill node in generated data/roadmaps/*.json. Aliases include common English PT counterparts (e.g., 'Cost optimization' ↔ 'Otimização de custo', 'Performance tuning' ↔ 'Otimização de performance').",
+      "sdd_snippet": "RoadmapNode.aliases populated at archive parse time with EN+PT synonym pairs for each skill description."
+    },
+    {
+      "task_id": "T9.2",
+      "goal_id": "G9",
+      "title": "Add embedding-similarity fallback in compare_node",
+      "rationale": "After exact-match and keyword-match checks fail, use embedding cosine similarity between the candidate node's embedding and the user's competency evidence text to classify as known_via_experience with a 0.75 threshold. Uses the existing EmbeddingService and Qdrant-stored node embeddings.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/nodes/compare.py", "apps/api/src/rag/embeddings.py"],
+      "blocked_by": ["T9.1"],
+      "parallel_group": "P9b",
+      "acceptance_test": "User CV mentioning 'reduced cloud costs' classifies 'Otimização de custo vs performance' as known_via_experience (not gap). Completely unrelated terms like 'knitting' do NOT trigger false positive.",
+      "sdd_snippet": "compare_node adds embedding-similarity fallback step after exact-match and competency checks, using EmbeddingService.cosine_similarity against the node's stored embedding."
+    },
+    {
+      "task_id": "T9.3",
+      "goal_id": "G9",
+      "title": "Add unit tests for alias population and similarity matching",
+      "rationale": "Currently zero test coverage for alias generation and similarity classification. Add tests for alias population from archive_parser and similarity threshold logic in compare_node classification.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/tests/test_archive_parser.py", "apps/api/tests/test_compare_node.py"],
+      "blocked_by": ["T9.1", "T9.2"],
+      "parallel_group": "P9c",
+      "acceptance_test": "`pytest apps/api/tests/test_archive_parser.py apps/api/tests/test_compare_node.py -v` passes with ≥ 90% coverage on alias generation and similarity classification.",
+      "sdd_snippet": "Unit tests for archive_parser alias population and compare_node embedding-similarity fallback with confidence threshold."
+    },
+    {
+      "task_id": "T10.1",
+      "goal_id": "G10",
+      "title": "Translate level_guess.py system prompt + template fallback to Portuguese",
+      "rationale": "_LEVEL_RESUME_SYSTEM_PROMPT (line 14) and _generate_level_resume_template (line 128) are in English. These produce the user-facing summary/strong_points/weak_points that must be entirely in Portuguese.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/nodes/level_guess.py"],
+      "blocked_by": [],
+      "parallel_group": "P10a",
+      "acceptance_test": "Running level_guess_node with mock state (no LLM) returns Portuguese summary, strong_points, and weak_points. Prompt instructs LLM to return JSON with Portuguese string values.",
+      "sdd_snippet": "level_guess system prompt and template fallback fully translated to Portuguese — summary, strong_points, weak_points, career context, gap nodes, known competencies."
+    },
+    {
+      "task_id": "T10.2",
+      "goal_id": "G10",
+      "title": "Translate compare.py reason strings + analyze.py fallback + add Portuguese output constraint to prompt",
+      "rationale": "Hardcoded reason strings in compare.py (lines 116, 124) and fallback career_summary in analyze.py (line 288) are in English. Also add a Portuguese output constraint to the analyze.py LLM prompt (not translating the prompt itself, which would reduce extraction quality).",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/nodes/compare.py", "apps/api/src/agent/nodes/analyze.py"],
+      "blocked_by": [],
+      "parallel_group": "P10a",
+      "acceptance_test": "compare_node returns reason in Portuguese ('Listado explicitamente em habilidades/tecnologias', 'Demonstrado por meio de experiência profissional'). Mock fallback career_summary is in Portuguese. The LLM prompt includes a Portuguese output constraint rule.",
+      "sdd_snippet": "Hardcoded strings translated to Portuguese. LLM prompt adds 'RULES for output language: all string values must be in Portuguese.' Non-prompt English content (reason strings, fallback summary) fully translated."
+    },
+    {
+      "task_id": "T11.1",
+      "goal_id": "G11",
+      "title": "Refactor compare_node to classify complete target role+level node set",
+      "rationale": "compare_node currently only classifies RAG-retrieved nodes (seeded by user's own skill terms). Instead, it should classify ALL nodes for target_role+target_level from RoadmapIndex.by_role_level(), so the complete gap set is available for scoring and roadmap_select.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/nodes/compare.py", "apps/api/src/roadmap/index.py"],
+      "blocked_by": ["T8.3"],
+      "parallel_group": "P11a",
+      "acceptance_test": "Given a software_engineer/staff target, compare_node returns exactly the count of nodes in target_level=staff for role=software_engineer (not just RAG Retrieved subset). Every non-covered node has status='gap'. All node IDs pass RoadmapIndex.is_valid_subset.",
+      "sdd_snippet": "compare_node replaced: for each node in RoadmapIndex.by_role_level(role, level), classify via exact → experience → embedding similarity → gap. Uses existing 3-step classification logic applied to the complete node set."
+    },
+    {
+      "task_id": "T11.2",
+      "goal_id": "G11",
+      "title": "Fix level_guess_node score computation against full target node set",
+      "rationale": "Once compare_node classifies the complete target node set (T11.1), level_guess_node's weighted score using state.matched_nodes automatically computes correctly against all target nodes. Verify the score uses total_weight = Σ(importance) of ALL target nodes (covered + gap), not just retrieved ones.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/nodes/level_guess.py"],
+      "blocked_by": ["T11.1"],
+      "parallel_group": "P11b",
+      "acceptance_test": "User with zero skills targeting staff backend gets score=0. User with all skills listed gets score=100. Partial coverage yields correct weighted score (e.g., 3 of 6 nodes covered → score=50 when equal importance).",
+      "sdd_snippet": "level_guess_node compatibility score now uses complete matched_nodes from compare_node (all target role+level nodes), computing covered_weight / total_weight correctly."
+    },
+    {
+      "task_id": "T11.3",
+      "goal_id": "G11",
+      "title": "Verify roadmap_select uses complete gap list from compare_node",
+      "rationale": "roadmap_select_node currently filters state.matched_nodes for status='gap'. After T11.1's refactor, matched_nodes contains the complete gap set (not just RAG-subset), so gap prioritization automatically includes all true gaps. This step verifies correctness and documents the unification.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/src/agent/nodes/roadmap_select.py"],
+      "blocked_by": ["T11.1"],
+      "parallel_group": "P11b",
+      "acceptance_test": "Given a user with no skills, personalized_roadmap contains ALL gap nodes for the target role+level (not just nodes semantically close to any claimed skill). Roadmap is still properly prioritized by focus_area + importance.",
+      "sdd_snippet": "roadmap_select_node gap selection verified to use complete gap set from compare_node (post-T11.1). Prioritization still applies focus_area + importance ranking."
+    },
+    {
+      "task_id": "T11.4",
+      "goal_id": "G11",
+      "title": "Add unit tests for _compute_compatibility_score and classification logic",
+      "rationale": "The compatibility scoring formula has zero unit test coverage. The classification logic also has no tests beyond the integration pipeline. Adding these prevents regressions and documents the expected behavior.",
+      "sdd_reference": "docs/sdd/architecture.md#9-agentic-layer-langgraph-c-agent",
+      "files": ["apps/api/tests/test_level_guess.py"],
+      "blocked_by": ["T11.2"],
+      "parallel_group": "P11c",
+      "acceptance_test": "pytest apps/api/tests/test_level_guess.py -v passes. Tests cover: score=0 when total_weight=0, score=100 when all nodes covered, score=50 for 50% weighted coverage, score clamping to [0,100], all-gap case, all-covered case.",
+      "sdd_snippet": "Unit tests for _compute_compatibility_score: edge cases (zero weight, all covered, all gaps, clamping) and weighted partial coverage scenarios."
     }
   ],
   "topological_order": [
@@ -433,7 +609,19 @@
     "T7.1",
     "T7.4",
     "T7.2",
-    "T7.3"
+    "T7.3",
+    "T8.1",
+    "T9.1",
+    "T10.1",
+    "T10.2",
+    "T8.2",
+    "T9.2",
+    "T8.3",
+    "T9.3",
+    "T11.1",
+    "T11.2",
+    "T11.3",
+    "T11.4"
   ],
   "validation_passed": true
 }

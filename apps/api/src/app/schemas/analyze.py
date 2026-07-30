@@ -35,7 +35,7 @@ class RoadmapNode(BaseModel):
     importance: int = Field(description="Importance score", ge=0, le=100)
     description: str | None = Field(default=None, description="Optional detailed description")
     aliases: list[str] = Field(default_factory=list, description="Alternative names")
-    content_guidance: dict = Field(default_factory=dict, description="Content / study guidance")
+    content_guidance: dict | None = Field(default_factory=dict, description="Content / study guidance")
 
 
 class LevelResume(BaseModel):

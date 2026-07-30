@@ -2,7 +2,7 @@
   "level": "mid",
   "title": "PLENO Autonomia",
   "inherits_from": "junior",
-  "group_count": 2,
+  "group_count": 5,
   "groups": [
     {
       "id": "software_engineer-mid-group-6",
@@ -14,6 +14,24 @@
       "id": "software_engineer-mid-group-7",
       "number": 7,
       "name": "Banco de Dados",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-mid-group-9",
+      "number": 9,
+      "name": "DevOps Fundamentals",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-mid-group-10",
+      "number": 10,
+      "name": "Cloud for Backend",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-mid-group-11",
+      "number": 11,
+      "name": "DevOps for Backend",
       "ownership": "proprio"
     }
   ]

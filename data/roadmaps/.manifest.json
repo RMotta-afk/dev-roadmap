@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-07-29T21:58:13.363863+00:00",
+  "generated_at": "2026-07-30T00:34:27.990829+00:00",
   "source_hash": "56a7547590cc0cc18ded53f20c58934cb1d1e034c9f1da002464cc8dc8f952e9",
   "source_files": {
     "roadmap-ai-engineer-indice.md": "4ffa91c61f5e80789396d66e1af70bdcc69b757714c22e42fbf9c3fdcf687700",
@@ -9,7 +9,7 @@
   },
   "output_summary": {
     "roadmaps": 3,
-    "groups": 77,
-    "skills": 420
+    "groups": 92,
+    "skills": 484
   }
 }

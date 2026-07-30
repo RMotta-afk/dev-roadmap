@@ -2,7 +2,7 @@
   "level": "junior",
   "title": "JÚNIOR Uso de AI",
   "inherits_from": null,
-  "group_count": 7,
+  "group_count": 8,
   "groups": [
     {
       "id": "ai_engineer-junior-group-1",
@@ -44,6 +44,12 @@
       "id": "ai_engineer-junior-group-7",
       "number": 7,
       "name": "Cloud Fundamentals",
+      "ownership": "referencia"
+    },
+    {
+      "id": "ai_engineer-junior-group-8",
+      "number": 8,
+      "name": "DevOps Fundamentals",
       "ownership": "referencia"
     }
   ]

@@ -49,9 +49,9 @@ class ArchiveParser:
     
     LEVEL_PATTERN = re.compile(r"^##\s+(JÚNIOR|PLENO|SÊNIOR|STAFF)\s+—\s+(.+)$")
     GROUP_PATTERN = re.compile(
-        r'^\*\*(\d+)\.\s+(.+?)\s+(Básico|Intermediário|Avançado|Básico \+ Intermediário|'
-        r'Intermediário \+ Avançado|Básico \+ Intermediário \+ Avançado)?\*\*\s*'
-        r'\*\((próprio|referência\s*→\s*`([^`]+)`(?:,\s*(.+?))?)\)\*'
+        r'^\*\*(\d+)\.\s+(.+?)(?:\s+(Básico|Intermediário|Avançado|Básico \+ Intermediário|'
+        r'Intermediário \+ Avançado|Básico \+ Intermediário \+ Avançado))?\*\*\s*'
+        r'\*\((próprio|referência\s*→\s*`([^`]+)`(?:,\s*(.+?))?|duplicado\s+do\s+(.+?)\s+—\s+(.+?))\)\*'
     )
     SKILL_PATTERN = re.compile(r'^-\s+(\d+\.\d+)\s+(.+)$')
     INHERITS_PATTERN = re.compile(r'_Herda todo o bloco (\w+)')
@@ -132,10 +132,19 @@ class ArchiveParser:
                 group_num = int(group_match.group(1))
                 group_name = group_match.group(2).strip()
                 ownership_raw = group_match.group(4)
-                
+
                 if ownership_raw == "próprio":
                     ownership = "proprio"
                     reference_target = None
+                elif ownership_raw.startswith("duplicado"):
+                    ownership = "referencia"
+                    role_raw = group_match.group(7)
+                    level_raw = group_match.group(8)
+                    role_canonical = role_raw.lower().replace(" ", "_")
+                    level_canonical = self.LEVEL_MAP.get(level_raw.upper(), level_raw.lower())
+                    reference_target = f"{role_canonical}, {level_canonical}"
+                    current_group = None
+                    continue
                 else:
                     ownership = "referencia"
                     ref_id = group_match.group(5)
@@ -174,6 +183,57 @@ class ArchiveParser:
         )
         
         return metadata, levels
+
+
+# Portuguese-English synonym pairs for skill descriptions.
+# Populated at parse time so nodes carry aliases for richer matching.
+_SKILL_ALIASES: dict[str, list[str]] = {
+    "python": ["Python", "py"],
+    "javascript": ["JavaScript", "JS"],
+    "typescript": ["TypeScript", "TS"],
+    "react": ["React", "React.js", "React JS"],
+    "node.js": ["Node.js", "NodeJS", "Node"],
+    "aws": ["AWS", "Amazon Web Services", "Amazon aws"],
+    "docker": ["Docker", "containerization", "container"],
+    "kubernetes": ["Kubernetes", "K8s", "K8"],
+    "sql": ["SQL", "Structured Query Language", "database query", "relational database"],
+    "git": ["Git", "version control", "source control"],
+    "linux": ["Linux", "GNU/Linux", "UNIX"],
+    "agile": ["Agile", "Agile methodology", "Scrum", "Kanban"],
+    "terraform": ["Terraform", "IaC", "infrastructure as code"],
+    "ci/cd": ["CI/CD", "continuous integration", "continuous deployment", "pipeline"],
+    "postgresql": ["PostgreSQL", "Postgres", "PostgreSQL database"],
+    "mongodb": ["MongoDB", "Mongo", "NoSQL"],
+    "redis": ["Redis", "cache", "in-memory store"],
+    "elasticsearch": ["Elasticsearch", "ELK", "search engine"],
+    "kafka": ["Kafka", "message broker", "event streaming"],
+    "graphql": ["GraphQL", "API query language"],
+    "rest": ["REST", "REST API", "RESTful API", "REST API design"],
+    "api": ["API", "Application Programming Interface", "integration"],
+    "microservices": ["Microservices", "microservice architecture", "microservice"],
+    "cloud": ["Cloud", "cloud computing", "cloud infrastructure"],
+    "optimization": ["optimization", "performance tuning", "performance optimization"],
+    "cost optimization": ["cost optimization", "cost reduction", "optimization de custo"],
+    "performance": ["performance", "performance tuning", "performance optimization", "otimização de performance"],
+    "scalability": ["scalability", "escalabilidade", "scale", "scaling"],
+    "security": ["security", "segurança", "application security", "web security"],
+    "testing": ["testing", "test", "unit testing", "integration testing", "testes"],
+    "automation": ["automation", "automação", "automated pipeline"],
+    "monitoring": ["monitoring", "observability", "observabilidade", "monitoring"],
+    "architecture": ["architecture", "architectural design", "arquitetura de software"],
+}
+
+
+def _get_skill_aliases(description: str) -> list[str]:
+    """Return known EN/PT synonym aliases for a skill description."""
+    desc_lower = description.lower()
+    aliases: list[str] = []
+    for key, syns in _SKILL_ALIASES.items():
+        if key in desc_lower:
+            for syn in syns:
+                if syn.lower() not in desc_lower and syn not in aliases:
+                    aliases.append(syn)
+    return aliases
 
 
 def generate_nested_structure(
@@ -292,7 +352,7 @@ def generate_nested_structure(
                         "category": group.name,
                         "importance": 50,
                         "estimated_hours": 10,
-                        "aliases": [],
+                        "aliases": _get_skill_aliases(skill.description),
                         "ownership": group.ownership,
                         "reference_target": group.reference_target,
                     }

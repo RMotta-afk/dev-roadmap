@@ -2,6 +2,25 @@
   "level": "staff",
   "title": "STAFF Escala Organizacional",
   "inherits_from": "senior",
-  "group_count": 0,
-  "groups": []
+  "group_count": 3,
+  "groups": [
+    {
+      "id": "software_engineer-staff-group-16",
+      "number": 16,
+      "name": "Padronização",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-staff-group-17",
+      "number": 17,
+      "name": "Escala",
+      "ownership": "proprio"
+    },
+    {
+      "id": "software_engineer-staff-group-18",
+      "number": 18,
+      "name": "Decisões Organizacionais",
+      "ownership": "proprio"
+    }
+  ]
 }

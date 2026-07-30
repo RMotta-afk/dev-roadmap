@@ -76,6 +76,16 @@ RULES for levels:
 
 If target is not explicitly stated in description, default target_level to ONE level above current_level (staff stays staff).
 
+RULES for output language:
+- All string values in the JSON response must be in Portuguese (Brazilian),
+  including summary, known_competencies names, inferred_entailments names,
+  career_summary, and project descriptions.
+
+RULES for known_competencies:
+- Map English experience terms to their Portuguese roadmap equivalents where applicable
+  (e.g., "cost optimization" → "Otimização de custo", "performance tuning" → "Otimização de custo vs performance").
+- Include both the original CV term and a suggested canonical term when they differ.
+
 Do not include any markdown formatting, explanation, or extra text outside the JSON."""
 
 
@@ -285,7 +295,7 @@ def _mock_extraction(raw_cv_text: str, raw_description: str, profile: dict[str, 
     if "python" in desc_lower:
         focus_areas.append("Python")
 
-    career_summary = f"{current_level.title()} {current_role.replace('_', ' ').title()} with {years_of_experience} years of experience"
+    career_summary = f"{current_level.title()} {current_role.replace('_', ' ').title()} com {years_of_experience} anos de experiência"
 
     return {
         "current_role": current_role,

@@ -12,17 +12,21 @@ from roadmap.index import RoadmapIndex
 
 
 _LEVEL_RESUME_SYSTEM_PROMPT = """\
-You are a career development advisor. Based on the user's career context, current skills, and gaps toward their target role/level, provide a concise assessment.
+Você é um consultor de desenvolvimento de carreira. Com base no contexto
+profissional do usuário, habilidades atuais e lacunas até o cargo/nível
+alvo, forneça uma avaliação concisa.
 
-Return ONLY a JSON object with these exact keys:
+Retorne SOMENTE um objeto JSON com estas chaves exatas:
 {
-  "summary": "2-3 sentence summary: current trajectory, readiness for target, what to focus on next",
-  "strong_points": ["3-5 demonstrated strengths with evidence"],
-  "weak_points": ["3-5 highest-priority gaps toward the target level/role"]
+  "summary": "resumo de 2-3 frases: trajetória atual, prontidão para o alvo,
+             no que focar a seguir",
+  "strong_points": ["3-5 pontos fortes demonstrados com evidências"],
+  "weak_points": ["3-5 maiores lacunas rumo ao nível/cargo alvo"]
 }
 
-Be specific, actionable, and encouraging. Focus on what matters for reaching their target.
-Do not include markdown formatting or extra text."""
+Seja específico, prático e encorajador. Foque no que importa para
+alcançar o objetivo.
+Não inclua formatação markdown, explicações ou texto extra fora do JSON."""
 
 
 def _compute_target_readiness(
@@ -138,9 +142,9 @@ def _generate_level_resume_template(state: AgentState, index: RoadmapIndex) -> d
     # Build summary
     focus_text = f" with focus on {', '.join(cf.focus_areas[:3])}" if cf.focus_areas else ""
     summary = (
-        f"Currently assessed as {cf.current_level} {cf.current_role.replace('_', ' ')}. "
-        f"Target: {cf.target_level} {cf.target_role.replace('_', ' ')}{focus_text}. "
-        f"Continue building expertise in identified gap areas to reach your target level."
+        f"Avaliado atualmente como {cf.current_level} {cf.current_role.replace('_', ' ')}. "
+        f"Alvo: {cf.target_level} {cf.target_role.replace('_', ' ')}{focus_text}. "
+        f"Continue desenvolvendo expertise nas lacunas identificadas para alcançar seu nível alvo."
     )
     
     # Build strong points from covered/known

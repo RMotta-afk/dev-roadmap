@@ -2,8 +2,20 @@
   "level": "mid",
   "title": "PLENO Aplicações de UI",
   "inherits_from": "junior",
-  "group_count": 5,
+  "group_count": 7,
   "groups": [
+    {
+      "id": "frontend_engineer-mid-group-11",
+      "number": 11,
+      "name": "Cloud for Front-end",
+      "ownership": "proprio"
+    },
+    {
+      "id": "frontend_engineer-mid-group-12",
+      "number": 12,
+      "name": "DevOps for Front-end",
+      "ownership": "proprio"
+    },
     {
       "id": "frontend_engineer-mid-group-13",
       "number": 13,
