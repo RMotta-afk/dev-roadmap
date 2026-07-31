@@ -165,7 +165,7 @@ orchestration (no Make/Node).
       target_level (not just the target level alone). Score = sum of
       importance weights for covered+experience nodes ÷ sum of all
       node importance in the level range.
-   6. `roadmap_select` — select up to 25 gap nodes prioritized by:
+   6. `roadmap_select` — select up to 35 gap nodes prioritized by:
       (a) tokenized focus-area match against node name, category, and
       aliases (exact phrase gets highest boost, individual tokens get
       per-token boost), then (b) importance as tiebreaker. Passes strict-

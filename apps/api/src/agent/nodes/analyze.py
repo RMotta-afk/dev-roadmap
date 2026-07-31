@@ -306,34 +306,73 @@ def _mock_extraction(raw_cv_text: str, raw_description: str, profile: dict[str, 
     focus_areas = []
     
     desc_lower = raw_description.lower()
-    if "staff" in desc_lower and ("want" in desc_lower or "aim" in desc_lower or "become" in desc_lower):
-        target_level = "staff"
-    elif "senior" in desc_lower and ("want" in desc_lower or "aim" in desc_lower or "become" in desc_lower):
-        target_level = "senior"
-    elif "mid" in desc_lower and ("want" in desc_lower or "aim" in desc_lower):
-        target_level = "mid"
+    
+    # Detect target role from description
+    if "ai engineer" in desc_lower or "ml engineer" in desc_lower or "ia" in desc_lower and "engenheiro" in desc_lower:
+        target_role = "ai_engineer"
+    elif "frontend" in desc_lower or "front-end" in desc_lower or "front" in desc_lower:
+        target_role = "frontend_engineer"
+    elif "backend" in desc_lower or "back-end" in desc_lower:
+        target_role = "software_engineer"
+    # Default to current if no role detected
+    if not target_role:
+        target_role = current_role
+    
+    # Level keywords in PT and EN
+    level_keywords = {
+        "staff": "staff",
+        "senior": "senior",
+        "sênior": "senior",
+        "pleno": "mid",
+        "mid": "mid",
+        "especialista": "staff",
+        "júnior": "junior",
+        "junior": "junior",
+    }
+    # Goal-indicating words in PT and EN
+    goal_words = {"quero", "quer", "busco", "objetivo", "almejo", "pretendo", "viso",
+                  "want", "aim", "become", "targeting", "target", "goal", "aspire", "pursuing"}
+    
+    target_level = None
+    for keyword, level in level_keywords.items():
+        if keyword in desc_lower:
+            # Check if goal-indicating words are nearby or any level keyword in description
+            if any(gw in desc_lower for gw in goal_words):
+                target_level = level
+                break
+            # Also treat as target if the level differs from current
+            if level != current_level:
+                target_level = level
+                break
     
     # If no explicit target, go one level up
     if not target_level:
         level_progression = {"junior": "mid", "mid": "senior", "senior": "staff", "staff": "staff"}
         target_level = level_progression.get(current_level, "senior")
     
-    # Infer target role (default to current)
-    target_role = current_role
-    
-    # Extract focus areas from description
-    if "aws" in desc_lower or "amazon" in desc_lower:
-        focus_areas.append("AWS")
-    if "azure" in desc_lower:
-        focus_areas.append("Azure")
-    if "gcp" in desc_lower or "google cloud" in desc_lower:
-        focus_areas.append("GCP")
-    if "kubernetes" in desc_lower or "k8s" in desc_lower:
-        focus_areas.append("Kubernetes")
-    if "react" in desc_lower:
-        focus_areas.append("React")
-    if "python" in desc_lower:
-        focus_areas.append("Python")
+    # Extract focus areas from description (broader keyword set)
+    focus_keywords = [
+        ("cloud", "Cloud"), ("aws", "AWS"), ("azure", "Azure"), ("gcp", "GCP"),
+        ("google cloud", "GCP"), ("amazon", "AWS"),
+        ("devops", "DevOps"), ("ml", "ML"), ("machine learning", "Machine Learning"),
+        ("ia", "IA"), ("inteligência artificial", "IA"), ("artificial intelligence", "IA"),
+        ("data", "Data"), ("frontend", "Frontend"), ("front-end", "Frontend"),
+        ("backend", "Backend"), ("back-end", "Backend"),
+        ("fullstack", "Full Stack"), ("full stack", "Full Stack"),
+        ("mobile", "Mobile"), ("segurança", "Segurança"), ("security", "Security"),
+        ("infraestrutura", "Infraestrutura"), ("infrastructure", "Infrastructure"),
+        ("database", "Database"), ("banco de dados", "Database"),
+        ("testes", "Testes"), ("testing", "Testing"),
+        ("arquitetura", "Arquitetura"), ("architecture", "Architecture"),
+        ("kubernetes", "Kubernetes"), ("k8s", "Kubernetes"),
+        ("docker", "Docker"), ("react", "React"), ("python", "Python"),
+        ("node", "Node.js"), ("nodejs", "Node.js"),
+    ]
+    seen_focus = set()
+    for keyword, label in focus_keywords:
+        if keyword in desc_lower and label not in seen_focus:
+            focus_areas.append(label)
+            seen_focus.add(label)
 
     career_summary = f"{current_level.title()} {current_role.replace('_', ' ').title()} com {years_of_experience} anos de experiência"
 

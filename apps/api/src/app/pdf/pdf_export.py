@@ -57,14 +57,6 @@ def _translate_level(level: str) -> str:
     return translations.get(level.lower().strip(), level)
 
 
-def _stars(importance: int) -> str:
-    """Convert importance score (0-20 per node) to star display."""
-    pct = min(100, max(0, importance))
-    filled = (pct + 19) // 20
-    filled = max(0, min(5, filled))
-    return "★" * filled + "☆" * (5 - filled)
-
-
 _LEVEL_LABELS_PT = {
     "junior": "Júnior",
     "mid": "Pleno",
@@ -172,15 +164,6 @@ def build_pdf(
         textColor=colors.HexColor("#666666"),
     )
 
-    node_desc_style = ParagraphStyle(
-        "PNodeDesc",
-        parent=styles["Normal"],
-        fontSize=9,
-        leading=12,
-        spaceAfter=4,
-        leftIndent=6,
-    )
-
     story: list[Any] = []
 
     today = datetime.now(UTC).strftime("%d/%m/%Y")
@@ -246,14 +229,6 @@ def build_pdf(
             node_cat = node.get("category", "—")
             node_level = node.get("level", "—")
             node_level_pt = _LEVEL_LABELS_PT.get(str(node_level).lower().strip(), str(node_level))
-            node_importance = node.get("importance", 0)
-            try:
-                node_imp_int = int(node_importance)
-            except (TypeError, ValueError):
-                node_imp_int = 0
-            node_imp_str = _stars(node_imp_int)
-            node_desc = node.get("description", "Sem descrição disponível.")
-
             story.append(Paragraph(f"<b>{idx}. {node_name}</b>", node_name_style))
 
             meta_parts = []
@@ -261,22 +236,9 @@ def build_pdf(
                 meta_parts.append(f"Categoria: {node_cat}")
             if node_level_pt:
                 meta_parts.append(f"Nível: {node_level_pt}")
-            meta_parts.append(f"Importância: {node_imp_str}")
             story.append(Paragraph(" · ".join(meta_parts), node_meta_style))
 
-            if node_desc and node_desc != "Sem descrição disponível.":
-                story.append(Paragraph(node_desc, node_desc_style))
-
             story.append(Spacer(1, 2 * mm))
-
-    errors = result.get("errors", [])
-    if isinstance(errors, list) and errors:
-        story.append(Spacer(1, 4 * mm))
-        story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cccccc")))
-        story.append(Spacer(1, 4 * mm))
-        story.append(Paragraph("<b>Avisos do pipeline</b>", h2_style))
-        for err in errors:
-            story.append(Paragraph(f"• {err}", bullet_style))
 
     doc.build(story)
     pdf_bytes = buffer.getvalue()

@@ -90,7 +90,7 @@ def roadmap_select_node(index: RoadmapIndex):
         
         # Build personalized roadmap from prioritized gap nodes
         roadmap = []
-        for nid in prioritized_ids[:25]:  # cap at 25 items
+        for nid in prioritized_ids[:35]:  # cap at 35 items
             node = index.by_id(nid)
             if node:
                 roadmap.append(node.model_dump())

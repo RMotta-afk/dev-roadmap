@@ -3,7 +3,7 @@
 from agent.state import AgentState, MatchedNode
 from rag.embeddings import get_embedding_service
 from roadmap.index import RoadmapIndex
-from roadmap.models import RoadmapNode
+from roadmap.models import CareerLevel, RoadmapNode
 
 
 def _normalize_for_match(text: str) -> str:
@@ -108,6 +108,13 @@ def compare_node(index: RoadmapIndex):
         if not current_level:
             current_level = target_level
 
+        # Build focus tokens from career frame
+        focus_tokens: set[str] = set()
+        if state.career_frame and state.career_frame.focus_areas:
+            for phrase in state.career_frame.focus_areas:
+                for token in phrase.lower().split():
+                    focus_tokens.add(token)
+
         # Aggregate nodes from current level through target level (inclusive)
         if target_level == current_level:
             target_nodes = index.by_role_level(target_role, target_level)
@@ -117,6 +124,20 @@ def compare_node(index: RoadmapIndex):
             )
             if not target_nodes:
                 target_nodes = index.by_level_range(current_level, target_level)
+
+        # Supplement: focus-matched nodes from junior through current level
+        if focus_tokens and current_level and current_level != CareerLevel.junior:
+            base_nodes = index.by_role_level_range_focus_filtered(
+                target_role,
+                CareerLevel.junior,
+                current_level,
+                focus_tokens,
+            )
+            existing_ids = {n.id for n in target_nodes}
+            for node in base_nodes:
+                if node.id not in existing_ids:
+                    target_nodes.append(node)
+                    existing_ids.add(node.id)
 
         # Build experience texts for embedding-similarity fallback
         experience_texts = _build_experience_texts(state)

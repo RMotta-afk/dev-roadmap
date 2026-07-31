@@ -203,12 +203,12 @@ class TestPrioritizeGaps:
 
 
 class TestRoadmapCap:
-    def test_roadmap_capped_at_25(self):
+    def test_roadmap_capped_at_35(self):
         from agent.nodes.roadmap_select import roadmap_select_node
         from agent.state import AgentState, CareerFrame
 
         nodes = []
-        for i in range(30):
+        for i in range(40):
             n = _make_node(f"n{i}", RoadmapRole.ai_engineer, CareerLevel.staff, importance=50)
             n.category = "Cloud"
             nodes.append(n)
@@ -224,7 +224,7 @@ class TestRoadmapCap:
         )
         state.matched_nodes = [
             type("MatchedNode", (), {"id": f"n{i}", "status": "gap", "reason": None, "evidence": None})()
-            for i in range(30)
+            for i in range(40)
         ]
         state.career_frame = CareerFrame(
             current_role="ai_engineer",
@@ -236,9 +236,10 @@ class TestRoadmapCap:
 
         node_fn = roadmap_select_node(index)
         result = node_fn(state)
-        assert len(result.personalized_roadmap) == 25
+        assert len(result.personalized_roadmap) == 35
 
     def test_roadmap_returns_all_when_under_cap(self):
+
         from agent.nodes.roadmap_select import roadmap_select_node
         from agent.state import AgentState, CareerFrame
 

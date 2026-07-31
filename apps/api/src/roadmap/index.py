@@ -146,6 +146,31 @@ class RoadmapIndex:
         
         return results
 
+    def by_role_level_range_focus_filtered(
+        self,
+        role: RoadmapRole,
+        from_level: CareerLevel,
+        to_level: CareerLevel,
+        focus_tokens: set[str],
+    ) -> list[RoadmapNode]:
+        """Return nodes for *role* from *from_level* through *to_level* (inclusive)
+        whose name, category, or aliases match any of *focus_tokens*.
+        Deduplicated by id."""
+        seen: set[str] = set()
+        result: list[RoadmapNode] = []
+        for level in levels_in_range(from_level, to_level):
+            for node in self.by_role_level(role, level):
+                if node.id in seen:
+                    continue
+                searchable = {node.name.lower(), node.category.lower()}
+                searchable.update(a.lower() for a in node.aliases)
+                if not focus_tokens or any(
+                    token in s for s in searchable for token in focus_tokens
+                ):
+                    seen.add(node.id)
+                    result.append(node)
+        return result
+
     def is_valid_subset(self, node_ids: list[str]) -> bool:
         """ADR-008 strict-subset validator.
 

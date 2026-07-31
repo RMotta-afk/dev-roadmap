@@ -1,6 +1,6 @@
 import pytest
 
-from app.pdf.pdf_export import build_pdf, parse_full_name, _stars, _translate_level
+from app.pdf.pdf_export import build_pdf, parse_full_name, _translate_level
 
 
 class TestParseFullName:
@@ -44,26 +44,6 @@ class TestTranslateLevel:
 
     def test_already_portuguese_ignored(self):
         assert _translate_level("Pleno") == "Pleno"
-
-
-class TestStars:
-    def test_zero_importance(self):
-        assert _stars(0) == "☆☆☆☆☆"
-
-    def test_low_importance(self):
-        assert _stars(10) == "★☆☆☆☆"
-
-    def test_mid_importance(self):
-        assert _stars(40) == "★★☆☆☆"
-
-    def test_high_importance(self):
-        assert _stars(80) == "★★★★☆"
-
-    def test_clamped_above_100(self):
-        assert _stars(120) == "★★★★★"
-
-    def test_clamped_below_0(self):
-        assert _stars(-10) == "☆☆☆☆☆"
 
 
 class TestBuildPdf:
