@@ -23,7 +23,7 @@ Return ONLY a JSON object with these exact keys:
 {
   "current_role": "ai_engineer|software_engineer|frontend_engineer or null",
   "current_level": "junior|mid|senior|staff",
-  "target_role": "ai_engineer|software_engineer|frontend_engineer or null (from description goals)",
+  "target_role": "ai_engineer|software_engineer|frontend_engineer — same as current_role unless description explicitly states switching specialization",
   "target_level": "junior|mid|senior|staff (from description or one level above current)",
   "focus_areas": ["list of specific technologies or domains they want to focus on from description"],
   "career_summary": "brief trajectory: progression, key transitions",
@@ -120,6 +120,15 @@ RULES for levels:
 - senior: 5-8 years, technical leadership, architecture decisions
 - staff: 8+ years, organizational impact, strategic technical vision
 
+RULES for target_role:
+- Default target_role to the user's current_role unless the description
+  explicitly states an intent to SWITCH to a different specialization
+  (e.g., "quero ser frontend", "switching to AI/ML", "mudar para engenharia de IA").
+- A goal that only mentions a LEVEL change or general improvement
+  ("quero ser staff", "want to become senior", "subir de nível") keeps the
+  same role as current_role.
+- NEVER return null for target_role.
+
 If target is not explicitly stated in description, default target_level to ONE level above current_level (staff stays staff).
 
 RULES for output language:
@@ -133,6 +142,13 @@ RULES for known_competencies:
 - Include both the original CV term and a suggested canonical term when they differ.
 
 Do not include any markdown formatting, explanation, or extra text outside the JSON."""
+
+
+def _resolve_target_role(
+    current_role: str | None, target_role: str | None
+) -> str | None:
+    """A professional stays on their current path unless the target is explicit."""
+    return target_role or current_role
 
 
 def _dedupe(items: list[str]) -> list[str]:
@@ -428,6 +444,13 @@ async def analyze_node(state: AgentState) -> AgentState:
         target_level=extraction.get("target_level"),
         focus_areas=extraction.get("focus_areas", []),
         career_summary=extraction.get("career_summary"),
+    )
+
+    # Business rule: a professional stays on the same path unless the target
+    # role is explicitly stated. Never allow null/unset target to drop the
+    # career frame to a role-agnostic state (which would leak cross-role nodes).
+    state.career_frame.target_role = _resolve_target_role(
+        state.career_frame.current_role, state.career_frame.target_role
     )
 
     # Populate known_competencies

@@ -3,7 +3,7 @@
 from agent.state import AgentState, MatchedNode
 from rag.embeddings import get_embedding_service
 from roadmap.index import RoadmapIndex
-from roadmap.models import CareerLevel, RoadmapNode
+from roadmap.models import CareerLevel, RoadmapNode, RoadmapRole
 
 
 def _normalize_for_match(text: str) -> str:
@@ -108,6 +108,19 @@ def compare_node(index: RoadmapIndex):
         if not current_level:
             current_level = target_level
 
+        # Guard (role isolation): only operate within a single known role.
+        # A professional stays on their current path unless an explicit switch
+        # was extracted; an unknown/absent role must never fall back to a
+        # role-agnostic query (which would leak cross-role nodes).
+        try:
+            role_slug = RoadmapRole(target_role)
+        except ValueError:
+            state.errors.append(
+                f"Unknown role '{target_role}'; cannot build a roadmap."
+            )
+            state.matched_nodes = []
+            return state
+
         # Build focus tokens from career frame
         focus_tokens: set[str] = set()
         if state.career_frame and state.career_frame.focus_areas:
@@ -117,18 +130,23 @@ def compare_node(index: RoadmapIndex):
 
         # Aggregate nodes from current level through target level (inclusive)
         if target_level == current_level:
-            target_nodes = index.by_role_level(target_role, target_level)
+            target_nodes = index.by_role_level(role_slug, target_level)
         else:
             target_nodes = index.by_role_level_range(
-                target_role, current_level, target_level
+                role_slug, current_level, target_level
             )
-            if not target_nodes:
-                target_nodes = index.by_level_range(current_level, target_level)
+
+        # Role isolation: if the single role has no nodes in this range, return
+        # an empty result rather than pulling cross-role nodes via a
+        # role-agnostic level-range fallback.
+        if not target_nodes:
+            state.matched_nodes = []
+            return state
 
         # Supplement: focus-matched nodes from junior through current level
         if focus_tokens and current_level and current_level != CareerLevel.junior:
             base_nodes = index.by_role_level_range_focus_filtered(
-                target_role,
+                role_slug,
                 CareerLevel.junior,
                 current_level,
                 focus_tokens,
