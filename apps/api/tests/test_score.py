@@ -1,8 +1,6 @@
 from unittest.mock import MagicMock
 
-import pytest
-
-from agent.nodes.level_guess import _compute_compatibility_score
+from agent.nodes.compatibility import _compute_compatibility_score
 
 
 class TestComputeCompatibilityScore:
@@ -30,7 +28,7 @@ class TestComputeCompatibilityScore:
 
 class TestFullScoreComputation:
     def _make_node(self, node_id: str, importance: int = 50):
-        from roadmap.models import RoadmapNode, RoadmapRole, CareerLevel
+        from roadmap.models import CareerLevel, RoadmapNode, RoadmapRole
 
         return RoadmapNode(
             id=node_id,
@@ -46,7 +44,7 @@ class TestFullScoreComputation:
         )
 
     def _compute_score(self, matched, nodes):
-        from agent.nodes.level_guess import _compute_compatibility_score
+        from agent.nodes.compatibility import _compute_compatibility_score
 
         covered_weight = 0.0
         total_weight = 0.0

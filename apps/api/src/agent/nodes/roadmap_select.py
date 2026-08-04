@@ -2,6 +2,86 @@
 
 from agent.state import AgentState, MatchedNode
 from roadmap.index import RoadmapIndex
+from roadmap.models import LEVEL_ORDER, CareerLevel
+
+
+def _normalize_topic(text: str) -> str:
+    """Normalize a topic name for equality-based dedup (case/punctuation-insensitive)."""
+    norm = (text or "").lower().strip()
+    for ch in ".,;:()[]\"'!?/\\-":
+        norm = norm.replace(ch, " ")
+    return " ".join(norm.split())
+
+
+def _level_index(level: CareerLevel | None) -> int:
+    try:
+        return LEVEL_ORDER.index(level)
+    except (ValueError, AttributeError):
+        return 0
+
+
+def _dedupe_nodes_by_topic(
+    matches: list[MatchedNode],
+    index: RoadmapIndex,
+    target_level: CareerLevel | None,
+) -> list[MatchedNode]:
+    """Collapse matches that represent the same topic.
+
+    Groups by normalized name and shared aliases (union-find over key sets),
+    keeping the representative with the highest importance, tie-broken toward the
+    target level. Preserves the original ordering of the remaining matches.
+    """
+    nodes: dict[str, object] = {m.id: index.by_id(m.id) for m in matches}
+    parent = {m.id: m.id for m in matches}
+
+    def find(x: str) -> str:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a: str, b: str) -> None:
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[rb] = ra
+
+    key_map: dict[str, list[str]] = {}
+    for m in matches:
+        node = nodes.get(m.id)
+        if node is None:
+            continue
+        keys = {_normalize_topic(node.name)}
+        keys.update(_normalize_topic(a) for a in node.aliases if a)
+        for key in keys:
+            if key in key_map:
+                union(m.id, key_map[key][0])
+                key_map[key].append(m.id)
+            else:
+                key_map[key] = [m.id]
+
+    groups: dict[str, list[str]] = {}
+    for m in matches:
+        groups.setdefault(find(m.id), []).append(m.id)
+
+    target_idx = _level_index(target_level)
+    kept: set[str] = set()
+    for members in groups.values():
+        best: str | None = None
+        best_key: tuple[int, int] | None = None
+        for mid in members:
+            node = nodes.get(mid)
+            if node is None:
+                continue
+            importance = node.importance if node.importance else 0
+            dist = abs(_level_index(node.level) - target_idx)
+            key = (importance, -dist)
+            if best_key is None or key > best_key:
+                best_key = key
+                best = mid
+        if best is not None:
+            kept.add(best)
+
+    return [m for m in matches if m.id in kept]
 
 
 def _prioritize_gaps(
@@ -79,6 +159,12 @@ def roadmap_select_node(index: RoadmapIndex):
         
         # Filter to gaps only
         gap_matches = [m for m in matched if m.status == "gap"]
+        
+        # Dedupe by topic before prioritizing (same skill under multiple nodes)
+        target_level = None
+        if state.career_frame:
+            target_level = state.career_frame.target_level
+        gap_matches = _dedupe_nodes_by_topic(gap_matches, index, target_level)
         
         # Get focus areas from career frame
         focus_areas = []

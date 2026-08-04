@@ -1,15 +1,16 @@
-import uuid
-from typing import AsyncIterator
+from collections.abc import AsyncIterator
 
-from langgraph.graph import StateGraph, END
+from langgraph.graph import END, StateGraph
 
-from agent.state import AgentState
-from agent.nodes.ingest import ingest_node
-from agent.nodes.strip import strip_node
 from agent.nodes.analyze import analyze_node
 from agent.nodes.compare import compare_node
+from agent.nodes.compatibility import compatibility_node
+from agent.nodes.depth_filter import depth_filter_node
+from agent.nodes.ingest import ingest_node
 from agent.nodes.level_guess import level_guess_node
 from agent.nodes.roadmap_select import roadmap_select_node
+from agent.nodes.strip import strip_node
+from agent.state import AgentState
 from roadmap.index import RoadmapIndex
 
 
@@ -23,6 +24,8 @@ def build_analysis_graph(index: RoadmapIndex) -> StateGraph:
     workflow.add_node("strip", strip_node)
     workflow.add_node("analyze", analyze_node)
     workflow.add_node("compare", compare_node(index))
+    workflow.add_node("depth_filter", depth_filter_node(index))
+    workflow.add_node("compatibility", compatibility_node(index))
     workflow.add_node("level_guess", level_guess_node(index))
     workflow.add_node("roadmap_select", roadmap_select_node(index))
 
@@ -31,7 +34,9 @@ def build_analysis_graph(index: RoadmapIndex) -> StateGraph:
     workflow.add_edge("ingest", "strip")
     workflow.add_edge("strip", "analyze")
     workflow.add_edge("analyze", "compare")
-    workflow.add_edge("compare", "level_guess")
+    workflow.add_edge("compare", "depth_filter")
+    workflow.add_edge("depth_filter", "compatibility")
+    workflow.add_edge("compatibility", "level_guess")
     workflow.add_edge("level_guess", "roadmap_select")
     workflow.add_edge("roadmap_select", END)
 

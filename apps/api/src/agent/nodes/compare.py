@@ -152,6 +152,7 @@ def compare_node(index: RoadmapIndex):
 
         seen_ids: set[str] = set()
         matched_nodes: list[MatchedNode] = []
+        pending: list[tuple[RoadmapNode, str | None, str | None]] = []
 
         for node in target_nodes:
             if node.id in seen_ids:
@@ -162,12 +163,20 @@ def compare_node(index: RoadmapIndex):
                 node, user_skills, competency_map
             )
 
-            # Check 3: Embedding-similarity fallback for gap nodes
-            if status == "gap" and exp_vectors:
-                try:
-                    node_embeddings = await embedding_service.embed([node.name])
-                    if node_embeddings:
-                        node_vec = node_embeddings[0]
+            if status == "gap":
+                pending.append((node, reason, evidence))
+            else:
+                matched_nodes.append(
+                    MatchedNode(id=node.id, status=status, reason=reason, evidence=evidence)
+                )
+
+        # Check 3: Embedding-similarity fallback, batched in ONE call for depth-aware tiers.
+        if pending and exp_vectors:
+            try:
+                embedding_service = get_embedding_service()
+                node_embeddings = await embedding_service.embed([n.name for n, _, _ in pending])
+                if node_embeddings:
+                    for (node, reason, evidence), node_vec in zip(pending, node_embeddings):
                         best_sim = 0.0
                         best_evidence = ""
                         for i, exp_text in enumerate(experience_texts):
@@ -176,24 +185,48 @@ def compare_node(index: RoadmapIndex):
                                 if sim > best_sim:
                                     best_sim = sim
                                     best_evidence = exp_text
-                        if best_sim >= 0.75:
-                            status = "known_via_experience"
-                            reason = (
-                                "Demonstrado por meio de experiência profissional"
-                                f" (similaridade: {best_sim:.2f})"
-                            )
-                            evidence = best_evidence[:200]
-                except Exception:
-                    pass
 
-            matched_nodes.append(
-                MatchedNode(
-                    id=node.id,
-                    status=status,
-                    reason=reason,
-                    evidence=evidence,
+                        if best_sim >= 0.82:
+                            matched_nodes.append(
+                                MatchedNode(
+                                    id=node.id,
+                                    status="known_via_experience",
+                                    reason=(
+                                        "Demonstrado por meio de experiência profissional"
+                                        f" (similaridade: {best_sim:.2f})"
+                                    ),
+                                    evidence=best_evidence[:200],
+                                    confidence=best_sim,
+                                )
+                            )
+                        elif best_sim >= 0.60:
+                            # Same topic, unclear depth -> defer to depth_filter LLM adjudication
+                            matched_nodes.append(
+                                MatchedNode(
+                                    id=node.id,
+                                    status="gap",
+                                    reason=(
+                                        "Tópico relacionado à experiência, profundidade a confirmar"
+                                    ),
+                                    evidence=best_evidence[:200],
+                                    confidence=best_sim,
+                                    depth_candidate=True,
+                                )
+                            )
+                        else:
+                            matched_nodes.append(
+                                MatchedNode(id=node.id, status="gap", reason=reason, evidence=evidence)
+                            )
+            except Exception:
+                for node, reason, evidence in pending:
+                    matched_nodes.append(
+                        MatchedNode(id=node.id, status="gap", reason=reason, evidence=evidence)
+                    )
+        else:
+            for node, reason, evidence in pending:
+                matched_nodes.append(
+                    MatchedNode(id=node.id, status="gap", reason=reason, evidence=evidence)
                 )
-            )
 
         state.matched_nodes = matched_nodes
         return state

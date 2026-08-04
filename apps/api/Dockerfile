@@ -20,4 +20,5 @@ RUN uv pip install --system -e .
 EXPOSE 8000
 
 # Access + app logs go to container stdout/stderr (docker compose logs -f api)
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "info", "--access-log"]
+# Shell-form CMD so ${PORT} is expanded at runtime (Railway injects a dynamic port)
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000} --log-level info --access-log"]

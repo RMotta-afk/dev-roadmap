@@ -21,6 +21,7 @@ class KnownCompetency(BaseModel):
     evidence: str = Field(..., description="Evidence from CV (project, bullet, achievement)")
     source: str = Field(..., description="Source: skill|tech|experience|entailed")
     confidence: float = Field(default=1.0, ge=0.0, le=1.0, description="Confidence level 0-1")
+    depth: str = Field(default="intermediario", description="Demonstrated depth: basico|intermediario|avancado")
 
 
 class MatchedNode(BaseModel):
@@ -30,6 +31,8 @@ class MatchedNode(BaseModel):
     status: str = Field(..., description="covered|gap|known_via_experience")
     reason: str | None = Field(default=None, description="Explanation for the status")
     evidence: str | None = Field(default=None, description="Supporting evidence from CV")
+    confidence: float | None = Field(default=None, ge=0.0, le=1.0, description="Matching confidence 0-1")
+    depth_candidate: bool = Field(default=False, description="True when depth needs LLM adjudication")
 
 
 class LevelResumeData(BaseModel):
@@ -56,5 +59,6 @@ class AgentState(BaseModel):
     level_estimate: str | None = None  # Keep for backward compatibility
     level_resume: LevelResumeData | None = None
     compatibility_score: int | None = None
+    compatibility_rationale: str | None = None
     personalized_roadmap: list[dict] | None = None
     errors: list[str] = []

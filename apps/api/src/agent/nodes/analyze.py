@@ -3,12 +3,10 @@
 from __future__ import annotations
 
 from typing import Any
-import json
 
 from agent.state import AgentState, CareerFrame, KnownCompetency
 from app.config import settings
 from llm.client import get_llm_client
-
 
 # Comprehensive prompt that extracts career context, skills, and competencies from experience
 _ANALYZE_SYSTEM_PROMPT = """\
@@ -45,7 +43,8 @@ Return ONLY a JSON object with these exact keys:
       "name": "competency or skill name",
       "evidence": "specific bullet point, project, or achievement that proves it",
       "source": "skill|tech|experience|entailed",
-      "confidence": 0.0-1.0
+      "confidence": 0.0-1.0,
+      "depth": "basico|intermediario|avancado"
     }
   ],
   "inferred_entailments": [
@@ -62,6 +61,13 @@ RULES for known_competencies:
 - Mark source as "entailed" when logically required
 - Include high confidence (0.8-1.0) for directly evidenced work
 - Include medium confidence (0.5-0.7) for entailed knowledge
+
+RULES for depth:
+- Judge the demonstrated DEPTH of each competency from the evidence wording:
+  "basico" for exposure/basic usage, "intermediario" for independent work with
+  real-world problems, "avancado" for deep expertise, optimization, architecture
+  or leadership in that area.
+- Default to "intermediario" when the evidence is ambiguous.
 
 RULES for inferred_entailments:
 - Infer METHODOLOGIES and PRACTICES from described work, not just adjacent technologies.
@@ -220,7 +226,7 @@ def _mock_extraction(raw_cv_text: str, raw_description: str, profile: dict[str, 
     if "python" in text:
         skills.append("Python")
         technologies.append("Python")
-        known_competencies.append({"name": "Python", "evidence": "mentioned in CV", "source": "tech", "confidence": 0.8})
+        known_competencies.append({"name": "Python", "evidence": "mentioned in CV", "source": "tech", "confidence": 0.8, "depth": "intermediario"})
     if "javascript" in text or "js" in text:
         skills.append("JavaScript")
         technologies.append("JavaScript")
@@ -233,7 +239,7 @@ def _mock_extraction(raw_cv_text: str, raw_description: str, profile: dict[str, 
     if "aws" in text:
         skills.append("AWS")
         technologies.append("AWS")
-        known_competencies.append({"name": "AWS", "evidence": "AWS experience mentioned", "source": "tech", "confidence": 0.7})
+        known_competencies.append({"name": "AWS", "evidence": "AWS experience mentioned", "source": "tech", "confidence": 0.7, "depth": "intermediario"})
     if "docker" in text:
         skills.append("Docker")
         technologies.append("Docker")
@@ -433,6 +439,7 @@ async def analyze_node(state: AgentState) -> AgentState:
                 evidence=comp["evidence"],
                 source=comp["source"],
                 confidence=comp.get("confidence", 1.0),
+                depth=comp.get("depth", "intermediario"),
             )
         )
     

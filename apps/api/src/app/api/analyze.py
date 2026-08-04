@@ -76,40 +76,61 @@ async def _sse_stream(
     raw_description: str,
     user_name: str | None = None,
 ) -> AsyncIterator[str]:
-    """Run the LangGraph pipeline and yield SSE formatted events."""
+    """Run the LangGraph pipeline and yield SSE formatted events.
+
+    Persists the terminal status (done/failed) to Postgres *before* yielding
+    the corresponding final SSE chunk. This matters because the client
+    (Streamlit UI) closes its SSE connection immediately upon receiving the
+    final "result" event, which cancels this generator on the server side.
+    If the DB write happened after the yield, a client that disconnects
+    right away would race the write and the analysis would be stuck at
+    status="running" forever (and PDF export would 400 indefinitely).
+    """
     index = _get_roadmap_index()
 
-    result_payload: dict | None = None
+    try:
+        async for event in stream_analysis(
+            index=index,
+            user_id=user_id,
+            raw_cv_text=raw_cv_text,
+            raw_description=raw_description,
+            user_name=user_name,
+        ):
+            node = event.get("node", "unknown")
+            message = event.get("message", f"Node {node} completed")
+            payload = event.get("payload")
 
-    async for event in stream_analysis(
-        index=index,
-        user_id=user_id,
-        raw_cv_text=raw_cv_text,
-        raw_description=raw_description,
-        user_name=user_name,
-    ):
-        node = event.get("node", "unknown")
-        message = event.get("message", f"Node {node} completed")
-        payload = event.get("payload")
+            if node == "result":
+                # Persist completion before yielding the final chunk so a
+                # client disconnecting right after receiving it can't race
+                # the DB write.
+                await update_analysis(
+                    analysis_id=analysis_id,
+                    result_dict=payload,
+                    status="done",
+                )
 
-        progress = AgentProgressEvent(
-            node=node,
-            status="completed",
-            message=message,
-            payload=payload,
+            progress = AgentProgressEvent(
+                node=node,
+                status="completed",
+                message=message,
+                payload=payload,
+            )
+            yield f"data: {progress.model_dump_json()}\n\n"
+    except Exception as exc:  # noqa: BLE001
+        logger.error(f"Analysis pipeline failed for {analysis_id}: {exc}", exc_info=exc)
+        await update_analysis(
+            analysis_id=analysis_id,
+            result_dict=None,
+            status="failed",
         )
-        yield f"data: {progress.model_dump_json()}\n\n"
-
-        # Capture the final result payload when the node is "result"
-        if node == "result":
-            result_payload = payload
-
-    # Update DB on completion
-    await update_analysis(
-        analysis_id=analysis_id,
-        result_dict=result_payload,
-        status="done",
-    )
+        failure_event = AgentProgressEvent(
+            node="pipeline",
+            status="failed",
+            message=f"Analysis failed: {exc}",
+            payload=None,
+        )
+        yield f"data: {failure_event.model_dump_json()}\n\n"
 
 
 @router.get("/analyze/{analysis_id}/events")

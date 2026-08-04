@@ -9,13 +9,17 @@ from pydantic_settings import (
 
 
 def _repo_root() -> Path:
-    """apps/api/src/app/config.py → parents[4] is monorepo root when layout holds."""
+    """Locate monorepo root by walking up from this file."""
     here = Path(__file__).resolve()
     for parent in here.parents:
         if (parent / "docs" / "archives").is_dir() and (parent / "apps").is_dir():
             return parent
-    # Fallback: config.py → app → src → api → apps → root
-    return here.parents[4]
+    # Fallback: apps/api/src/app/config.py → parents[4] is root when layout
+    # holds; in flat containerized layouts this may not exist.
+    try:
+        return here.parents[4]
+    except IndexError:
+        return here
 
 
 def _env_files() -> tuple[str, ...]:
@@ -89,12 +93,14 @@ class Settings(BaseSettings):
         path = Path(value)
         if path.is_absolute():
             return path.resolve()
-        root_candidate = (_repo_root() / path).resolve()
-        if root_candidate.is_dir():
-            return root_candidate
+        # cwd-relative first: covers flat containerized layouts where data sits
+        # beside the app (e.g. /app/data/roadmaps with cwd=/app)
         cwd_candidate = (Path.cwd() / path).resolve()
         if cwd_candidate.is_dir():
             return cwd_candidate
+        root_candidate = (_repo_root() / path).resolve()
+        if root_candidate.is_dir():
+            return root_candidate
         return root_candidate
 
     @classmethod

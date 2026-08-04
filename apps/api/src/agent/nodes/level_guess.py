@@ -1,15 +1,17 @@
-"""Level guess node: estimate seniority and compute target-relative compatibility score."""
+"""Level guess node: estimate seniority and generate the level resume narrative.
+
+The readiness score is computed by the separate ``compatibility`` node; this node
+only consumes it and produces the narrative ``LevelResumeData``.
+"""
 
 from __future__ import annotations
 
 from typing import Any
-import json
 
 from agent.state import AgentState, LevelResumeData
 from app.config import settings
 from llm.client import get_llm_client
 from roadmap.index import RoadmapIndex
-
 
 _LEVEL_RESUME_SYSTEM_PROMPT = """\
 Você é um consultor de desenvolvimento de carreira. Com base no contexto
@@ -27,17 +29,6 @@ Retorne SOMENTE um objeto JSON com estas chaves exatas:
 Seja específico, prático e encorajador. Foque no que importa para
 alcançar o objetivo.
 Não inclua formatação markdown, explicações ou texto extra fora do JSON."""
-
-
-def _compute_compatibility_score(covered_weight: float, total_weight: float) -> int:
-    """Compute a 0-100 compatibility score based on weighted readiness."""
-    if total_weight == 0:
-        return 0
-    
-    readiness_ratio = covered_weight / total_weight
-    score = int(readiness_ratio * 100)
-    
-    return max(0, min(100, score))
 
 
 def _build_narrative_prompt(state: AgentState, index: RoadmapIndex) -> str:
@@ -146,16 +137,15 @@ def level_guess_node(index: RoadmapIndex):
     """Returns a LangGraph node function with the roadmap index injected."""
     
     async def _node(state: AgentState) -> AgentState:
-        """Estimate the user's level and compute target-relative compatibility score.
-        
-        Uses career_frame and matched_nodes from state. Computes readiness against
-        TARGET level (not just retrieval count). Generates full LevelResume.
+        """Estimate the user's level and generate the LevelResume narrative.
+
+        Uses career_frame and matched_nodes from state. The compatibility_score
+        is already computed by the compatibility node.
         """
         state.errors = list(state.errors)
         
         if not state.career_frame or not state.matched_nodes:
             state.level_estimate = "junior"
-            state.compatibility_score = 0
             state.level_resume = LevelResumeData(
                 summary="Insufficient data to assess level.",
                 strong_points=[],
@@ -167,24 +157,6 @@ def level_guess_node(index: RoadmapIndex):
         # Use current level from career frame (already computed in analyze)
         current_level = state.career_frame.current_level or "junior"
         state.level_estimate = current_level  # backward compat
-        
-        # Compute target-relative readiness score
-        covered_count = sum(1 for m in state.matched_nodes if m.status in ("covered", "known_via_experience"))
-        gap_count = sum(1 for m in state.matched_nodes if m.status == "gap")
-        
-        # Weighted score
-        covered_weight = 0.0
-        total_weight = 0.0
-        for match in state.matched_nodes:
-            node = index.by_id(match.id)
-            if node:
-                weight = float(node.importance) if node.importance else 50.0
-                total_weight += weight
-                if match.status in ("covered", "known_via_experience"):
-                    covered_weight += weight
-        
-        score = _compute_compatibility_score(covered_weight, total_weight)
-        state.compatibility_score = score
         
         # Generate LevelResume (try LLM first, fallback to template)
         resume_data = await _generate_level_resume_llm(state, index)
