@@ -1,102 +1,26 @@
 # CV Analyzer & Roadmap Generator
 
-Restricted-access app that ingests an engineer's CV and description, runs an agentic analysis against a Base Roadmap, and returns a personalized development path.
+An intelligent, agentic career development platform that bridges the gap between an engineer's current experience and their career goals. By leveraging RAG (Retrieval-Augmented Generation) and LangGraph workflows, this project transforms static CV data into actionable, personalized growth roadmaps.
 
-**Stack:** Streamlit UI · FastAPI + LangGraph API · Postgres · Qdrant (pure Python; no Node).
+## 🌟 Why I Built This
+In an industry moving at light speed, maintaining a clear career trajectory is difficult. I built this tool to solve the "what's next?" problem. Rather than generic advice, this system uses a curated "Base Roadmap" of industry skills and maps them against an individual's unique background to identify high-impact learning opportunities.
 
-## Project structure
+## 🚀 How It Works
+The platform operates as a coordinated multi-service ecosystem:
 
-- `apps/ui` — Streamlit frontend (login, CV form, SSE progress, results)
-- `apps/api` — FastAPI + LangGraph backend
-- `docs/archives` — Base roadmap JSON
-- `docs/sql` — Postgres schema migrations
-- `scripts/run.py` — cross-platform orchestration via `uv run`
+1.  **Ingestion & Analysis:** Users upload their CVs and define career objectives. The system ingests this data, extracts key skills, and stores them in a **Postgres** relational database.
+2.  **Vector-Powered Matching:** Skills and experience are embedded and stored in a **Qdrant** vector database, allowing the system to perform semantic searches against a massive, structured library of professional development nodes (the "Base Roadmap").
+3.  **Agentic Orchestration:** Using **LangGraph**, the backend orchestrates a multi-step reasoning process. It compares your current skill graph against the target roadmap to synthesize a personalized learning path, prioritizing gaps that will provide the highest career leverage.
+4.  **Real-Time Feedback:** The **Streamlit** frontend provides a responsive, live-streamed interface that keeps users engaged while the agent processes their personalized path.
 
-## Quick start (from zero)
+## 💡 How It Helps
+- **Gap Analysis:** Instantly identifies missing technical competencies for specific job roles.
+- **Personalized Prioritization:** Instead of learning "everything," the agent suggests exactly what you need to learn to reach your specific goals.
+- **Dynamic Growth:** As you update your profile, the roadmap evolves with you, ensuring your growth plan is always relevant.
 
-```powershell
-# From repo root (PowerShell, CMD, or bash)
-uv run scripts/run.py setup
-
-# Docker: Postgres + Qdrant only
-# Host:   local API :8000 + UI :8501 (same root .env)
-uv run scripts/run.py dev
-```
-
-Open http://localhost:8501
-
-Or step by step:
-
-```powershell
-uv run scripts/run.py env
-uv run scripts/run.py install
-uv run scripts/run.py infra-up   # Postgres + Qdrant (stops API container if it holds :8000)
-uv run scripts/run.py migrate
-uv run scripts/run.py seed-test
-
-# Two terminals (or one):
-uv run scripts/run.py api        # local FastAPI — watch auth logs here
-uv run scripts/run.py ui         # Streamlit
-# Or together:
-uv run scripts/run.py dev
-```
-
-## Test user
-
-After `seed-test`:
-
-- Email: `mundo.dev@cv-analyzer.local`
-- Password: `f3l!pe_p@llm@`
-
-Custom admin:
-
-```powershell
-uv run scripts/run.py seed-admin
-```
-
-## Orchestration commands
-
-| Command | Description |
-|---------|-------------|
-| `uv run scripts/run.py setup` | env + install + infra + migrate + seed-test |
-| `uv run scripts/run.py env` | Copy `.env.example` → `.env` if missing |
-| `uv run scripts/run.py install` | `uv sync` for api and ui |
-| `uv run scripts/run.py infra-up` | Docker Postgres + Qdrant (stops container API) |
-| `uv run scripts/run.py infra-down` | Stop Docker services |
-| `uv run scripts/run.py migrate` | Apply `docs/sql` |
-| `uv run scripts/run.py seed-test` | Create demo user |
-| `uv run scripts/run.py seed-qdrant` | Seed Qdrant `roadmap_nodes` from `docs/archives` |
-| `uv run scripts/run.py seed-qdrant --force` | Drop + re-seed Qdrant |
-| `uv run scripts/run.py seed-admin` | Interactive admin user |
-| `uv run scripts/run.py dev` | Infra + local API + UI (shared root `.env`) |
-| `uv run scripts/run.py api` | Local FastAPI `:8000` only |
-| `uv run scripts/run.py api-debug` | Local API + debugpy on `:5678` (no reload) |
-| `uv run scripts/run.py ui` | Local Streamlit `:8501` only |
-| `uv run scripts/run.py api-docker` | Optional: API inside Docker instead of host |
-| `uv run scripts/run.py test` | Pytest both apps |
-| `uv run scripts/run.py lint` | Ruff both apps |
-
-## Environment
-
-| Variable | Service | Description |
-|----------|---------|-------------|
-| `DATABASE_URL` | api, ui | Postgres DSN (`+asyncpg` ok; UI strips it) |
-| `AUTHJWT_SECRET` | api, ui | Shared HMAC secret for API bearer tokens |
-| `API_BASE_URL` | ui | FastAPI base URL (default `http://localhost:8000`) |
-| `QDRANT_URL` / `QDRANT_API_KEY` | api | Vector store |
-| `LLM_API_KEY` | api | OpenAI key; empty = mock mode |
-| `LLM_MODEL` / `EMBEDDING_MODEL` | api | Model names |
-| `CORS_ALLOW` | api | Optional browser origins |
-| `BASE_ROADMAP_PATH` | api | Path to roadmap JSON (default `docs/archives`) |
-
-## Deployment
-
-- **API + UI:** Railway (two services), Dockerfiles under `apps/api` and `apps/ui`
-- **DB:** Neon Postgres
-- **Vectors:** Qdrant Cloud
-
-See [`DEPLOYMENT_TASK.md`](./DEPLOYMENT_TASK.md).
-
-## Demo
-
-See [`DEMO_SETUP.md`](./DEMO_SETUP.md).
+## 🛠️ Tech Stack
+- **Backend:** FastAPI (async), LangGraph for stateful agent workflows.
+- **Frontend:** Streamlit for rapid, data-centric UI development.
+- **Data Layer:** Postgres (relational state), Qdrant (vector storage).
+- **Orchestration:** Custom CLI built with `uv` for seamless local development, testing, and infrastructure management.
+- **Deployment:** Cloud-native architecture designed for Railway, Neon Postgres, and Qdrant Cloud.
